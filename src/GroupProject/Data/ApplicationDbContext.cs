@@ -21,6 +21,21 @@ namespace GroupProject.Data
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+
+            builder.Entity<UserGroup>()
+                  .HasKey(x => new { x.UserId, x.GroupId });
+            builder.Entity<EventGroup>()
+                  .HasKey(x => new { x.EventId, x.GroupId });
         }
+
+
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Feedback> Feedback { get; set; }
+        public DbSet<UserGroup> UserGroups { get; set; }
+        public DbSet<EventGroup> EventGroups { get; set; }
+       
+
     }
 }
