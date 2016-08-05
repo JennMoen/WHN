@@ -28,7 +28,7 @@ namespace GroupProject.Services
                         Location = e.Location,
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
-                        CatId = e.CatId,
+                        
                         Category = e.Category,
 
                         UserId = e.UserId,
