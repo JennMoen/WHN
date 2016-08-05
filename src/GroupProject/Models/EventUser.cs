@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace GroupProject.Models
 {
-    public class Feedback
+    public class EventUser
     {
-        public int Id { get; set; }
-        public string Text { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser User { get; set; }
 
         public int EventId { get; set; }
         [ForeignKey("EventId")]
         public Event Event { get; set; }
 
-        public string UserId { get; set; }
-        [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
+
+
     }
 }

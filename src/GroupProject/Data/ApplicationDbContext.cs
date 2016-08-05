@@ -26,6 +26,8 @@ namespace GroupProject.Data
                   .HasKey(x => new { x.UserId, x.GroupId });
             builder.Entity<EventGroup>()
                   .HasKey(x => new { x.EventId, x.GroupId });
+            builder.Entity<EventUser>()
+                  .HasKey(x => new { x.EventId, x.UserId });
         }
 
 
@@ -35,7 +37,7 @@ namespace GroupProject.Data
         public DbSet<Feedback> Feedback { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<EventGroup> EventGroups { get; set; }
-       
+        public DbSet<EventUser> EventUsers { get; set; }
 
     }
 }

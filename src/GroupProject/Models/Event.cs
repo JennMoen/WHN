@@ -28,7 +28,7 @@ namespace GroupProject.Models
         public DateTime DateOfEvent { get; set; }
         public DateTime EndTime { get; set; }
         
-        
+        public IList<EventUser> Attendees { get; set; }
         public IList<Feedback> Feedback { get; set; }
         public IList<EventGroup> EventGroups { get; set; }
 

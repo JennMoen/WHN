@@ -16,6 +16,7 @@ namespace GroupProject.Models
         public int Age { get; set; }
         public string Address { get; set; }
         public string MetropolitanArea { get; set; }
+        public IList<Feedback> Feedback { get; set; }
 
     }
 }
