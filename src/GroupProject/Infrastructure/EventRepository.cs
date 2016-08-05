@@ -13,9 +13,20 @@ namespace GroupProject.Infrastructure
             _db = db;
         }
 
+
         //get all events
         public IQueryable<Event> GetAllEvents() {
-            return _db.Events;
+            return from e in _db.Events
+                orderby e.DateOfEvent descending
+                select e;
+        }
+
+        //get all events by userid
+        public IQueryable<Event> GetAllEventsByUserId (int Id) {
+            return from e in _db.Events
+                   where e.Id == Id
+                   orderby e.DateOfEvent descending
+                   select e;
         }
     }
 

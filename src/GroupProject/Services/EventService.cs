@@ -29,7 +29,42 @@ namespace GroupProject.Services
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
                         CategoryId = e.CategoryId,
-                        Category = e.Category,
+                        Category = new CategoryDTO() {
+                            Name = e.Category.Name
+                        },
+
+                        UserId = e.UserId,
+                        Creator = e.Creator,
+                        DateCreated = e.DateCreated,
+                        DateOfEvent = e.DateOfEvent,
+                        EndTime = e.EndTime,
+
+                        Attendees = e.Attendees,
+                        Feedback = e.Feedback,
+                        EventGroups = e.EventGroups
+                    }).ToList();
+
+        }
+
+
+        // get a list of all events by User ID
+        public IList<EventDTO> GetAllEventsByUserId(int Id) {
+
+            return (from e in _eventRepo.GetAllEventsByUserId(Id)
+
+                    select new EventDTO() {
+                        Id = e.Id,
+                        Name = e.Name,
+                        Description = e.Description,
+
+                        Status = e.Status,
+                        Location = e.Location,
+                        AdmissionPrice = e.AdmissionPrice,
+                        ImageUrl = e.ImageUrl,
+                        CategoryId = e.CategoryId,
+                        Category = new CategoryDTO() {
+                            Name = e.Category.Name
+                        },
 
                         UserId = e.UserId,
                         Creator = e.Creator,
