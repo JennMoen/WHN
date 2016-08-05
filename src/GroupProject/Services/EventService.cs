@@ -29,7 +29,9 @@ namespace GroupProject.Services
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
                         CategoryId = e.CategoryId,
-                        Category = e.Category,
+                        Category = new CategoryDTO() {
+                            Name = e.Category.Name
+                        },
 
                         UserId = e.UserId,
                         Creator = e.Creator,
@@ -60,7 +62,9 @@ namespace GroupProject.Services
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
                         CategoryId = e.CategoryId,
-                        Category = e.Category,
+                        Category = new CategoryDTO() {
+                            Name = e.Category.Name
+                        },
 
                         UserId = e.UserId,
                         Creator = e.Creator,
