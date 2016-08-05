@@ -4,6 +4,16 @@ namespace GroupProject.Controllers {
         public message = 'Hello from the home page!';
     }
 
+    export class EventSearchController {
+        public eventSearchData;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/event')
+                .then((response) => {
+                    this.eventSearchData = response.data;
+                });
+        }
+    }
 
     export class SecretController {
         public secrets;

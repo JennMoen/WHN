@@ -13,6 +13,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.HomeController,
                 controllerAs: 'controller'
             })
+            .state('eventSearch', {
+                url: '/eventSearch',
+                templateUrl: '/ngApp/views/EventSearch.html',
+                controller: GroupProject.Controllers.EventSearchController,
+                controllerAs: 'controller'
+                })
             .state('secret', {
                 url: '/secret',
                 templateUrl: '/ngApp/views/secret.html',

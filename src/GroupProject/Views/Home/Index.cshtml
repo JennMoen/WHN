@@ -1,25 +1,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="GroupProject">
 <head>
-    <title>GroupProject</title>
+    <title>WHN</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
     <div class="container">
-        <h1>GroupProject</h1>
-        <div>
+        <h1>WHN</h1>
+        <div class="high rock purple">
+            <a ui-sref="eventSearch">Find Events</a> / 
           <a href="/">Home</a> /
            <a href="/about">About</a>
 
-           / <a href="/secret">Secret</a> /
+           / <a class="purple" href="/secret">Secret</a> /
            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
            <div ng-show="account.isLoggedIn()">
                [{{account.getUserName()}}]
            </div> 
         </div>
-        <hr />
+        
 
         <ui-view></ui-view>
     </div>
