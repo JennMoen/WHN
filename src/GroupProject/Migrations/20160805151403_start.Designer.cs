@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using GroupProject.Data;
 
-namespace GroupProject.Data.Migrations
+namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160803215500_start")]
+    [Migration("20160805151403_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,8 @@ namespace GroupProject.Data.Migrations
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("MetropolitanArea");
 
                     b.Property<string>("NormalizedEmail")
                         .HasAnnotation("MaxLength", 256);
@@ -89,9 +91,7 @@ namespace GroupProject.Data.Migrations
 
                     b.Property<decimal>("AdmissionPrice");
 
-                    b.Property<int>("CatId");
-
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -135,6 +135,21 @@ namespace GroupProject.Data.Migrations
                     b.ToTable("EventGroups");
                 });
 
+            modelBuilder.Entity("GroupProject.Models.EventUser", b =>
+                {
+                    b.Property<int>("EventId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("EventId", "UserId");
+
+                    b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EventUsers");
+                });
+
             modelBuilder.Entity("GroupProject.Models.Feedback", b =>
                 {
                     b.Property<int>("Id")
@@ -144,9 +159,13 @@ namespace GroupProject.Data.Migrations
 
                     b.Property<string>("Text");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Feedback");
                 });
@@ -289,7 +308,8 @@ namespace GroupProject.Data.Migrations
                 {
                     b.HasOne("GroupProject.Models.Category", "Category")
                         .WithMany("Events")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GroupProject.Models.ApplicationUser", "Creator")
                         .WithMany("Events")
@@ -309,18 +329,35 @@ namespace GroupProject.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("GroupProject.Models.EventUser", b =>
+                {
+                    b.HasOne("GroupProject.Models.Event", "Event")
+                        .WithMany("Attendees")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GroupProject.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("GroupProject.Models.Feedback", b =>
                 {
                     b.HasOne("GroupProject.Models.Event", "Event")
                         .WithMany("Feedback")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GroupProject.Models.ApplicationUser", "User")
+                        .WithMany("Feedback")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("GroupProject.Models.UserGroup", b =>
                 {
                     b.HasOne("GroupProject.Models.Group", "Group")
-                        .WithMany("UserGroup")
+                        .WithMany("UserGroups")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade);
 

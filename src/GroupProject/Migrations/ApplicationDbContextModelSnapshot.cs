@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using GroupProject.Data;
 
-namespace GroupProject.Data.Migrations
+namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -90,9 +90,7 @@ namespace GroupProject.Data.Migrations
 
                     b.Property<decimal>("AdmissionPrice");
 
-                    b.Property<int>("CatId");
-
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<DateTime>("DateCreated");
 
@@ -309,7 +307,8 @@ namespace GroupProject.Data.Migrations
                 {
                     b.HasOne("GroupProject.Models.Category", "Category")
                         .WithMany("Events")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GroupProject.Models.ApplicationUser", "Creator")
                         .WithMany("Events")
