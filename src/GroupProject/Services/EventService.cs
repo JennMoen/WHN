@@ -17,7 +17,7 @@ namespace GroupProject.Services
         // get a list of all events
         public IList<EventDTO> GetAllEvents() {
 
-            return (from e in _eventRepo.GetAllEventsByUserId()
+            return (from e in _eventRepo.GetAllEvents()
 
                     select new EventDTO() {
                         Id = e.Id,
@@ -46,9 +46,9 @@ namespace GroupProject.Services
 
 
         // get a list of all events by User ID
-        public IList<EventDTO> GetAllEventsByUserId() {
+        public IList<EventDTO> GetAllEventsByUserId(int Id) {
 
-            return (from e in _eventRepo.GetAllEventsByUserId()
+            return (from e in _eventRepo.GetAllEventsByUserId(Id)
 
                     select new EventDTO() {
                         Id = e.Id,
