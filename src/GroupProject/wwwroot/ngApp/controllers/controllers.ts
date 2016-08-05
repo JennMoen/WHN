@@ -30,4 +30,16 @@ namespace GroupProject.Controllers {
         public message = 'Hello from the about page!';
     }
 
+    export class UserController {
+        public userData;
+
+        /*constructor(private $http: ng.IHttpService) {
+            $http.get().then((results) => {
+                this.userData = results.data;
+            });
+        }*/
+
+
+    }
+
 }
