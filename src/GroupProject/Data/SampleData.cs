@@ -47,8 +47,73 @@ namespace GroupProject.Data
                 await userManager.CreateAsync(mike, "Secret123!");
             }
 
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddRange(
+                    new Category()
+                    {
+                        Name = "Music"
+                    },
+
+                    new Category()
+                    {
+                        Name = "Sports"
+                    },
+                    new Category()
+                    {
+                        Name = "Family"
+                    },
+                    new Category()
+                    {
+                        Name = "Education"
+                    },
+                    new Category()
+                    {
+                        Name = "Food/Drink"
+                    },
+                    new Category()
+                    {
+                        Name = "Theater/Performing Arts"
+                    },
+                    new Category()
+                    {
+                        Name = "Art/Museums"
+                    },
+                    new Category()
+                    {
+                        Name = "Entertainment"
+                    },
+                    new Category()
+                    {
+                        Name = "Volunteer"
+                    },
+                    new Category()
+                    {
+                        Name = "Fitness"
+                    },
+                    new Category()
+                    {
+                        Name = "Nature"
+                    },
+                    new Category()
+                    {
+                        Name = "Religious"
+                    },
+                    new Category()
+                    {
+                        Name = "Clubs/Social"
+                    },
+                    new Category()
+                    {
+                        Name = "Networking"
+                    }
+
+                    );
+
+                context.SaveChanges();
+
+            }
 
         }
-
     }
 }
