@@ -16,7 +16,7 @@ namespace GroupProject.Data
         public decimal AdmissionPrice { get; set; }
         public string ImageUrl { get; set; }
 
-        public int CatId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
 
         public string UserId { get; set; }
