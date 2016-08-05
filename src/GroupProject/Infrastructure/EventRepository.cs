@@ -15,15 +15,17 @@ namespace GroupProject.Infrastructure
 
 
         //get all events
-        public IQueryable<Event> GetAllEventsByUserId() {
-            return _db.Events;
+        public IQueryable<Event> GetAllEvents() {
+            return from e in _db.Events
+                orderby e.DateOfEvent descending
+                select e;
         }
 
         //get all events by userid
-        public IQueryable<Event> GetAllEventsByUserid (int Id) {
+        public IQueryable<Event> GetAllEventsByUserId (int Id) {
             return from e in _db.Events
                    where e.Id == Id
-                   orderby e.DateOfEvent
+                   orderby e.DateOfEvent descending
                    select e;
         }
     }

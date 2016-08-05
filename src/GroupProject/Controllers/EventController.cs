@@ -22,5 +22,12 @@ namespace GroupProject.Controllers
             return _eventService.GetAllEvents();
 
         }
+
+        // GET /api/event/{id}
+        [HttpGet("{id}")]
+        public IList<EventDTO>GetAllEventsByUserId(int Id) {
+
+            return _eventService.GetAllEventsByUserId(Id);
+        }
     }
 }
