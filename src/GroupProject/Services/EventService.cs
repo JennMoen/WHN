@@ -29,7 +29,6 @@ namespace GroupProject.Services
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
                         CategoryId = e.CategoryId,
-<<<<<<< HEAD
                         Category = e.Category,
 
                         UserId = e.UserId,
@@ -61,8 +60,6 @@ namespace GroupProject.Services
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
                         CategoryId = e.CategoryId,
-=======
->>>>>>> 0b8c0784e8a04ad1ad72d742824cde0fd1adf949
                         Category = e.Category,
 
                         UserId = e.UserId,
