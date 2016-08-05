@@ -5,17 +5,22 @@
             <li><a ui-sref="createEvent">Create Event</a></li>
             <li><a ui-sref="groups">My Groups</a></li>
         </ul>
-
     </div>
     <div class="flex-row mainCol containerMainCol">
         <div class="flex-col mainCol">
-            <div class="flex-row f-jc-fe mainCol">Date</div>
+            <div class="flex-row f-jc-fe mainCol">9/1/2016</div>
             <div class="flex-row f-jc-sa mainCol">
-                <img src="../../images/BokehParty.jpeg" class="img-fixed" />
-                <p class="f-wrap f-as">Welcome to the event</p>
+                <img ng-src="{{searchData.imageUrl}}" class="img-fixed" />
+                <p class="f-wrap f-as">Description</p>
             </div>
+            <div class="flex-row f-jc-fe mainCol">Add to you events</div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
         </div>
+
+        <!--9 ng-repeat="searchData" in controller.eventSearchData
+        11 {{searchData.dateOfEvent}}
+        13 ng-src = {{searchData.imageUrl}}
+        14 {{searchData.description}}-->
 
         <!--<div class="f-jc-sb mainCol">
             <span>There</span>

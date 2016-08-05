@@ -71,14 +71,6 @@ textarea {
     width:1150.5px;
 }
 
-div>a {
-    color: #C0B3A0;
-}
-
-a:hover, ui-sref:hover {
-    color:#E14658;
-}
-
 .photo {
     position: relative;
     width:1150.5px;
@@ -112,7 +104,7 @@ a:hover, ui-sref:hover {
     list-style-type: none;
     margin:0;
     padding:0;
-    width:100%;
+    width:1150.5px;
     text-align:center;
 }
 
@@ -120,8 +112,13 @@ a:hover, ui-sref:hover {
     font-family:serif;
 }
 
-ui-sref, a {
+a, ui-sref {
     cursor:pointer;
+    color:#C0B3A0;
+}
+
+a:hover, ui-sref:hover {
+    color:#E14658;
 }
 
 .flex-col{
@@ -146,11 +143,14 @@ ui-sref, a {
 .sideBarDiv {
     width: 30%;
     font-size: 18px;
-    
 }
 
 .sideBarDiv>ul>li>a {
     color:#3F3250;
+}
+
+.sideBarDiv>ul>li>a:hover {
+    color: #E14658;
 }
 
 .containerMainCol {
