@@ -33,34 +33,41 @@ textarea {
     }
 }*/
 
+.bgnd-salmon {
+    background-color: #E14658;
+}
+
 .salmon {
     color: #E14658;
 }
 
-.navy {
+.bgnd-navy {
     background-color: #22252C;
 }
 
-.purple {
+.navy {
+    color: #22252C;
+}
+
+.bgnd-purple {
     background-color: #3F3250;
 }
 
-.high{
-    height: 50px;
-    font-size:24px;
-    width:1150.5px;
+.purple {
+    color: #3F3250;
 }
 
-div>a {
-    color: #C0B3A0;
-}
-
-a:hover, ui-sref:hover {
-    color:#E14658;
+.bgnd-rock {
+    background-color: #C0B3A0;
 }
 
 .rock {
     color: #C0B3A0;
+}
+
+.high{
+    font-size:24px;
+    width:1150.5px;
 }
 
 .photo {
@@ -96,7 +103,7 @@ a:hover, ui-sref:hover {
     list-style-type: none;
     margin:0;
     padding:0;
-    width:100%;
+    width:1150.5px;
     text-align:center;
 }
 
@@ -104,20 +111,25 @@ a:hover, ui-sref:hover {
     font-family:serif;
 }
 
-ui-sref, a {
+a, ui-sref {
     cursor:pointer;
+    color:#C0B3A0;
+}
+
+a:hover, ui-sref:hover {
+    color:#E14658;
 }
 
 .flex-col{
     display: flex;
     flex-direction:column;
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .flex-row {
     display: flex;
     flex-direction: row;
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 .sideBarUList {
@@ -128,13 +140,31 @@ ui-sref, a {
 }
 
 .sideBarDiv {
-    width: 300px;
+    width: 30%;
     font-size: 18px;
+}
+
+.sideBarDiv>ul>li>a {
+    color:#3F3250;
+}
+
+.sideBarDiv>ul>li>a:hover {
+    color: #E14658;
+}
+
+.containerMainCol {
+    border:solid;
+    border-width:1px;
+    border-color:#22252C;
 }
 
 .mainCol {
     font-size: 18px;
-    
+    width: 100%;
+}
+
+.content {
+    width:1150.5px;
 }
 
 .f-jc-sb {
@@ -142,3 +172,37 @@ ui-sref, a {
     justify-content:space-between;
 }
 
+.f-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.f-jc-fe {
+    display:flex;
+    justify-content:flex-end;
+}
+
+.f-jc-fs {
+    display: flex;
+    justify-content:flex-start;
+}
+
+.f-jc-c {
+    display:flex;
+    justify-content:center;
+}
+
+.f-jc-sa {
+    display:flex;
+    justify-content:space-around
+}
+
+.img-fixed {
+    height:100px;
+    width:100px;
+}
+
+.f-as {
+    display:flex;
+    align-self:center;
+}

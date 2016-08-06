@@ -8,7 +8,7 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160805224534_start")]
+    [Migration("20160805161916_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
