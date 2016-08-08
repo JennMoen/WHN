@@ -54,12 +54,22 @@ namespace GroupProject
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<CategoryService>();
             services.AddScoped<EventRepository>();
             services.AddScoped<EventService>();
+<<<<<<< HEAD
             services.AddScoped<UserRepository>();
             services.AddScoped<UserService>();
             services.AddScoped<GroupRepository>();
             services.AddScoped<GroupService>();
+=======
+            services.AddScoped<FeedbackRepository>();
+            services.AddScoped<FeedbackService>();
+            services.AddScoped<GroupRepository>();
+            services.AddScoped<GroupService>();
+
+>>>>>>> 9f327b13f3850db6e394e349930c610c495ade5c
             
             
                         // add security policies

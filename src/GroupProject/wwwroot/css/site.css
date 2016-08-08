@@ -136,7 +136,7 @@ a:hover, ui-sref:hover {
     list-style-type: none;
     margin:0;
     padding:0;
-    text-align:center;
+    /*text-align:center;*/
 }
 
 .sideBarDiv {
@@ -156,6 +156,12 @@ a:hover, ui-sref:hover {
     border:solid;
     border-width:1px;
     border-color:#22252C;
+}
+
+.black-border {
+    border-bottom: solid;
+    border-bottom-width:1px;
+    border-bottom-color: #22252C;
 }
 
 .mainCol {
@@ -205,4 +211,25 @@ a:hover, ui-sref:hover {
 .f-as {
     display:flex;
     align-self:center;
+}
+
+.description-width-and-height {
+    width: 400px;
+    height:auto;
+}
+
+.ta-center {
+    
+    text-align:center;
+}
+
+.p-fixed {
+    position:fixed;
+    height:auto;
+    
+}
+
+.ai-c {
+    display:flex;
+    align-items: center;
 }

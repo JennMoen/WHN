@@ -13,7 +13,24 @@ namespace GroupProject.Controllers {
                     this.eventSearchData = response.data;
                 });
         }
+
+        public readMore(searchData) {
+            
+            
+        }
     }
+
+    export class EventAddController {
+        public categories;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/category')
+                .then((response) =>  {
+                this.categories = response.data;
+            });
+        }
+    }
+
 
     export class SecretController {
         public secrets;
