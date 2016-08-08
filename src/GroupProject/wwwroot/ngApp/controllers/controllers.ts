@@ -42,4 +42,27 @@ namespace GroupProject.Controllers {
 
     }
 
+    export class GroupController {
+
+        public users;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/user').then((results) => {
+                this.users = results.data;
+            });
+        }
+
+        public addGroup(group) {
+            this.$http.post('/api/groups', group)
+                .then((response) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+
+        }
+
+    }
+
 }

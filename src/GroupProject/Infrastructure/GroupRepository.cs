@@ -17,5 +17,10 @@ namespace GroupProject.Infrastructure
         public IQueryable<Group> GetAllGroups() {
             return _db.Groups;
         }
+
+        public void Add(Group group) {
+            _db.Groups.Add(group);
+            _db.SaveChanges();
+        }
     }
 }

@@ -55,6 +55,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.UserController,
                 controllerAs: 'controller'
             })
+            .state('mygroups', {
+                url: '/mygroups',
+                templateUrl: '/ngApp/views/mygroups.html',
+                controller: GroupProject.Controllers.GroupController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

@@ -1,5 +1,6 @@
 ﻿using GroupProject.Data;
 using GroupProject.Infrastructure;
+using GroupProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,22 @@ namespace GroupProject.Services
                         EventGroups = g.EventGroups
                     }).ToList();
         }
+
+
+        public void AddGroup(GroupDTO group) {
+
+            Group dbGroup = new Group()
+            {
+            Id=group.Id,
+            Name=group.Name
+          
+            };
+
+            _groupRepo.Add(dbGroup);
+
+
+        }
+
+
     }
 }
