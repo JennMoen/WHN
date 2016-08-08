@@ -11,8 +11,7 @@ namespace GroupProject.Data
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public IList<UserGroup> UserGroups { get; set; }
-        public IList<EventGroup> EventGroups { get; set; }
+       
         
     }
 }

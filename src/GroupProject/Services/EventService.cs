@@ -43,7 +43,7 @@ namespace GroupProject.Services
 
                         Attendees = e.Attendees,
                         Feedback = e.Feedback,
-                        EventGroups = e.EventGroups
+                       
                     }).ToList();
 
 
@@ -72,7 +72,7 @@ namespace GroupProject.Services
 
                         Attendees = e.Attendees,
                         Feedback = e.Feedback,
-                        EventGroups = e.EventGroups
+                        
                     }).ToList();
         }
 
@@ -93,7 +93,7 @@ namespace GroupProject.Services
                 Category = EventInfo.Category,
                 Attendees = EventInfo.Attendees,
                 AdmissionPrice = EventInfo.AdmissionPrice,
-                EventGroups = EventInfo.EventGroups,
+                
                 Id = EventInfo.Id
             };
             _eventRepo.Add(dbEvent);
