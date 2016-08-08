@@ -20,6 +20,18 @@ namespace GroupProject.Controllers {
         }
     }
 
+    export class EventAddController {
+        public categories;
+
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/category')
+                .then((response) =>  {
+                this.categories = response.data;
+            });
+        }
+    }
+
+
     export class SecretController {
         public secrets;
 

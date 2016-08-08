@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using GroupProject.Data;
 using GroupProject.Services;
@@ -29,5 +26,23 @@ namespace GroupProject.Controllers
 
             return _eventService.GetAllEventsByUserId(Id);
         }
+
+        [HttpPost]
+        public IActionResult PostEvents([FromBody] EventDTO Event)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+
+            _eventService.AddEvent(Event, User.Identity.Name);
+
+
+            return Ok();
     }
-}
+
+        }
+    }

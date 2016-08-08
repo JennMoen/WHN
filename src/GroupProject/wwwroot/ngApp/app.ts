@@ -1,6 +1,6 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -19,6 +19,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.EventSearchController,
                 controllerAs: 'controller'
                 })
+            .state('eventAdd', {
+                url: '/eventAdd',
+                templateUrl: '/ngApp/views/eventAdd.html',
+                controller: GroupProject.Controllers.EventAddController,
+                controllerAs: 'controller'
+            })
             .state('secret', {
                 url: '/secret',
                 templateUrl: '/ngApp/views/secret.html',

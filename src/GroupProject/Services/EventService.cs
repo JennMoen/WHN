@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GroupProject.Data;
 using GroupProject.Infrastructure;
+using GroupProject.Models;
 
 namespace GroupProject.Services
 {
@@ -74,5 +75,32 @@ namespace GroupProject.Services
                         EventGroups = e.EventGroups
                     }).ToList();
         }
+
+
+        public void AddEvent(EventDTO EventInfo, string Username)
+        {
+            Event dbEvent = new Event()
+            {
+                Name = EventInfo.Name,
+                Status = EventInfo.Status,
+                ImageUrl = EventInfo.ImageUrl,
+                Feedback = EventInfo.Feedback,
+                EndTime = EventInfo.EndTime,
+                Description = EventInfo.Description,
+                DateOfEvent = EventInfo.DateOfEvent,
+                DateCreated = EventInfo.DateCreated,
+                Creator = EventInfo.Creator,
+                Category = EventInfo.Category,
+                Attendees = EventInfo.Attendees,
+                AdmissionPrice = EventInfo.AdmissionPrice,
+                EventGroups = EventInfo.EventGroups,
+                Id = EventInfo.Id
+            };
+            _eventRepo.Add(dbEvent);
+        }
+
     }
 }
+
+ 
+
