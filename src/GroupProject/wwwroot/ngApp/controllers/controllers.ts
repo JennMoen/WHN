@@ -13,6 +13,11 @@ namespace GroupProject.Controllers {
                     this.eventSearchData = response.data;
                 });
         }
+
+        public readMore(searchData) {
+            
+            
+        }
     }
 
     export class SecretController {
