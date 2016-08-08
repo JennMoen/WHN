@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using GroupProject.Data;
 using GroupProject.Models;
 using GroupProject.Services;
+using GroupProject.Infrastructure;
 
 namespace GroupProject
 {
@@ -52,8 +53,10 @@ namespace GroupProject
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            
 
+            services.AddScoped<EventRepository>();
+            services.AddScoped<EventService>();
+            
             
                         // add security policies
                         services.AddAuthorization(options =>
