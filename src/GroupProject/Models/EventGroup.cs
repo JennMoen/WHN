@@ -15,7 +15,5 @@ namespace GroupProject.Models
         public int GroupId { get; set; }
         [ForeignKey("GroupId")]
         public Group Group { get; set; }
-
-
     }
 }

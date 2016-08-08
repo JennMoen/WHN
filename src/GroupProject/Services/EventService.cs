@@ -91,9 +91,7 @@ namespace GroupProject.Services
                 DateCreated = EventInfo.DateCreated,
                 Creator = EventInfo.Creator,
                 Category = EventInfo.Category,
-                Attendees = EventInfo.Attendees,
                 AdmissionPrice = EventInfo.AdmissionPrice,
-                EventGroups = EventInfo.EventGroups,
                 Id = EventInfo.Id
             };
             _eventRepo.Add(dbEvent);
