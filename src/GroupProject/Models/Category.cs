@@ -15,8 +15,6 @@ namespace GroupProject.Models
         public string Name { get; set; }
         public IList<Event> Events { get; set; }
 
-        public static implicit operator Category(CategoryDTO v) {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -122,7 +122,7 @@ namespace GroupProject.Data
                     new Event()
                     {
                         AdmissionPrice = 139.0m,
-                        CategoryId = 1,
+                        CategoryId = 1, // query from DB!!!
                         DateCreated = new DateTime(2016, 8, 5),
                         DateOfEvent = new DateTime(2016, 9, 3),
                         Description = "Rap/Hip-Hop Concert",
@@ -131,7 +131,7 @@ namespace GroupProject.Data
                         Location = "Toyota Center, Tx-Houston",
                         Name = "Drake and Future",
                         Status = "public",
-                        Creator = stephen,
+                        Creator = stephen
                     },
                     new Event()
                     {
