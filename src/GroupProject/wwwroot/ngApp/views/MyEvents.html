@@ -1,4 +1,5 @@
 ﻿<div class="flex-row content">
+
     <div class="flex-col sideBarDiv bgnd-rock">
 
         <ul class="flex-col sideBarUList p-fixed">
@@ -7,13 +8,13 @@
             <li><a ui-sref="eventAdd">Create Event</a></li>
             <li><a ui-sref="mygroups">My Groups</a></li>
             <li><a ui-sref="createGroup">Create a Group</a></li>
-            <li><a ui-sref="MyEvents"> My Events</a></li>
 
         </ul>
-        
     </div>
+
+
     <div class="flex-col mainCol containerMainCol">
-        <div class="flex-col mainCol containerMainCol" ng-repeat="searchData in controller.eventSearchData">
+        <!--<div class="flex-col mainCol containerMainCol" ng-repeat="searchData in controller.eventSearchData">
             <div class="flex-row f-jc-sb mainCol"><div>{{searchData.name}}</div><div>{{searchData.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
             <div class="flex-row f-jc-sa mainCol">
                 <img ng-src="{{searchData.imageUrl}}" class="img-fixed" />
@@ -21,24 +22,7 @@
             </div>
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="addEvent">Add to your events</a></div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
-            
-        </div>
 
-        <!--9 ng-repeat="searchData" in controller.eventSearchData
-        11 {{searchData.dateOfEvent}}
-        13 ng-src = {{searchData.imageUrl}}
-        14 {{searchData.description}}-->
-        <!--<div class="f-jc-sb mainCol">
-            <span>There</span>
-            <span>Here</span>
-            <span>Info</span>
-            <span>Go</span>
         </div>-->
     </div>
 </div>
-
-<!--<div class="flex-col">
-    <div class="flex-row f-jc-fe">Date</div>
-    <div class="flex-row f-jc-sa"><span>Hey</span><span>Hey</span></div>
-    <div class="flex-row f-jc-fe">More Info</div>
-</div>-->

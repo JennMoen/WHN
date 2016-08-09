@@ -46,9 +46,14 @@ namespace GroupProject.Controllers {
                     console.log(reason);
 
                 });
-        }
+
+            this.$http.delete('/api/event', event)
+                .then((response) => {
+                    this.$state.go('event');
 
 
+                })
+        };
     }
 
     export class SecretController {
@@ -98,6 +103,17 @@ namespace GroupProject.Controllers {
                 });
 
         }
+        
 
+    }
+    export class MyEventController {
+        public eventinfo
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/events')
+                .then((response) =>
+                {
+                this.eventinfo = response.data;
+                })
+        };
     }
 }

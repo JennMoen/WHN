@@ -41,7 +41,11 @@ namespace GroupProject.Infrastructure
             _db.Events.Add(dbEvent);
             _db.SaveChanges();
         }
-
+        public void Remove(Event dbEvent)
+        {
+            _db.Events.Remove(dbEvent);
+            _db.SaveChanges();
+        }
     }
 
 }

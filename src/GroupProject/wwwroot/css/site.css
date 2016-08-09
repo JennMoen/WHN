@@ -96,7 +96,7 @@ textarea {
 
 .homeList {
     display:inline;
-    width:100%;
+    /*width:auto;*/
 }
 
 .homeUList {
@@ -132,7 +132,15 @@ a:hover, ui-sref:hover {
     /*background-color: blue;*/
 }
 
+
 .sideBarUList {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    /*text-align:center;*/
+}
+
+.myeventsideBarUlist {
     list-style-type: none;
     margin:0;
     padding:0;
@@ -144,9 +152,23 @@ a:hover, ui-sref:hover {
     font-size: 18px;
 }
 
+.myeventsideBarDiv{
+    width: 30%;
+    font-size: 18px;
+}
+
 .sideBarDiv>ul>li>a {
     color:#3F3250;
 }
+
+.myeventsideBarDiv>ul>li>a{
+    color:#3F3250;
+}
+
+.myeventsideBarDiv>ul>li>a:hover{
+    color: #E14658;
+}
+
 
 .sideBarDiv>ul>li>a:hover {
     color: #E14658;
@@ -157,6 +179,8 @@ a:hover, ui-sref:hover {
     border-width:1px;
     border-color:#22252C;
 }
+
+
 
 .black-border {
     border-bottom: solid;

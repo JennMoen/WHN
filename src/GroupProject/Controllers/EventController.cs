@@ -43,6 +43,19 @@ namespace GroupProject.Controllers
 
             return Ok();
     }
+        [HttpDelete]
+        public IActionResult DeleteEvent([FromBody] EventDTO Event)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _eventService.DeleteEvent(Event, User.Identity.Name);
+
+
+            return Ok();
         }
+    
+    }
     }

@@ -92,13 +92,32 @@ namespace GroupProject.Services
                 Creator = EventInfo.Creator,
                 Category = EventInfo.Category,
                 AdmissionPrice = EventInfo.AdmissionPrice,
-<<<<<<< HEAD
-=======
 
->>>>>>> 29ee84330b838800005a8ae68f2553897f3cadf5
                 Id = EventInfo.Id
             };
             _eventRepo.Add(dbEvent);
+        }
+
+        public void DeleteEvent(EventDTO EventInfo, string Username)
+        {
+            Event dbEvent = new Event()
+            {
+                Name = EventInfo.Name,
+                Status = EventInfo.Status,
+                ImageUrl = EventInfo.ImageUrl,
+                Feedback = EventInfo.Feedback,
+                EndTime = EventInfo.EndTime,
+                Description = EventInfo.Description,
+                DateOfEvent = EventInfo.DateOfEvent,
+                DateCreated = EventInfo.DateCreated,
+                Creator = EventInfo.Creator,
+                Category = EventInfo.Category,
+                AdmissionPrice = EventInfo.AdmissionPrice,
+
+                Id = EventInfo.Id
+            };
+
+            _eventRepo.Remove(dbEvent);
         }
 
     }
