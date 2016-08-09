@@ -49,13 +49,5 @@ namespace GroupProject.Controllers
     }
 
 
-
-        [HttpGet]
-        public IList<CategoryDTO> GetAllCategories()
-        {
-            return _categoryService.GetAllCategories();
-
-        }
-
     }
     }

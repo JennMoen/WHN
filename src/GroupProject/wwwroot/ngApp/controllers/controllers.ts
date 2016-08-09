@@ -36,11 +36,12 @@ namespace GroupProject.Controllers {
         public event;
 
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 
+        public addEvent(event) {
             this.$http.post('/api/events', event)
                 .then((response) => {
-                    this.$state.go('event');
+                    this.$state.reload();
                 })
                 .catch((reason) => {
                     console.log(reason);
