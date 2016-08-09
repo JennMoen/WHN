@@ -29,14 +29,26 @@ namespace GroupProject.Controllers {
                     this.categories = response.data;
                 });
         }
+
     }
+
     export class EventController {
-        public events;
-
-        constructor(private $http: ng.IHttpService) {
+        public event;
 
 
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+
+            this.$http.post('/api/event', event)
+                .then((response) => {
+                    this.$state.go('event');
+                })
+                .catch((reason) => {
+                    console.log(reason);
+
+                });
         }
+
+
     }
 
     export class SecretController {
@@ -88,5 +100,4 @@ namespace GroupProject.Controllers {
         }
 
     }
-
 }
