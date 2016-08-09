@@ -61,11 +61,11 @@ namespace GroupProject
             services.AddScoped<EventService>();
 
             services.AddScoped<UserRepository>();
-<<<<<<< HEAD
+
             services.AddScoped<UserService>();            
-=======
+
             services.AddScoped<UserService>();
->>>>>>> 2187be164a5c58750ea04b7333eadcc6b756fb02
+
 
             services.AddScoped<FeedbackRepository>();
             services.AddScoped<FeedbackService>();
@@ -74,21 +74,14 @@ namespace GroupProject
             services.AddScoped<GroupService>();
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 2187be164a5c58750ea04b7333eadcc6b756fb02
             services.AddScoped<FeedbackRepository>();
             services.AddScoped<FeedbackService>();
             services.AddScoped<GroupRepository>();
             services.AddScoped<GroupService>();
             
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 2187be164a5c58750ea04b7333eadcc6b756fb02
             services.AddScoped<GroupRepository>();
             services.AddScoped<GroupService>();
 
@@ -96,13 +89,6 @@ namespace GroupProject
             services.AddScoped<FeedbackRepository>();
             services.AddScoped<FeedbackService>();
           
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 2187be164a5c58750ea04b7333eadcc6b756fb02
-            
 
                         // add security policies
                         services.AddAuthorization(options =>
