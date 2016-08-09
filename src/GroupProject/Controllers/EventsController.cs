@@ -42,7 +42,7 @@ namespace GroupProject.Controllers
 
 
 
-            _eventService.AddEvent(Event, User.Identity.Name);
+            _eventService.AddEvent(Event);
 
 
             return Ok();

@@ -75,9 +75,8 @@ namespace GroupProject.Services
 
                     }).ToList();
         }
-
-
-        public void AddEvent(EventDTO EventInfo, string Username)
+     
+        public void AddEvent(EventDTO EventInfo)
         {
             Event dbEvent = new Event()
             {
@@ -89,10 +88,12 @@ namespace GroupProject.Services
                 Description = EventInfo.Description,
                 DateOfEvent = EventInfo.DateOfEvent,
                 DateCreated = EventInfo.DateCreated,
-                Creator = EventInfo.Creator,
-                Category = EventInfo.Category,
+                
+                Location = EventInfo.Location,
+                CategoryId = EventInfo.Category.Id,
                 AdmissionPrice = EventInfo.AdmissionPrice,
-                Id = EventInfo.Id
+                UserId = EventInfo.Creator.Id
+                
             };
             _eventRepo.Add(dbEvent);
         }
