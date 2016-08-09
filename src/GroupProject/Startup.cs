@@ -68,14 +68,7 @@ namespace GroupProject
 
             services.AddScoped<GroupRepository>();
             services.AddScoped<GroupService>();
-
-            services.AddScoped<GroupRepository>();
-            services.AddScoped<GroupService>();
-
-            services.AddScoped<FeedbackRepository>();
-            services.AddScoped<FeedbackService>();
-          
-
+                                                                 
                         // add security policies
                         services.AddAuthorization(options =>
                         {

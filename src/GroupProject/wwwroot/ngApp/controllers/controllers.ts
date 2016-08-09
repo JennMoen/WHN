@@ -15,8 +15,8 @@ namespace GroupProject.Controllers {
         }
 
         public readMore(searchData) {
-            
-            
+
+
         }
     }
 
@@ -25,12 +25,19 @@ namespace GroupProject.Controllers {
 
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/category')
-                .then((response) =>  {
-                this.categories = response.data;
-            });
+                .then((response) => {
+                    this.categories = response.data;
+                });
         }
     }
+    export class EventController {
+        public events;
 
+        constructor(private $http: ng.IHttpService) {
+
+
+        }
+    }
 
     export class SecretController {
         public secrets;
