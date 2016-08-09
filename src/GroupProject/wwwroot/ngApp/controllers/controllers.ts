@@ -7,8 +7,9 @@ namespace GroupProject.Controllers {
     export class EventSearchController {
         public eventSearchData;
 
-        constructor(private $http: ng.IHttpService) {
-            $http.get('/api/event')
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/events')
                 .then((response) => {
                     this.eventSearchData = response.data;
                 });
@@ -17,6 +18,16 @@ namespace GroupProject.Controllers {
         public readMore(searchData) {
 
 
+        }
+        public addEvent(event) {
+            this.$http.post('/api/events', event)
+                .then((response) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+
+                });
         }
     }
 
@@ -36,11 +47,12 @@ namespace GroupProject.Controllers {
         public event;
 
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 
-            this.$http.post('/api/event', event)
+        public addEvent(event) {
+            this.$http.post('/api/events', event)
                 .then((response) => {
-                    this.$state.go('event');
+                    this.$state.reload();
                 })
                 .catch((reason) => {
                     console.log(reason);
@@ -106,7 +118,7 @@ namespace GroupProject.Controllers {
         
 
     }
-    export class MyEventController {
+    export class MyEventsController {
         public eventinfo
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/events')

@@ -19,7 +19,7 @@ namespace GroupProject.Data
        
         public Category Category { get; set; }
 
-        public string UserId { get; set; }
+        
         public ApplicationUser Creator { get; set; }
 
         public DateTime DateCreated { get; set; }

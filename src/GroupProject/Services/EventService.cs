@@ -11,9 +11,12 @@ namespace GroupProject.Services
     public class EventService
     {
         private EventRepository _eventRepo;
-        public EventService(EventRepository er)
+        private UserRepository _uRepo;
+
+        public EventService(EventRepository er, UserRepository ur)
         {
             _eventRepo = er;
+            _uRepo = ur;
         }
 
         // get a list of all events
@@ -35,7 +38,7 @@ namespace GroupProject.Services
 
                         Category = e.Category,
 
-                        UserId = e.UserId,
+                        
                         Creator = e.Creator,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
@@ -64,7 +67,7 @@ namespace GroupProject.Services
 
                         Category = e.Category,
 
-                        UserId = e.UserId,
+                        
                         Creator = e.Creator,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
@@ -77,7 +80,7 @@ namespace GroupProject.Services
         }
 
 
-        public void AddEvent(EventDTO EventInfo, string Username)
+        public void AddEvent(EventDTO EventInfo, string currentUser)
         {
             Event dbEvent = new Event()
             {
@@ -89,13 +92,32 @@ namespace GroupProject.Services
                 Description = EventInfo.Description,
                 DateOfEvent = EventInfo.DateOfEvent,
                 DateCreated = EventInfo.DateCreated,
+
                 Creator = EventInfo.Creator,
                 Category = EventInfo.Category,
                 AdmissionPrice = EventInfo.AdmissionPrice,
 
-                Id = EventInfo.Id
+                Id = EventInfo.Id,
+
+                Location = EventInfo.Location,
+                CategoryId = EventInfo.Category.Id,
+              //  AdmissionPrice = EventInfo.AdmissionPrice
+                //UserId = EventInfo.Creator.Id             Works when Creator field isn't used; need to fix;
+
+
             };
             _eventRepo.Add(dbEvent);
+
+            var dbEvents = _eventRepo.GetAllEvents();
+
+            _eventRepo.AddEventUsers((from e in dbEvents
+                                     select new EventUser()
+                                     {
+                                         EventId = e.Id,
+                                         UserId = _uRepo.GetUser(currentUser).First().Id
+
+                                     }).FirstOrDefault());
+                                   
         }
 
         public void DeleteEvent(EventDTO EventInfo, string Username)
