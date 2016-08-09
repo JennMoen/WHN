@@ -35,13 +35,21 @@ namespace GroupProject.Infrastructure
 
         public void Add(Event dbEvent)
         {
-
-
-
             _db.Events.Add(dbEvent);
             _db.SaveChanges();
         }
 
+        public void AddEventUsers (EventUser attendee) {
+
+            _db.EventUsers.Add(attendee);
+            _db.SaveChanges();
+
+        }
+        public void Remove(Event dbEvent)
+        {
+            _db.Events.Remove(dbEvent);
+            _db.SaveChanges();
+        }
     }
 
 }
