@@ -17,6 +17,6 @@ namespace GroupProject.Models
         public string Address { get; set; }
         public string MetropolitanArea { get; set; }
         public IList<Feedback> Feedback { get; set; }
-
+        //need public IList<EventUser> EventUsers {get; set;}
     }
 }

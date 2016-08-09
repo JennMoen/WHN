@@ -18,7 +18,7 @@ namespace GroupProject {
                 templateUrl: '/ngApp/views/EventSearch.html',
                 controller: GroupProject.Controllers.EventSearchController,
                 controllerAs: 'controller'
-                })
+            })
             .state('eventAdd', {
                 url: '/eventAdd',
                 templateUrl: '/ngApp/views/eventAdd.html',
@@ -48,7 +48,7 @@ namespace GroupProject {
                 templateUrl: '/ngApp/views/externalRegister.html',
                 controller: GroupProject.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
-            }) 
+            })
             .state('about', {
                 url: '/about',
                 templateUrl: '/ngApp/views/about.html',
@@ -73,6 +73,14 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.EventController,
                 controllerAs: 'controller'
             })
+            .state('MyEvents', {
+                url: '/MyEvents',
+                templateUrl: '/ngApp/views/MyEvents.html',
+                controller: GroupProject.Controllers.MyEventsController,
+                controllerAs: 'controller'
+
+            })
+            
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

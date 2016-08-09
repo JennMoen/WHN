@@ -70,6 +70,13 @@ namespace GroupProject
             services.AddScoped<GroupService>();
 
 
+             // add security policies
+                services.AddAuthorization(options =>
+                {
+                    options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
+                });
+          
+
                         // add security policies
                         services.AddAuthorization(options =>
                         {

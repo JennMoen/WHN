@@ -26,6 +26,17 @@ namespace GroupProject.Infrastructure
                    select u;
 
         }
-        
+
+
+        public IQueryable<ApplicationUser> GetUser(string id)
+        {
+
+            return from u in _db.Users
+                   where u.UserName == id
+                   select u;
+
+        }
+
+
     }
 }
