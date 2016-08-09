@@ -7,7 +7,7 @@ namespace GroupProject.Controllers {
     export class EventSearchController {
         public eventSearchData;
 
-        constructor(private $http: ng.IHttpService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             $http.get('/api/event')
                 .then((response) => {
                     this.eventSearchData = response.data;
@@ -17,6 +17,16 @@ namespace GroupProject.Controllers {
         public readMore(searchData) {
 
 
+        }
+        public addEvent(event) {
+            this.$http.post('/api/event', event)
+                .then((response) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+
+                });
         }
     }
 

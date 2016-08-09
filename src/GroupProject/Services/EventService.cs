@@ -35,7 +35,7 @@ namespace GroupProject.Services
 
                         Category = e.Category,
 
-                        UserId = e.UserId,
+                        
                         Creator = e.Creator,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
@@ -64,7 +64,7 @@ namespace GroupProject.Services
 
                         Category = e.Category,
 
-                        UserId = e.UserId,
+                        
                         Creator = e.Creator,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
