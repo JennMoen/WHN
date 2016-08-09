@@ -12,6 +12,7 @@
     "angular-animate": "1.x",
     "angular-touch": "1.x",
     "angular-ui-router": "0.x",
-    "angular-material": "^1.0.9"
+    "angular-material": "^1.0.9",
+    "moment": "2.13.0"
   }
 }
