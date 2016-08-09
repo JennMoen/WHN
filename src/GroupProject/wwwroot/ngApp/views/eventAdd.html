@@ -1,77 +1,57 @@
-﻿<div id="eventAddContainer" class="eventAdd">
-    <md-content layout-padding>
+﻿<b />
+<div id="eventAddContainer" class="layout layout-column" layout="row">
+    <md-content flex id="content" class="md-default-theme">
         <form name="addEventForm">
-            <md-input-container class="md-select-menu-container">
-                <label>Event Category</label>
-                <md-select placeholder="Select a category" ng-model="selectedName" ng-model-options="{trackBy: '$value.id'}">
-                    <md-option ng-value="name" ng-repeat="category in controller.categories">{{ category.name }}</md-option>
-                </md-select>
-            </md-input-container>
+            <div>
+                <md-input-container class="md-select-value">
+                    <label>Event Category</label>
+                    <md-select ng-model="category.name"
+                               class="md-select-value">
+                        <md-option ng-value="category.name"
+                                   ng-repeat="category in controller.categories">
+                            {{category.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
 
-            <md-input-container class="md-block">
-                <label>Event Name</label>
-                <input required name="name" ng-model="eventAddData.name" placeholder="Enter the name of your event" />
-                <div ng-messages="addEventForm.name.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
+                <md-input-container class="md-block">
+                    <input required name="name" ng-model="eventAddData.name" placeholder="Enter the name of your event" />
+                </md-input-container>
 
-            <md-input-container class="md-block">
-                <label>Event Location</label>
-                <input required name="location" ng-model="controller.location" placeholder="Enter the location of your event" />
-                <div ng-messages="addEventForm.location.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
+                <md-input-container class="md-block">
+                    <input required name="location" ng-model="controller.location" placeholder="Enter the location of your event" />
+                </md-input-container>
 
-            <md-input-container class="md-block">
-                <label>Admission Price</label>
-                <input required name="admissionPrice" ng-model="controller.admissionPrice" placeholder="Enter the admission price for your event or enter zero if your event is free" />
-                <div ng-messages="addEventForm.admissionPrice.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
+                <md-input-container class="md-block">
+                    <input required name="admissionPrice" ng-model="controller.admissionPrice" placeholder="Enter the admission price for your event or enter zero if your event is free" />
+                </md-input-container>
 
-            <md-input-container class="md-block">
-                <label>Event Description</label>
-                <textarea required name="eventDescription" ng-model="controller.eventDescription" type="textarea" placeholder="Enter the description for your event" />
-                <div ng-messages="addEventForm.admissionPrice.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
-                           
-            <md-input-container class="md-block">
-                <label>Event Start Date</label>
-                <input required name="startDate" ng-model="controller.startDate" placeholder="Enter the start date for your event" />
-                <div ng-messages="addEventForm.startDate.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
+                <!--<md-input-container class="md-block">-->
+                    <md-datepicker name="startDate" ng-model="controller.startDate" required md-min-date="moment()" placeholder="Enter the start date for your event"></md-datepicker>
+                    <!--<input required name="startDate" ng-model="controller.startDate" placeholder="Enter the start date for your event" />-->
+                <!--</md-input-container>-->
+
+                <md-input-container class="md-block">
+                    <input required name="startTime" ng-model="controller.startTime" placeholder="Enter the starting time for your event" />
+                </md-input-container>
+
+                <!--<md-input-container class="md-block">-->
+                    <md-datepicker required name="endDate" ng-model="controller.endDate" md-min-date="moment()" placeholder="Enter the end date for your event"></md-datepicker>
+                <!--</md-input-container>-->
+
+                <md-input-container class="md-block">
+                    <input required name="endTime" ng-model="controller.endTime" placeholder="Enter the ending time for your event" />
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <textarea required name="eventDescription" ng-model="controller.eventDescription" type="textarea" placeholder="Enter the description for your event" />
+                </md-input-container>
                 
-            <md-input-container class="md-block">
-                <label>Event Start Time</label>
-                <input required name="startTime" ng-model="controller.startTime" placeholder="Enter the starting time for your event" />
-                <div ng-messages="addEventForm.startTime.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
-
-            <md-input-container class="md-block">
-                <label>Event End Date</label>
-                <input required name="endDate" ng-model="controller.endDate" placeholder="Enter the end date for your event" />
-                <div ng-messages="addEventForm.endDate.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
-
-            <md-input-container class="md-block">
-                <label>Event End Time</label>
-                <input required name="endTime" ng-model="controller.endTime" placeholder="Enter the ending time for your event" />
-                <div ng-messages="addEventForm.endTime.$error">
-                    <div ng-message="required">This is required</div>
-                </div>
-            </md-input-container>
-
+                <md-button ng-click="addEvent">
+                        Add Event
+                    </md-button>
+                
+            </div>
         </form>
     </md-content>
 </div>
