@@ -7,11 +7,15 @@ namespace GroupProject.Controllers
 {
     [Route ("api/[controller]")]
 
-    public class EventController : Controller
+    public class EventsController : Controller
     {
         private EventService _eventService;
-        public EventController(EventService es) {
+        private CategoryService _categoryService;
+           
+        
+        public EventsController(EventService es, CategoryService cs) {
             _eventService = es;
+            _categoryService = cs;
         }
 
         [HttpGet]
@@ -44,5 +48,6 @@ namespace GroupProject.Controllers
             return Ok();
     }
 
-        }
+
+    }
     }
