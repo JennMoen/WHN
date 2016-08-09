@@ -67,6 +67,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.GroupController,
                 controllerAs: 'controller'
             })
+            .state('eventadd', {
+                url: '/eventadd',
+                templateUrl: '/ngApp/views/eventadd.html',
+                controller: GroupProject.Controllers.EventController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

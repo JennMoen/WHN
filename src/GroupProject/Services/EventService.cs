@@ -92,10 +92,7 @@ namespace GroupProject.Services
                 Creator = EventInfo.Creator,
                 Category = EventInfo.Category,
                 AdmissionPrice = EventInfo.AdmissionPrice,
-<<<<<<< HEAD
-                
-=======
->>>>>>> 1690ce22d6fea3a1a57668011c7f1aad5c4a2e6d
+
                 Id = EventInfo.Id
             };
             _eventRepo.Add(dbEvent);
