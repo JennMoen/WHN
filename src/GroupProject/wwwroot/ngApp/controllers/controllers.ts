@@ -8,7 +8,7 @@ namespace GroupProject.Controllers {
         public eventSearchData;
 
         constructor(private $http: ng.IHttpService) {
-            $http.get('/api/event')
+            $http.get('/api/events')
                 .then((response) => {
                     this.eventSearchData = response.data;
                 });
@@ -38,7 +38,7 @@ namespace GroupProject.Controllers {
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
 
-            this.$http.post('/api/event', event)
+            this.$http.post('/api/events', event)
                 .then((response) => {
                     this.$state.go('event');
                 })
