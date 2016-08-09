@@ -43,7 +43,7 @@ namespace GroupProject.Services
 
                         Attendees = e.Attendees,
                         Feedback = e.Feedback,
-                       
+
                     }).ToList();
 
 
@@ -72,7 +72,7 @@ namespace GroupProject.Services
 
                         Attendees = e.Attendees,
                         Feedback = e.Feedback,
-                        
+
                     }).ToList();
         }
 
@@ -101,5 +101,5 @@ namespace GroupProject.Services
     }
 }
 
- 
+
 
