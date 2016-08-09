@@ -1,7 +1,7 @@
 ﻿<b />
 <div id="eventAddContainer" class="layout layout-column" layout="row">
     <md-content flex id="content" class="md-default-theme">
-        <form name="addEventForm">
+        <form name="addEventForm" ng-submit="controller.addEvent(event)">
             <div>
                 <md-input-container class="md-select-value">
                     <label>Event Category</label>
@@ -13,7 +13,6 @@
                         </md-option>
                     </md-select>
                 </md-input-container>
-
                 <md-input-container class="md-block">
                     <input required name="name" ng-model="eventAddData.name" placeholder="Enter the name of your event" />
                 </md-input-container>
@@ -34,7 +33,7 @@
                 <md-input-container class="md-block">
                     <input required name="startTime" ng-model="controller.startTime" placeholder="Enter the starting time for your event" />
                 </md-input-container>
-
+               
                 <!--<md-input-container class="md-block">-->
                     <md-datepicker required name="endDate" ng-model="controller.endDate" md-min-date="moment()" placeholder="Enter the end date for your event"></md-datepicker>
                 <!--</md-input-container>-->
@@ -46,12 +45,11 @@
                 <md-input-container class="md-block">
                     <textarea required name="eventDescription" ng-model="controller.eventDescription" type="textarea" placeholder="Enter the description for your event" />
                 </md-input-container>
-                
-                <md-button ng-click="addEvent">
-                        Add Event
-                    </md-button>
+
+                <button md-button> Add Event </button>
                 
             </div>
+           
         </form>
     </md-content>
 </div>
