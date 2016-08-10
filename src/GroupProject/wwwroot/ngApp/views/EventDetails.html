@@ -1,0 +1,48 @@
+﻿<div class="flex-row content">
+    <div class="flex-col sideBarDiv bgnd-rock">
+
+        <ul class="flex-col sideBarUList p-fixed">
+
+            <!--<li><a ui-sref="">Find Events</a></li>-->
+
+            <li><a ui-sref="eventAdd">Create Event</a></li>
+            <li><a ui-sref="mygroups">My Groups</a></li>
+            <li><a ui-sref="createGroup">Create a Group</a></li>
+            <li><a ui-sref="MyEvents"> My Events</a></li>
+
+        </ul>
+
+    </div>
+    <div class="flex-col mainCol containerMainCol">
+        <div class="flex-col mainCol containerMainCol">
+            <div class="flex-row f-jc-c mainCol">
+                <h1>{{controller.eventSearchData.name}}</h1>   
+            </div>
+            <div class="flex-row f-jc-c mainCol">
+                <div>{{controller.eventSearchData.location}}</div>
+            </div>
+            <br/>
+            <div class="flex-row f-jc-sb mainCol">
+                <div>Admision Price: {{controller.eventSearchData.admissionPrice | currency}}</div>
+                <div>Start time: {{controller.eventSearchData.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div>
+            </div>
+            <div class="flex-row f-jc-sb mainCol">
+                <div>Category: {{controller.eventSearchData.category.name}}</div>
+                <div>End time: {{controller.eventSearchData.endTime | date: 'MMM d yyyy h:mm a'}}</div>
+            </div>
+            <br />
+            <div class="flex-row f-jc-sa mainCol">
+                <img ng-src="{{controller.eventSearchData.imageUrl}}" class="img-fixed" />
+                <p class="f-wrap description-width-and-height collapse ta-j">{{controller.eventSearchData.description}}<a>+Read More</a></p>
+            </div>
+            
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+

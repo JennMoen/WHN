@@ -131,13 +131,27 @@ namespace GroupProject.Controllers {
 
     }
     export class MyEventsController {
-        public eventinfo
+        public eventSearchData;
         constructor(private $http: ng.IHttpService) {
             $http.get('/api/events')
                 .then((response) =>
                 {
-                this.eventinfo = response.data;
+                this.eventSearchData = response.data;
                 })
         };
+    }
+
+    export class EventDetailsController {
+        public eventSearchData;
+
+        constructor(private $http: ng.IHttpService, private $stateParams) {
+            var p = {eventId: $stateParams.id};
+
+            $http.get(`/api/events/${$stateParams.id}`, {params: p})
+                .then((response) => {
+                    this.eventSearchData = response.data;
+                })
+        }
+
     }
 }

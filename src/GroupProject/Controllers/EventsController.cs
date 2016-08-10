@@ -27,11 +27,16 @@ namespace GroupProject.Controllers
         }
 
         // GET /api/event/{id}
+<<<<<<< HEAD
         [HttpGet("{id}")]
         public IList<EventDTO> GetAllEventsByUserId(string Id)
         {
+=======
+        [HttpGet("{eventId}")]
+        public EventDTO GetEventById(int eventId) {
+>>>>>>> 4453f2a97cddd96882971baa3b02e808d74e403a
 
-            return _eventService.GetAllEventsByUserId(Id);
+            return _eventService.GetEventById(eventId);
         }
 
         [HttpPost]

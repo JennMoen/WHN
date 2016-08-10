@@ -67,6 +67,37 @@ namespace GroupProject.Services
                     }).ToList();
         }
 
+<<<<<<< HEAD
+=======
+     
+        public EventDTO GetEventById(int eventId)
+        {
+            return (from e in _eventRepo.GetEventById(eventId)
+                    select new EventDTO()
+                    {
+                        Id = e.Id,
+                        Name = e.Name,
+                        Description = e.Description,
+
+                        Status = e.Status,
+                        Location = e.Location,
+                        AdmissionPrice = e.AdmissionPrice,
+                        ImageUrl = e.ImageUrl,
+
+                        Category = e.Category,
+
+
+                        Creator = e.Creator,
+                        DateCreated = e.DateCreated,
+                        DateOfEvent = e.DateOfEvent,
+                        EndTime = e.EndTime,
+
+                        Attendees = e.Attendees,
+                        Feedback = e.Feedback,
+
+                    }).FirstOrDefault();
+        }
+>>>>>>> 4453f2a97cddd96882971baa3b02e808d74e403a
 
 
 
