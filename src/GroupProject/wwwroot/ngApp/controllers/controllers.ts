@@ -138,4 +138,15 @@ namespace GroupProject.Controllers {
                 })
         };
     }
+
+    export class EditEventController {
+        public editing
+        constructor(private $http: ng.IHttpService) {
+            $http.get('/api/events')
+                .then((response) =>
+                {
+                    this.editing = response.data;
+                })
+        }
+    };
 }

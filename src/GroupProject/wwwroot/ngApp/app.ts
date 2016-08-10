@@ -80,6 +80,12 @@ namespace GroupProject {
                 controllerAs: 'controller'
 
             })
+            .state('editEvent', {
+                url: '/editEvent',
+                templateUrl: '/ngApp/views/editEvent.html',
+                controller: GroupProject.Controllers.EditEventController,
+                controllerAs: 'controller'
+            })
             
             .state('notFound', {
                 url: '/notFound',
