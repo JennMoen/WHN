@@ -20,8 +20,8 @@ namespace GroupProject.Models
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
-        public string UserId { get; set; }
-        [ForeignKey("UserId")]
+        public string CreatorId { get; set; }
+        [ForeignKey("CreatorId")]
         public ApplicationUser Creator { get; set; }
 
         public DateTime DateCreated { get; set; }

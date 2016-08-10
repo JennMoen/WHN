@@ -8,7 +8,7 @@ namespace GroupProject.Controllers {
         public eventSearchData;
 
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
             $http.get('/api/events')
                 .then((response) => {
                     this.eventSearchData = response.data;
@@ -19,8 +19,10 @@ namespace GroupProject.Controllers {
 
 
         }
-        public addEvent(event) {
-            this.$http.post('/api/events', event)
+        
+
+        public Attend(eventId) {
+            this.$http.post(`/api/events/${eventId}/attend`, eventId)
                 .then((response) => {
                     this.$state.reload();
                 })
