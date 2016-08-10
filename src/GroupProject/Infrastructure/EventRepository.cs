@@ -33,6 +33,13 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
+        public IQueryable<Event> GetEventById(int eventId)
+        {
+            return from e in _db.Events
+                   where e.Id == eventId
+                   select e;
+        }
+
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
