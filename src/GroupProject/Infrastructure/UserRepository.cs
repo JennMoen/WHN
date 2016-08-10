@@ -28,15 +28,15 @@ namespace GroupProject.Infrastructure
         }
 
 
-        public IQueryable<ApplicationUser> GetUser(string id)
+        public IQueryable<ApplicationUser> GetUser(string userName)
         {
 
             return from u in _db.Users
-                   where u.UserName == id
+                   where u.UserName == userName
                    select u;
 
         }
 
-
+        
     }
 }

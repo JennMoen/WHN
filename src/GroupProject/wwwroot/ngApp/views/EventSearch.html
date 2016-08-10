@@ -6,6 +6,10 @@
 
             <li><a ui-sref="eventSearch">Find Events</a></li>
 
+
+
+            <li><a ui-sref="eventSearch">Find Events</a></li>
+
             <!--<li><a ui-sref="">Find Events</a></li>-->
 
             <li><a ui-sref="eventAdd">Create Event</a></li>
@@ -21,10 +25,14 @@
             <div class="flex-row f-jc-sb mainCol"><div ng-model="searchData.name">{{searchData.name}}</div><div ng-model="searchData.dateOfEvent">{{searchData.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
             <div class="flex-row f-jc-sa mainCol">
                 <img ng-src="{{searchData.imageUrl}}" ng-model="searchData.imageUrl" class="img-fixed" />
-                <p class="f-wrap description-width-and-height collapse" ng-model="searchData.description">{{searchData.description}}<a>+Read More</a></p>
+                <p class="f-wrap description-width-and-height collapse ta-j" ng-model="searchData.description">{{searchData.description}}<a>+Read More</a></p>
             </div>
-            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
+
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(eventId)">Add to your events</a></div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
+            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
+
             
         </div>
 

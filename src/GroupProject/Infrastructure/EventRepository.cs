@@ -24,32 +24,55 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
-        //get all events by userid
-        public IQueryable<Event> GetAllEventsByUserId(int Id)
+        //get single event by its id
+
+        public IQueryable<Event> GetEventById(int id)
         {
             return from e in _db.Events
-                   where e.Id == Id
-                   orderby e.DateOfEvent descending
+                   where e.Id == id
                    select e;
         }
+
+
+
+        //get all events that a user created
+        public IQueryable<Event> GetAllEventsByUserId(string id)
+        {
+            return from e in _db.Events
+                   where e.CreatorId == id
+                   select e;
+        }
+
+        //public IQueryable<Event> GetEventById(int eventId)
+        //{
+        //    return from e in _db.Events
+        //           where e.Id == eventId
+        //           select e;
+        //}
 
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
             _db.SaveChanges();
         }
+      
+        public void AddEventUsers(EventUser attendee) {
 
-        public void AddEventUsers (EventUser attendee) {
+         
 
             _db.EventUsers.Add(attendee);
             _db.SaveChanges();
 
         }
+
+        
         public void Remove(Event dbEvent)
         {
             _db.Events.Remove(dbEvent);
             _db.SaveChanges();
         }
+
+       
     }
 
 }
