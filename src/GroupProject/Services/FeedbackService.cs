@@ -18,12 +18,9 @@ namespace GroupProject.Services
 
             return (from f in _feedbackRepo.GetAllFeedback()
                     select new FeedbackDTO() {
-                        Id = f.Id,
+                       
                         Text = f.Text,
-                        EventId = f.EventId,
-                        Event = f.Event,
-                        UserId = f.UserId,
-                        User = f.User
+                       
                     }).ToList();
                    
         }

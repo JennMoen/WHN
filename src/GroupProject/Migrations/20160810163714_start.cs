@@ -140,6 +140,7 @@ namespace GroupProject.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AdmissionPrice = table.Column<decimal>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false),
+                    CreatorId = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     DateOfEvent = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
@@ -147,8 +148,7 @@ namespace GroupProject.Migrations
                     ImageUrl = table.Column<string>(nullable: true),
                     Location = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Status = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    Status = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -160,8 +160,8 @@ namespace GroupProject.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Events_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Events_AspNetUsers_CreatorId",
+                        column: x => x.CreatorId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -328,9 +328,9 @@ namespace GroupProject.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Events_UserId",
+                name: "IX_Events_CreatorId",
                 table: "Events",
-                column: "UserId");
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventGroups_EventId",

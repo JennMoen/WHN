@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using GroupProject.Data;
@@ -18,52 +19,102 @@ namespace GroupProject.Controllers
             _eventService = es;
             _categoryService = cs;
         }
+=======
+﻿//using System.Collections.Generic;
+//using Microsoft.AspNetCore.Mvc;
+//using GroupProject.Data;
+//using GroupProject.Services;
 
-        [HttpGet]
-        public IList<EventDTO>GetAllEvents() {
-            return _eventService.GetAllEvents();
+//namespace GroupProject.Controllers
+//{
+//    [Route("api/[controller]")]
 
-        }
+//    public class EventsController : Controller
+//    {
+//        private EventService _eventService;
+//        private CategoryService _categoryService;
 
-        // GET /api/event/{id}
-        [HttpGet("{id}")]
-        public IList<EventDTO>GetAllEventsByUserId(int Id) {
 
-            return _eventService.GetAllEventsByUserId(Id);
-        }
+//        public EventsController(EventService es, CategoryService cs)
+//        {
+//            _eventService = es;
+//            _categoryService = cs;
+//        }
 
+//        [HttpGet]
+//        public IList<EventDTO> GetAllEvents()
+//        {
+//            return _eventService.GetAllEvents();
+
+//        }
+>>>>>>> 2d6acc1008d7a944c83f0515d1cc74c19922cdc0
+
+//        // GET /api/event/{id}
+
+//        [HttpGet("{id}")]
+//        public IList<EventDTO> GetAllEventsByUserId(string Id)
+//        {
+//        }
+
+//        [HttpGet("{eventId}")]
+//        public EventDTO GetEventById(int eventId) {
+
+
+<<<<<<< HEAD
         [HttpPost]
         [Authorize]
         public IActionResult PostEvents([FromBody] EventDTO Event)
         {
+=======
+//            return _eventService.GetEventById(eventId);
+//        }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+//        [HttpPost]
+//        public IActionResult PostEvents([FromBody] EventDTO Event)
+//        {
 
-
-
-            _eventService.AddEvent(Event, User.Identity.Name);
-
-
-            return Ok();
-    }
-        [HttpDelete]
-        public IActionResult DeleteEvent([FromBody] EventDTO Event)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
 
 
-            _eventService.DeleteEvent(Event, User.Identity.Name);
+
+//            _eventService.CreateEvent(Event, User.Identity.Name);
+        
+
+//            return Ok();
+//        }
+//        [HttpDelete]
+//        public IActionResult DeleteEvent([FromBody] EventDTO Event)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
+>>>>>>> 2d6acc1008d7a944c83f0515d1cc74c19922cdc0
 
 
-            return Ok();
-        }
-    
+//            _eventService.DeleteEvent(Event, User.Identity.Name);
 
-    }
-    }
+
+//            return Ok();
+//        }
+
+//        [HttpPost("{id}/attend")]
+//        public IActionResult Add(int eventId, string user) {
+
+//            if (!ModelState.IsValid)
+//            {
+//                return BadRequest(ModelState);
+//            }
+
+//            _eventService.AddEventUser(User.Identity.Name, eventId);
+
+
+//            return Ok();
+
+
+//        }
+//    }
+//}

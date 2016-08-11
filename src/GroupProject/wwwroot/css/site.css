@@ -1,7 +1,7 @@
-body {
+/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}*
+}**/
 
 /* Wrapping element 
  Set some basic padding to keep content from hitting the edges 
@@ -258,6 +258,7 @@ a:hover, ui-sref:hover {
     align-items: center;
 }
 
+<<<<<<< HEAD
 .btn1 {
     padding: 0 6px 0 6px;
     margin: 6px 8px 6px 8px;
@@ -283,3 +284,8 @@ a:hover, ui-sref:hover {
 
 
 
+=======
+.ta-j {
+    text-align: justify;
+}
+>>>>>>> 2d6acc1008d7a944c83f0515d1cc74c19922cdc0

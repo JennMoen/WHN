@@ -92,6 +92,8 @@ namespace GroupProject.Migrations
 
                     b.Property<int>("CategoryId");
 
+                    b.Property<string>("CreatorId");
+
                     b.Property<DateTime>("DateCreated");
 
                     b.Property<DateTime>("DateOfEvent");
@@ -108,13 +110,11 @@ namespace GroupProject.Migrations
 
                     b.Property<string>("Status");
 
-                    b.Property<string>("UserId");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CreatorId");
 
                     b.ToTable("Events");
                 });
@@ -311,8 +311,8 @@ namespace GroupProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GroupProject.Models.ApplicationUser", "Creator")
-                        .WithMany("Events")
-                        .HasForeignKey("UserId");
+                        .WithMany()
+                        .HasForeignKey("CreatorId");
                 });
 
             modelBuilder.Entity("GroupProject.Models.EventGroup", b =>
@@ -336,7 +336,7 @@ namespace GroupProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GroupProject.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("EventUsers")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

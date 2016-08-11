@@ -20,14 +20,15 @@ namespace GroupProject.Data
         public Category Category { get; set; }
 
         
-        public ApplicationUser Creator { get; set; }
+        //public ApplicationUser Creator { get; set; } Needs to be a string for his/her name, convert to AppUser at Service level
+        public string CreatorName { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateOfEvent { get; set; }
         public DateTime EndTime { get; set; }
 
-        public IList<EventUser> Attendees { get; set; }
-        public IList<Feedback> Feedback { get; set; }
+        public IList<EventUserDTO> Attendees { get; set; }  // Turn into IList<EventUserDTO>
+        public IList<FeedbackDTO> Feedback { get; set; }    // Turn into IList<FeedbackDTO>
        
     }
 }

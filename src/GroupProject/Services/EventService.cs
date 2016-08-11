@@ -30,30 +30,49 @@ namespace GroupProject.Services
                         Id = e.Id,
                         Name = e.Name,
                         Description = e.Description,
-
                         Status = e.Status,
                         Location = e.Location,
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
-
                         Category = e.Category,
-
-                        
-                        Creator = e.Creator,
+                        CreatorName = e.Creator.UserName,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
-
-                        Attendees = e.Attendees,
-                        Feedback = e.Feedback,
+                        //Attendees = e.Attendees, // (from a in e.Attendees select new EventUserDTO(){ ... }).ToList()
+                        // Feedback = e.Feedback    // Same here
 
                     }).ToList();
 
 
         }
-        public IList<EventDTO> GetAllEventsByUserId(int Id)
+        public IList<EventDTO> GetAllEventsByUserId(string Id)
         {
             return (from e in _eventRepo.GetAllEventsByUserId(Id)
+                    select new EventDTO()
+                    {
+                        Name = e.Name,
+                        Description = e.Description,
+                        Status = e.Status,
+                        Location = e.Location,
+                        AdmissionPrice = e.AdmissionPrice,
+                        ImageUrl = e.ImageUrl,
+                        Category = e.Category,
+                        CreatorName = e.Creator.Id,
+                        DateCreated = e.DateCreated,
+                        DateOfEvent = e.DateOfEvent,
+                        EndTime = e.EndTime,
+                        // Attendees = e.Attendees,
+                        //Feedback = e.Feedback,
+
+                    }).ToList();
+        }
+
+
+
+        public EventDTO GetEventById(int eventId)
+        {
+            return (from e in _eventRepo.GetEventById(eventId)
                     select new EventDTO()
                     {
                         Id = e.Id,
@@ -67,55 +86,62 @@ namespace GroupProject.Services
 
                         Category = e.Category,
 
-                        
-                        Creator = e.Creator,
+
+                        //CreatorName = e.CreatorName,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
 
-                        Attendees = e.Attendees,
-                        Feedback = e.Feedback,
+                        //Attendees = e.Attendees,
+                        //Feedback = e.Feedback,
 
-                    }).ToList();
+                    }).FirstOrDefault();
         }
 
 
-        public void AddEvent(EventDTO EventInfo, string currentUser)
+
+
+
+
+        public void CreateEvent(EventDTO Event, string currentUser)
+
         {
             Event dbEvent = new Event()
             {
-                Name = EventInfo.Name,
-                Status = EventInfo.Status,
-                ImageUrl = EventInfo.ImageUrl,
-                Feedback = EventInfo.Feedback,
-                EndTime = EventInfo.EndTime,
-                Description = EventInfo.Description,
-                DateOfEvent = EventInfo.DateOfEvent,
-                DateCreated = EventInfo.DateCreated,
-
-                Creator = EventInfo.Creator,
-                Category = EventInfo.Category,
-                AdmissionPrice = EventInfo.AdmissionPrice,
-                Id = EventInfo.Id,
-                Location = EventInfo.Location,
-                CategoryId = EventInfo.Category.Id,
-              //  AdmissionPrice = EventInfo.AdmissionPrice
-                //UserId = EventInfo.Creator.Id             Works when Creator field isn't used; need to fix;
-
+                Id = Event.Id,
+                Name = Event.Name,
+                Status = Event.Status,
+                ImageUrl = Event.ImageUrl,
+                //Feedback = Event.Feedback,
+                EndTime = Event.EndTime,
+                Description = Event.Description,
+                DateOfEvent = Event.DateOfEvent,
+                DateCreated = Event.DateCreated,
+                Location = Event.Location,
+                CategoryId = Event.Category.Id,
+                AdmissionPrice = Event.AdmissionPrice,
+                Category = Event.Category,
+                CreatorId = _uRepo.GetUser(currentUser).First().Id
             };
             _eventRepo.Add(dbEvent);
 
-            var dbEvents = _eventRepo.GetAllEvents();
-
-            _eventRepo.AddEventUsers((from e in dbEvents
-                                     select new EventUser()
-                                     {
-                                         EventId = e.Id,
-                                         UserId = _uRepo.GetUser(currentUser).First().Id
-
-                                     }).FirstOrDefault());
-                                   
         }
+
+        public void AddEventUser(string currentUser, int eventId)
+        {
+            EventUser dbEventUser = new EventUser()
+            {
+                //get an error statement here saying "sequence returns no results"
+                EventId = _eventRepo.GetEventById(eventId).First().Id,
+                UserId = _uRepo.GetUser(currentUser).First().Id
+            };
+
+            _eventRepo.AddEventUsers(dbEventUser);
+        }
+
+
+
+
 
         public void DeleteEvent(EventDTO EventInfo, string Username)
         {
@@ -124,16 +150,16 @@ namespace GroupProject.Services
                 Name = EventInfo.Name,
                 Status = EventInfo.Status,
                 ImageUrl = EventInfo.ImageUrl,
-                Feedback = EventInfo.Feedback,
+                //Feedback = EventInfo.Feedback,
                 EndTime = EventInfo.EndTime,
                 Description = EventInfo.Description,
                 DateOfEvent = EventInfo.DateOfEvent,
                 DateCreated = EventInfo.DateCreated,
-                Creator = EventInfo.Creator,
+                //Creator = EventInfo.Creator,
                 Category = EventInfo.Category,
                 AdmissionPrice = EventInfo.AdmissionPrice,
 
-                Id = EventInfo.Id
+                //Id = EventInfo.Id
             };
 
             _eventRepo.Remove(dbEvent);
