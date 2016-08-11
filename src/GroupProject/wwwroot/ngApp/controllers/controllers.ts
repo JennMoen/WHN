@@ -46,7 +46,7 @@ namespace GroupProject.Controllers {
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
             
-            this.$http.post('/api/event', addEvent)
+            this.$http.post('/api/events', addEvent)
                 .then((response) => {
                     this.$state.go('home');
                 })
