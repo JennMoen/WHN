@@ -4,9 +4,9 @@
         <form name="addEventForm" ng-submit="controller.addEvent(addEvent)">
             <md-input-container class="md-select-value">
                 <label>Event Category</label>
-                <md-select ng-model="addEvent.category.id"
+                <md-select ng-model="addEvent.category"
                            class="md-select-value">
-                    <md-option ng-value="category.name"
+                    <md-option ng-value="category"
                                ng-repeat="category in controller.categories">
                         {{category.name}}
                     </md-option>
@@ -39,38 +39,14 @@
                 </md-input-container>
             </div>
 
-                <!--<md-datepicker name="startDt" ng-model="addEvent.startDt" required md-min-date="moment()"></md-datepicker>
+               
+            <md-input-container class="md-block">
+                <textarea required name="description" ng-model="addEvent.description" placeholder="Enter the description for your event"></textarea>
+            </md-input-container>
 
-        <md-input-container class="md-select-value">
-            <label>Event Start Time</label>
-            <md-select ng-model="addEvent.startTimeSlotSelection"
-                       class="md-select-value">
-                <md-option ng-repeat="timeSlot in controller.timeSlots">
-                    {{timeSlot}}
-                </md-option>
-            </md-select>
-        </md-input-container>-->
-                <!--<md-datepicker required name="endDt" ng-model="addEvent.endDt" md-min-date="moment()"></md-datepicker>
-
-         <md-input-container class="md-select-value">
-             <label>Event End Time</label>
-             <md-select ng-model="addEvent.endTimeSlotSelection"
-                        class="md-select-value">
-                 <md-option ng-repeat="timeSlot2 in controller.timeSlots2">
-                     {{timeSlot2}}
-                 </md-option>
-             </md-select>
-         </md-input-container>-->
-
-
-
-                <md-input-container class="md-block">
-                    <textarea required name="eventDescription" ng-model="addEvent.eventDescription" placeholder="Enter the description for your event"></textarea>
-                </md-input-container>
-
-                <md-input-container class="md-block">
-                    <md-button class="btn1 md-raised md-cornered" type="submit">Add Event</md-button>
-                </md-input-container>
+            <md-input-container class="md-block">
+                <md-button class="btn1 md-raised md-cornered" type="submit">Add Event</md-button>
+            </md-input-container>
 
 </form>
     </md-content>

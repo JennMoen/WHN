@@ -43,36 +43,48 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
+<<<<<<< HEAD
+        /* public IQueryable<Event> GetEventById(int eventId)
+         {
+             return from e in _db.Events
+                    where e.Id == eventId
+                    select e;
+         }*/
+=======
         //public IQueryable<Event> GetEventById(int eventId)
         //{
         //    return from e in _db.Events
         //           where e.Id == eventId
         //           select e;
         //}
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
 
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
             _db.SaveChanges();
         }
-      
-        public void AddEventUsers(EventUser attendee) {
 
-         
-
-            _db.EventUsers.Add(attendee);
-            _db.SaveChanges();
-
+        public void AddEventUsers(EventUser attendee)
+        {
+            if ((from eu in _db.EventUsers
+                 where eu.EventId == attendee.EventId
+                    && eu.UserId == attendee.UserId
+                 select eu).FirstOrDefault() == null)
+            {
+                _db.EventUsers.Add(attendee);
+                _db.SaveChanges();
+            }
         }
 
-        
+
         public void Remove(Event dbEvent)
         {
             _db.Events.Remove(dbEvent);
             _db.SaveChanges();
         }
 
-       
+
     }
 
 }
