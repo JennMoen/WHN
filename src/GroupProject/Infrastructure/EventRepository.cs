@@ -25,7 +25,6 @@ namespace GroupProject.Infrastructure
         }
 
         //get single event by its id
-
         public IQueryable<Event> GetEventById(int id)
         {
             return from e in _db.Events
@@ -33,31 +32,14 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
-
-
-        //get all events that a user created
-        public IQueryable<Event> GetAllEventsByUserId(string id)
+        //get all events that a user created (not already-created public events he/she added)
+        public IQueryable<Event> GetAllEventsByCreatorId(string id)
         {
             return from e in _db.Events
                    where e.CreatorId == id
                    select e;
         }
 
-<<<<<<< HEAD
-        /* public IQueryable<Event> GetEventById(int eventId)
-         {
-             return from e in _db.Events
-                    where e.Id == eventId
-                    select e;
-         }*/
-=======
-        //public IQueryable<Event> GetEventById(int eventId)
-        //{
-        //    return from e in _db.Events
-        //           where e.Id == eventId
-        //           select e;
-        //}
->>>>>>> 461bf52299efacada956bc14ae45f841175125fd
 
         public void Add(Event dbEvent)
         {
@@ -84,7 +66,14 @@ namespace GroupProject.Infrastructure
             _db.SaveChanges();
         }
 
+        public IQueryable<EventUser> GetEventsForUser(string id)
+        {
 
+            return from eu in _db.EventUsers
+                   where eu.UserId == id
+                   select eu;
+
+        }
     }
 
 }
