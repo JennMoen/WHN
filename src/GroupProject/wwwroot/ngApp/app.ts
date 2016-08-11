@@ -95,6 +95,8 @@ namespace GroupProject {
                 controllerAs: 'controller'
             })
 
+            
+
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'

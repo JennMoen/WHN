@@ -117,6 +117,7 @@ namespace GroupProject.Controllers {
     export class AboutController {
         public message = 'Hello from the about page!';
     }
+   
 
     export class UserController {
         public userData;
