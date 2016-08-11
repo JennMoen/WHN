@@ -107,6 +107,10 @@ namespace GroupProject.Services
                 Location = Event.Location,
                 CategoryId = Event.Category.Id,
                 AdmissionPrice = Event.AdmissionPrice,
+<<<<<<< HEAD
+=======
+                //Category = Event.Category,
+>>>>>>> 39f00a763a093f37c74d969181da2caa33dcf8f5
                 CreatorId = _uRepo.GetUser(currentUser).First().Id
             };
             _eventRepo.Add(dbEvent);

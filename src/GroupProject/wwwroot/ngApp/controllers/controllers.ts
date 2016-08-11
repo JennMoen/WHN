@@ -35,21 +35,44 @@ namespace GroupProject.Controllers {
     }
 
     export class EventAddController {
-        public categories;
-        public timeSlots;   
-        public timeSlots2;    
+        public categories;   
+
+        
 
         // Post the new event to the database
         public addEvent(addEvent) {
+
 
             var toDay = moment();
             //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
             
+<<<<<<< HEAD
+=======
+
+            addEvent.admissionPrice = addEvent.admissionPrice;
+            addEvent.categoryId = addEvent.category.id;
+            addEvent.dateCreated = moment();
+            addEvent.dateOfEvent = addEvent.startDate;
+            addEvent.description = addEvent.description;
+            addEvent.endTime = addEvent.endDate;
+            addEvent.location = addEvent.location;
+            addEvent.name = addEvent.name;
+            addEvent.status = "private";
+
+            console.log(`price: ${addEvent.admissionPrice} category ID:  ${addEvent.category.id}`);
+            console.log(`category name: ${addEvent.category.name}`);
+            console.log(`date created: ${addEvent.dateCreated} end time: ${addEvent.endTime}`);
+            console.log(`description: ${addEvent.description}`);
+            console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
+            console.log(`name: ${addEvent.name}`);
+
+
+>>>>>>> 39f00a763a093f37c74d969181da2caa33dcf8f5
             this.$http.post('/api/events', addEvent)
                 .then((response) => {
-                    this.$state.go('home');
+                    this.$state.reload();
                 })
                 .catch((reason) => {
                     console.log(reason);
@@ -62,18 +85,6 @@ namespace GroupProject.Controllers {
                 .then((response) => {
                     this.categories = response.data;
                 });
-            
-            this.timeSlots = ["12:00 am", "12:30 am", "1:00 am", "1:30 am", "2:00 am", "2:30 am", "3:00 am", "3:30 am", "4:00 am", "4:30 am",
-                "5:00 am", "5:30 am", "6:00 am", "6:30 am", "7:00 am", "7:30 am", "8:00 am", "8:30 am", "9:00 am", "9:30 am", "10:00 am",
-                "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm",
-                "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm",
-                "9:30 pm", "10:00 pm", "10:30 pm", "11:00 pm", "11:30 pm"];  
-
-            this.timeSlots2 = ["12:00 am", "12:30 am", "1:00 am", "1:30 am", "2:00 am", "2:30 am", "3:00 am", "3:30 am", "4:00 am", "4:30 am",
-                "5:00 am", "5:30 am", "6:00 am", "6:30 am", "7:00 am", "7:30 am", "8:00 am", "8:30 am", "9:00 am", "9:30 am", "10:00 am",
-                "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm",
-                "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm",
-                "9:30 pm", "10:00 pm", "10:30 pm", "11:00 pm", "11:30 pm"];  
 
         }
     }
