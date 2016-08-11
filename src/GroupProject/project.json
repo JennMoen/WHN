@@ -2,6 +2,7 @@
   "userSecretsId": "aspnet-GroupProject-31f01450-5997-11e6-a9bb-6fbfcec64b79",
 
   "dependencies": {
+    "angular-moment": "0.10.3",
     "Microsoft.AspNet.Identity.Core": "2.2.1",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
@@ -21,8 +22,8 @@
       "type": "build"
     },
     "Microsoft.EntityFrameworkCore.Tools": {
-        "version": "1.0.0-preview2-final",
-        "type": "build"
+      "version": "1.0.0-preview2-final",
+      "type": "build"
     },
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
@@ -40,7 +41,9 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "System.Xml.XDocument": "4.0.11"
+    
+    //"System.Xml.XDocument": "4.0.11",
+    "System.Xml.XDocument": "4.0.0.0"
   },
 
   "tools": {

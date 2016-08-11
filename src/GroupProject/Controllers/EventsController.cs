@@ -2,22 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using GroupProject.Data;
 using GroupProject.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroupProject.Controllers
 {
-    [Route("api/[controller]")]
+    [Route ("api/[controller]")]
 
     public class EventsController : Controller
     {
         private EventService _eventService;
         private CategoryService _categoryService;
-
-
-        public EventsController(EventService es, CategoryService cs)
-        {
+           
+        
+        public EventsController(EventService es, CategoryService cs) {
             _eventService = es;
             _categoryService = cs;
         }
+
 
         [HttpGet]
         public IList<EventDTO> GetAllEvents()
@@ -26,7 +27,9 @@ namespace GroupProject.Controllers
 
         }
 
+
         // GET /api/event/{id}
+<<<<<<< HEAD
 
         /*[HttpGet("{id}")]
         public IList<EventDTO> GetAllEventsByUserId(string Id)
@@ -35,9 +38,29 @@ namespace GroupProject.Controllers
         [HttpGet("{eventId}")]
         public EventDTO GetEventById(int eventId) {
 
+=======
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
 
+        //[HttpGet("{id}")]
+        //public IList<EventDTO> GetAllEventsByUserId(string Id)
+        //{
+        //}
+
+        [HttpGet("{eventId}")]
+        public EventDTO GetEventById(int eventId)
+        {
             return _eventService.GetEventById(eventId);
         }
+            
+
+
+        //[HttpPost]
+        //[Authorize]
+        //public IActionResult PostEvents([FromBody] EventDTO Event)
+        //{
+
+        //    return _eventService.GetEventById(eventId);
+        //}
 
         [HttpPost]
         public IActionResult PostEvents([FromBody] EventDTO Event)
@@ -64,14 +87,21 @@ namespace GroupProject.Controllers
             }
 
 
+
             _eventService.DeleteEvent(Event, User.Identity.Name);
 
 
             return Ok();
         }
 
+<<<<<<< HEAD
         [HttpPost("attend")]
         public IActionResult Add([FromBody] int eventId) {
+=======
+        [HttpPost("{id}/attend")]
+        public IActionResult Add(int eventId, string user)
+        {
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
 
             if (!ModelState.IsValid)
             {

@@ -26,7 +26,8 @@ namespace GroupProject.Services
             return (from e in _eventRepo.GetAllEvents()
 
                     select new EventDTO()
-                    {   Id=e.Id,
+                    {
+                        Id = e.Id,
                         Name = e.Name,
                         Description = e.Description,
                         Status = e.Status,
@@ -68,6 +69,10 @@ namespace GroupProject.Services
         }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
         public EventDTO GetEventById(int eventId)
         {
             return (from e in _eventRepo.GetEventById(eventId)
@@ -85,7 +90,11 @@ namespace GroupProject.Services
                         Category = e.Category,
 
 
+<<<<<<< HEAD
                         CreatorName = e.Creator.UserName,
+=======
+                        //CreatorName = e.CreatorName,
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
@@ -95,13 +104,21 @@ namespace GroupProject.Services
 
                     }).FirstOrDefault();
         }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
 
 
         public void CreateEvent(EventDTO Event, string currentUser)
 
         {
             Event dbEvent = new Event()
-            {   Id=Event.Id,
+            {
+                Id = Event.Id,
                 Name = Event.Name,
                 Status = Event.Status,
                 ImageUrl = Event.ImageUrl,
@@ -123,7 +140,7 @@ namespace GroupProject.Services
         public void AddEventUser(string currentUser, int eventId)
         {
             EventUser dbEventUser = new EventUser()
-            {   
+            {
                 //get an error statement here saying "sequence returns no results"
                 EventId = _eventRepo.GetEventById(eventId).First().Id,
                 UserId = _uRepo.GetUser(currentUser).First().Id

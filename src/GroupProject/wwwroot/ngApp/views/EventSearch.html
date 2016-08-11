@@ -3,7 +3,17 @@
 
         <ul class="flex-col sideBarUList p-fixed">
 
+<<<<<<< HEAD
             <li><a ui-sref="eventSearch">Find Events</a></li>
+=======
+
+            <li><a ui-sref="eventSearch">Find Events</a></li>
+
+
+
+            <li><a ui-sref="eventSearch">Find Events</a></li>
+
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
             <!--<li><a ui-sref="">Find Events</a></li>-->
 
             <li><a ui-sref="eventAdd">Create Event</a></li>
@@ -21,9 +31,19 @@
                 <img ng-src="{{searchData.imageUrl}}" ng-model="searchData.imageUrl" class="img-fixed" />
                 <p class="f-wrap description-width-and-height collapse ta-j" ng-model="searchData.description">{{searchData.description}}<a>+Read More</a></p>
             </div>
+<<<<<<< HEAD
             <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
+=======
+
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(eventId)">Add to your events</a></div>
+            <div class="flex-row f-jc-fe mainCol">More Info</div>
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
+            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
+
+            
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
         </div>
 
         <!--9 ng-repeat="searchData" in controller.eventSearchData

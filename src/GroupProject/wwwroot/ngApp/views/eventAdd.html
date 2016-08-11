@@ -1,10 +1,10 @@
 ﻿<br />
 <div id="eventAddContainer" class="layout layout-column" layout="row">
     <md-content flex id="content" class="md-default-theme">
-        <form name="addEventForm" ng-submit="controller.addEvent(event)">
+        <form name="addEventForm" ng-submit="controller.addEvent(addEvent)">
             <md-input-container class="md-select-value">
                 <label>Event Category</label>
-                <md-select ng-model="category.name"
+                <md-select ng-model="addEvent.category.id"
                            class="md-select-value">
                     <md-option ng-value="category.name"
                                ng-repeat="category in controller.categories">
@@ -13,45 +13,65 @@
                 </md-select>
             </md-input-container>
             <md-input-container class="md-block">
-                <input required name="name" ng-model="eventAddData.name" placeholder="Enter the name of your event" />
+                <input required name="name" ng-model="addEvent.name" placeholder="Enter the name of your event" />
             </md-input-container>
 
             <md-input-container class="md-block">
-                <input required name="location" ng-model="controller.location" placeholder="Enter the location of your event" />
+                <input required name="location" ng-model="addEvent.location" placeholder="Enter the location of your event" />
             </md-input-container>
 
             <md-input-container class="md-block">
-                <input required name="admissionPrice" ng-model="controller.admissionPrice" placeholder="Enter the admission price for your event or enter zero if your event is free" />
+                <input required name="admissionPrice" ng-model="addEvent.admissionPrice" placeholder="Enter the admission price for your event or enter zero if your event is free" />
             </md-input-container>
 
-            <md-datepicker name="startDate" ng-model="controller.startDate" required md-min-date="moment()" placeholder="Enter the start date for your event"></md-datepicker>
+            <div class="layout-column flex-gt-md-30">
+                <md-input-container class="md-input-has-placeholder">
+                    <label>Start Date/Time</label>
+                    <input mdc-datetime-picker="" date="true" time="true" type="text" id="input_0"
+                           placeholder="Start date and time" min-date="date" max-date="date" class="md-input" ng-model="addEvent.startDate" />
+                </md-input-container>
+            </div>
+            <div class="layout-column flex-gt-md-30">
+                <md-input-container class="md-input-has-placeholder">
+                    <label>End Date/Time</label>
+                    <input mdc-datetime-picker="" date="true" time="true" type="text" id="input_1"
+                           placeholder="End date and time" min-date="date" class="md-input" ng-model="addEvent.endDate" />
+                </md-input-container>
+            </div>
 
-            <md-input-container class="md-select-value">
-                <label>Event Start Time</label>
-                <md-select ng-model="controller.timeSlotSelection"
-                           class="md-select-value">
-                    <md-option ng-repeat="timeSlot in controller.timeSlots">
-                        {{timeSlot}}
-                    </md-option>
-                </md-select>
-                <!--<input required name="startTime" ng-model="controller.startTime" placeholder="Enter the starting time for your event" />-->
-            </md-input-container>
+                <!--<md-datepicker name="startDt" ng-model="addEvent.startDt" required md-min-date="moment()"></md-datepicker>
 
-            <md-datepicker required name="endDate" ng-model="controller.endDate" md-min-date="moment()" placeholder="Enter the end date for your event"></md-datepicker>
+        <md-input-container class="md-select-value">
+            <label>Event Start Time</label>
+            <md-select ng-model="addEvent.startTimeSlotSelection"
+                       class="md-select-value">
+                <md-option ng-repeat="timeSlot in controller.timeSlots">
+                    {{timeSlot}}
+                </md-option>
+            </md-select>
+        </md-input-container>-->
+                <!--<md-datepicker required name="endDt" ng-model="addEvent.endDt" md-min-date="moment()"></md-datepicker>
 
-            <md-input-container class="md-block">
-                <input required name="endTime" ng-model="controller.endTime" placeholder="Enter the ending time for your event" />
-            </md-input-container>
+         <md-input-container class="md-select-value">
+             <label>Event End Time</label>
+             <md-select ng-model="addEvent.endTimeSlotSelection"
+                        class="md-select-value">
+                 <md-option ng-repeat="timeSlot2 in controller.timeSlots2">
+                     {{timeSlot2}}
+                 </md-option>
+             </md-select>
+         </md-input-container>-->
 
 
-            <md-input-container class="md-block">
-                <textarea required name="eventDescription" ng-model="controller.eventDescription" placeholder="Enter the description for your event"></textarea>
-            </md-input-container>
 
-            <md-input-container class="md-block">
-                <md-button type="submit">Add Event</md-button>
-            </md-input-container>
+                <md-input-container class="md-block">
+                    <textarea required name="eventDescription" ng-model="addEvent.eventDescription" placeholder="Enter the description for your event"></textarea>
+                </md-input-container>
 
-        </form>
+                <md-input-container class="md-block">
+                    <md-button class="btn1 md-raised md-cornered" type="submit">Add Event</md-button>
+                </md-input-container>
+
+</form>
     </md-content>
 </div>
