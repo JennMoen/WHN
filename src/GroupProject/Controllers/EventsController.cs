@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GroupProject.Data;
 using GroupProject.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroupProject.Controllers
 {
@@ -32,6 +33,7 @@ namespace GroupProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult PostEvents([FromBody] EventDTO Event)
         {
 
