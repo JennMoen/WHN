@@ -27,14 +27,14 @@ namespace GroupProject.Controllers
         }
 
         // GET /api/event/{id}
-<<<<<<< HEAD
-        [HttpGet("{id}")]
+
+        /*[HttpGet("{id}")]
         public IList<EventDTO> GetAllEventsByUserId(string Id)
-        {
-=======
+        {*/
+
         [HttpGet("{eventId}")]
         public EventDTO GetEventById(int eventId) {
->>>>>>> 4453f2a97cddd96882971baa3b02e808d74e403a
+
 
             return _eventService.GetEventById(eventId);
         }
@@ -70,20 +70,17 @@ namespace GroupProject.Controllers
             return Ok();
         }
 
-        [HttpPost("{id}/attend")]
-        public IActionResult Add(int eventId, string user) {
+        [HttpPost("attend")]
+        public IActionResult Add([FromBody] int eventId) {
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            
             _eventService.AddEventUser(User.Identity.Name, eventId);
 
-
             return Ok();
-
-
         }
     }
 }

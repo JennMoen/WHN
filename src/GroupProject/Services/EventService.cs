@@ -67,9 +67,7 @@ namespace GroupProject.Services
                     }).ToList();
         }
 
-<<<<<<< HEAD
-=======
-     
+
         public EventDTO GetEventById(int eventId)
         {
             return (from e in _eventRepo.GetEventById(eventId)
@@ -87,20 +85,16 @@ namespace GroupProject.Services
                         Category = e.Category,
 
 
-                        Creator = e.Creator,
+                        CreatorName = e.Creator.UserName,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
 
-                        Attendees = e.Attendees,
-                        Feedback = e.Feedback,
+                        //Attendees = e.Attendees,
+                        //Feedback = e.Feedback,
 
                     }).FirstOrDefault();
         }
->>>>>>> 4453f2a97cddd96882971baa3b02e808d74e403a
-
-
-
 
 
         public void CreateEvent(EventDTO Event, string currentUser)
