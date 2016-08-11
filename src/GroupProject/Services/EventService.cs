@@ -69,7 +69,10 @@ namespace GroupProject.Services
         }
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
         public EventDTO GetEventById(int eventId)
         {
             return (from e in _eventRepo.GetEventById(eventId)
@@ -87,7 +90,11 @@ namespace GroupProject.Services
                         Category = e.Category,
 
 
+<<<<<<< HEAD
+                        CreatorName = e.Creator.UserName,
+=======
                         //CreatorName = e.CreatorName,
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
@@ -97,10 +104,13 @@ namespace GroupProject.Services
 
                     }).FirstOrDefault();
         }
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> 461bf52299efacada956bc14ae45f841175125fd
 
 
         public void CreateEvent(EventDTO Event, string currentUser)
