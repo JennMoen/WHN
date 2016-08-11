@@ -120,7 +120,7 @@ namespace GroupProject.Services
                 Location = Event.Location,
                 CategoryId = Event.Category.Id,
                 AdmissionPrice = Event.AdmissionPrice,
-                Category = Event.Category,
+                //Category = Event.Category,
                 CreatorId = _uRepo.GetUser(currentUser).First().Id
             };
             _eventRepo.Add(dbEvent);

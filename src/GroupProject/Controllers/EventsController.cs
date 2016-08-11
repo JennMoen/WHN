@@ -42,16 +42,8 @@ namespace GroupProject.Controllers
         }
             
 
-
-        //[HttpPost]
-        //[Authorize]
-        //public IActionResult PostEvents([FromBody] EventDTO Event)
-        //{
-
-        //    return _eventService.GetEventById(eventId);
-        //}
-
         [HttpPost]
+        [Authorize]
         public IActionResult PostEvents([FromBody] EventDTO Event)
         {
 
@@ -60,13 +52,14 @@ namespace GroupProject.Controllers
                 return BadRequest(ModelState);
             }
 
-
-
-            _eventService.CreateEvent(Event, User.Identity.Name);
-
+            _eventService.CreateEvent(Event, User.Identity.Name);  
+           
 
             return Ok();
         }
+
+
+
         [HttpDelete]
         public IActionResult DeleteEvent([FromBody] EventDTO Event)
         {
