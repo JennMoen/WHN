@@ -166,6 +166,7 @@ namespace GroupProject.Controllers {
     }
     export class MyEventsController {
         public events;
+        public myevents;
         
 
         constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService) {
@@ -173,6 +174,10 @@ namespace GroupProject.Controllers {
             $http.get(`/api/events/myevents`)
                 .then((response) => {
                     this.events = response.data;
+                });
+            $http.get('/api/events/mycreatedevents')
+                .then((response) => {
+                    this.myevents = response.data;
                 });
         }
     }

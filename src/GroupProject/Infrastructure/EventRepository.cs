@@ -33,10 +33,10 @@ namespace GroupProject.Infrastructure
         }
 
         //get all events that a user created (not already-created public events he/she added)
-        public IQueryable<Event> GetAllEventsByCreatorId(string id)
+        public IQueryable<Event> GetEventsByCreatorId(string id)
         {
             return from e in _db.Events
-                   where e.CreatorId == id
+                   where e.Creator.UserName == id
                    select e;
         }
 
@@ -68,9 +68,9 @@ namespace GroupProject.Infrastructure
 
         public IQueryable<EventUser> GetEventsForUser(string id)
         {
-
+            
             return from eu in _db.EventUsers
-                   where eu.User.UserName == id
+                   where eu.User.UserName == id 
                    select eu;
 
         }

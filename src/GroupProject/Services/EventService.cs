@@ -46,9 +46,9 @@ namespace GroupProject.Services
 
 
         }
-        public IList<EventDTO> GetAllEventsByCreatorId(string Id)
+        public IList<EventDTO> GetEventsByCreatorId(string Id)
         {
-            return (from e in _eventRepo.GetAllEventsByCreatorId(Id)
+            return (from e in _eventRepo.GetEventsByCreatorId(Id)
                     select new EventDTO()
                     {
                         Name = e.Name,
@@ -136,9 +136,10 @@ namespace GroupProject.Services
                         EventId = eu.Event.Id,
                         UserName = eu.User.UserName,
                         EventName = eu.Event.Name,
-                        
+
                         Events = new EventDTO()
                         {
+                            Id = eu.Event.Id,
                             Name = eu.Event.Name,
                             Description = eu.Event.Description,
                             Status = eu.Event.Status,
@@ -151,12 +152,10 @@ namespace GroupProject.Services
                             EndTime = eu.Event.EndTime,
                             CreatorName = eu.Event.Creator.UserName
 
-        }
-                        
+                        }
 
-                        
                     }).ToList();
-
+            
         }
 
         public void DeleteEvent(EventDTO EventInfo, string Username)

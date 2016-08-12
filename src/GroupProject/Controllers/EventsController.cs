@@ -103,5 +103,12 @@ namespace GroupProject.Controllers
             
             
         }
+        [HttpGet("mycreatedevents")]
+        public IList<EventDTO> GetEvents(string userName) {
+
+            return _eventService.GetEventsByCreatorId(User.Identity.Name);
+
+        }
+        
     }
 }
