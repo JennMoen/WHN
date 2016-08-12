@@ -108,7 +108,7 @@ textarea {
 }
 
 * {
-    font-family:serif;
+    font-family:sans-serif;
 }
 
 a, ui-sref {
@@ -276,6 +276,7 @@ a:hover, ui-sref:hover {
 .md-button.md-raised:not([disabled]) {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
     color: #3F3250
+    
 }
 
 .md-button.md-cornered {
@@ -292,4 +293,14 @@ a:hover, ui-sref:hover {
 .f-as-c {
     display:flex;
     align-self: center;
+}
+
+.delete {
+    color:white;
+    background-color:red;
+}
+
+.submit {
+    color:white;
+    background-color:#0D47A1;
 }

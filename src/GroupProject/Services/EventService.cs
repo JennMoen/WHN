@@ -159,6 +159,13 @@ namespace GroupProject.Services
 
         }
 
+        public void UpdateEvent(EventDTO Event, string id)
+        {
+            Event dbEvent = _eventRepo.GetEventById(Event.Id).First();
+
+            _eventRepo.SaveUpdate(dbEvent);
+        }
+
         public void DeleteEvent(EventDTO Event, string currentUser)
         {
 

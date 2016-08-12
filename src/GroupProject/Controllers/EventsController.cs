@@ -66,6 +66,19 @@ namespace GroupProject.Controllers
             return Ok();
         }
 
+        [HttpPost("{id}")]
+        public IActionResult UpdateEvent([FromBody] EventDTO Event, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            Event.Id = id;
+            _eventService.UpdateEvent(Event, User.Identity.Name);
+
+            return Ok();
+        }
+
 
         [HttpPost("attend")]
         public IActionResult Add([FromBody] int eventId)

@@ -31,6 +31,7 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
+        
         //get all events that a user created (not already-created public events he/she added)
         public IQueryable<Event> GetEventsByCreatorId(string id)
         {
@@ -70,6 +71,12 @@ namespace GroupProject.Infrastructure
                    where eu.User.UserName == id
                    select eu;
 
+        }
+
+        public void SaveUpdate(Event dbEvent)
+        {
+            _db.Events.Update(dbEvent);
+            _db.SaveChanges();
         }
 
     }
