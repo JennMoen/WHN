@@ -19,10 +19,10 @@ namespace GroupProject.Controllers {
 
 
         }
-        
+
 
         public Attend(eventId) {
-            this.$http.post(`/api/events/attend`,eventId
+            this.$http.post(`/api/events/attend`, eventId
             )
                 .then((response) => {
                     this.$state.reload();
@@ -35,9 +35,9 @@ namespace GroupProject.Controllers {
     }
 
     export class EventAddController {
-        public categories;   
+        public categories;
 
-        
+
 
         // Post the new event to the database
         public addEvent(addEvent) {
@@ -47,7 +47,7 @@ namespace GroupProject.Controllers {
             //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
-            
+
 
 
             addEvent.admissionPrice = addEvent.admissionPrice;
@@ -77,7 +77,7 @@ namespace GroupProject.Controllers {
                     console.log(reason);
                 });
         };
-       
+
         //constructor info used to build the 'add event' page pull-downs
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             $http.get('/api/category')
@@ -161,15 +161,15 @@ namespace GroupProject.Controllers {
                 });
 
         }
-        
+
 
     }
     export class MyEventsController {
         public events;
-        
+
 
         constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService) {
-           
+
             $http.get(`/api/events/myevents`)
                 .then((response) => {
                     this.events = response.data;
@@ -179,28 +179,41 @@ namespace GroupProject.Controllers {
 
 
     export class EditEventController {
-        public editing
-        constructor(private $http: ng.IHttpService) {
-            $http.get('/api/events')
-                .then((response) =>
-                {
-                    this.editing = response.data;
-                })
-        }
-    };
-
-    export class EventDetailsController {
-        public eventSearchData;
-
+        public event;
+        public categories;
         constructor(private $http: ng.IHttpService, private $stateParams) {
-            var p = {eventId: $stateParams.id};
+            var p = {eventId: $stateParams.id}
 
-            $http.get(`/api/events/${$stateParams.id}`, {params: p})
+            $http.get(`/api/events/${$stateParams.id}`, {params:p})
                 .then((response) => {
-                    this.eventSearchData = response.data;
-                })
-        }
+                    this.event = response.data;
+                }),
+            $http.get('/api/category')
+                .then((response) => {
+                    this.categories = response.data;
+                });
 
+        }
+        //$http.get(`/api/events/${this.eInfo.id}`)
+        //    .then((response) =>
+        //    {
+        //        this.eInfo = response.data;
+        //    })
     }
+
+
+export class EventDetailsController {
+    public eventSearchData;
+
+    constructor(private $http: ng.IHttpService, private $stateParams) {
+        var p = { eventId: $stateParams.id };
+
+        $http.get(`/api/events/${$stateParams.id}`, { params: p })
+            .then((response) => {
+                this.eventSearchData = response.data;
+            })
+    }
+
+}
 
 }

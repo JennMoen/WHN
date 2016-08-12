@@ -6,15 +6,6 @@
 
             <li><a ui-sref="eventSearch">Find Events</a></li>
 
-
-            <li><a ui-sref="eventSearch">Find Events</a></li>
-
-
-
-
-            <li><a ui-sref="eventSearch">Find Events</a></li>
-
-
             <!--<li><a ui-sref="">Find Events</a></li>-->
 
             <li><a ui-sref="eventAdd">Create Event</a></li>
@@ -34,16 +25,8 @@
             </div>
 
             <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
-            <div class="flex-row f-jc-fe mainCol">More Info</div>
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
-
-
-            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
-            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
-     
-
-            
-
+            <div class="flex-row f-jc-fe mainCol"><a ui-sref="editEvent({id:searchData.id})">Edit Event</a></div>
         </div>
 
         <!--9 ng-repeat="searchData" in controller.eventSearchData
