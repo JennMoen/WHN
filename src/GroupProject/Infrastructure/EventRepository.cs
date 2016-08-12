@@ -15,7 +15,6 @@ namespace GroupProject.Infrastructure
             _db = db;
         }
 
-
         //get all events
         public IQueryable<Event> GetAllEvents()
         {
@@ -40,10 +39,15 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
-
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
+            _db.SaveChanges();
+        }
+
+        public void Remove(Event dbEvent, string user)
+        {
+            _db.Events.Remove(dbEvent);
             _db.SaveChanges();
         }
 
@@ -59,21 +63,15 @@ namespace GroupProject.Infrastructure
             }
         }
 
-
-        public void Remove(Event dbEvent)
-        {
-            _db.Events.Remove(dbEvent);
-            _db.SaveChanges();
-        }
-
         public IQueryable<EventUser> GetEventsForUser(string id)
         {
-            
+
             return from eu in _db.EventUsers
-                   where eu.User.UserName == id 
+                   where eu.User.UserName == id
                    select eu;
 
         }
+
     }
 
 }

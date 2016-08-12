@@ -21,8 +21,10 @@
                 <img ng-src="{{event.events.imageUrl}}" class="img-fixed" />
                 <p class="f-wrap description-width-and-height collapse ta-j">{{event.events.description}}<a>+Read More</a></p>
             </div>
+            <div class="flex-row f-jc-fe mainCol" ng-click="controller.deleteEvent(event)">Delete</div>
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="addEvent">Add to your events</a></div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
+           
         </div>
 
 

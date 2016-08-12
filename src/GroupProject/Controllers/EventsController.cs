@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GroupProject.Controllers
 {
-    [Route ("api/[controller]")]
+    [Route("api/[controller]")]
 
     public class EventsController : Controller
     {
         private EventService _eventService;
         private CategoryService _categoryService;
-           
-        
-        public EventsController(EventService es, CategoryService cs) {
+
+        public EventsController(EventService es, CategoryService cs)
+        {
             _eventService = es;
             _categoryService = cs;
         }
@@ -27,25 +27,12 @@ namespace GroupProject.Controllers
 
         }
 
-
-        // GET /api/event/{id}
-
-        /*[HttpGet("{id}")]
-        public IList<EventDTO> GetAllEventsByUserId(string Id)
-        {*/
-
-        
-        //[HttpGet("{id}")]
-        //public IList<EventDTO> GetAllEventsByUserId(string Id)
-        //{
-        //}
-
         [HttpGet("{eventId}")]
         public EventDTO GetEventById(int eventId)
         {
             return _eventService.GetEventById(eventId);
         }
-            
+
 
         [HttpPost]
         [Authorize]
@@ -57,24 +44,22 @@ namespace GroupProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            _eventService.CreateEvent(Event, User.Identity.Name);  
-           
+            _eventService.CreateEvent(Event, User.Identity.Name);
+
 
             return Ok();
         }
 
 
 
-        [HttpDelete]
-        public IActionResult DeleteEvent([FromBody] EventDTO Event)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEvent(EventDTO Event, int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-
-
+            Event.Id = id;
             _eventService.DeleteEvent(Event, User.Identity.Name);
 
 
@@ -83,32 +68,36 @@ namespace GroupProject.Controllers
 
 
         [HttpPost("attend")]
-        public IActionResult Add([FromBody] int eventId) {
+        public IActionResult Add([FromBody] int eventId)
+        {
 
-        
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            
+
             _eventService.AddEventUser(User.Identity.Name, eventId);
 
             return Ok();
         }
 
+
         [HttpGet("myevents")]
-        public IList<EventUserDTO> Get(string userName) {
+        public IList<EventUserDTO> Get(string userName)
+        {
 
             return _eventService.GetEventsForUser(User.Identity.Name);
-            
-            
+
+
         }
         [HttpGet("mycreatedevents")]
-        public IList<EventDTO> GetEvents(string userName) {
+        public IList<EventDTO> GetEvents(string userName)
+        {
 
             return _eventService.GetEventsByCreatorId(User.Identity.Name);
 
         }
-        
+
     }
 }
