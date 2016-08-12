@@ -48,8 +48,7 @@ namespace GroupProject.Controllers {
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
             
-<<<<<<< HEAD
-=======
+
 
             addEvent.admissionPrice = addEvent.admissionPrice;
             addEvent.categoryId = addEvent.category.id;
@@ -69,7 +68,7 @@ namespace GroupProject.Controllers {
             console.log(`name: ${addEvent.name}`);
 
 
->>>>>>> 39f00a763a093f37c74d969181da2caa33dcf8f5
+
             this.$http.post('/api/events', addEvent)
                 .then((response) => {
                     this.$state.reload();
