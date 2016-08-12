@@ -70,7 +70,7 @@ namespace GroupProject.Infrastructure
         {
 
             return from eu in _db.EventUsers
-                   where eu.UserId == id
+                   where eu.User.UserName == id
                    select eu;
 
         }

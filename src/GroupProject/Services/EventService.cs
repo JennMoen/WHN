@@ -134,10 +134,22 @@ namespace GroupProject.Services
                     select new EventUserDTO()
                     {
                         EventId = eu.Event.Id,
+                        UserName = eu.User.UserName,
+                        EventName = eu.Event.Name,
                         
                         Events = new EventDTO()
                         {
-                            Name = eu.Event.Name
+                            Name = eu.Event.Name,
+                            Description = eu.Event.Description,
+                            Status = eu.Event.Status,
+                            Location = eu.Event.Location,
+                            AdmissionPrice = eu.Event.AdmissionPrice,
+                            ImageUrl = eu.Event.ImageUrl,
+                            Category = eu.Event.Category,
+                            DateCreated = eu.Event.DateCreated,
+                            DateOfEvent = eu.Event.DateOfEvent,
+                            EndTime = eu.Event.EndTime,
+                            CreatorName = eu.Event.Creator.UserName
 
         }
                         

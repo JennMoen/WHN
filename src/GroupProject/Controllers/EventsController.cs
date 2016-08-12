@@ -100,7 +100,8 @@ namespace GroupProject.Controllers
         public IList<EventUserDTO> Get(string userName) {
 
             return _eventService.GetEventsForUser(User.Identity.Name);
-
+            
+            
         }
     }
 }
