@@ -10,6 +10,7 @@ namespace GroupProject.Data
     { public string UserName { get; set; }
        public int EventId { get; set; }
         public string EventName { get; set; }
+        
         public EventDTO Events { get; set; }
     }
 }

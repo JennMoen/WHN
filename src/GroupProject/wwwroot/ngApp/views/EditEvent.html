@@ -6,7 +6,7 @@
                 <label> Edit Event Category</label>
                 <md-select ng-model="controller.event.category.name"
                            class="md-select-value">
-                    <md-option ng-value=""
+                    <md-option 
                                ng-repeat="category in controller.categories">
                         {{category.name}}
                     </md-option>
@@ -44,8 +44,8 @@
             </md-input-container>
 
             <md-input-container class="md-block">
-                <md-button class="submit" type="submit">Save Changes</md-button>
-                <md-button class="delete" type="submit">Delete</md-button>
+                <md-button class="submit" type="submit" ng-click="controller.updateEvent(controller.event)">Save Changes</md-button>
+                <md-button class="delete" type="submit" ng-click="controller.deleteEvent(controller.event)">Delete</md-button>
             </md-input-container>
 
            

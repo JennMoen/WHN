@@ -43,12 +43,12 @@ namespace GroupProject.Services
                         // Feedback = e.Feedback    // Same here
 
                     }).ToList();
-
-
         }
-        public IList<EventDTO> GetAllEventsByCreatorId(string Id)
+
+
+        public IList<EventDTO> GetEventsByCreatorId(string Id)
         {
-            return (from e in _eventRepo.GetAllEventsByCreatorId(Id)
+            return (from e in _eventRepo.GetEventsByCreatorId(Id)
                     select new EventDTO()
                     {
                         Name = e.Name,
@@ -67,6 +67,7 @@ namespace GroupProject.Services
 
                     }).ToList();
         }
+
 
         public EventDTO GetEventById(int eventId)
         {
@@ -90,6 +91,7 @@ namespace GroupProject.Services
                     }).FirstOrDefault();
         }
 
+
         public void CreateEvent(EventDTO Event, string currentUser)
 
         {
@@ -107,9 +109,7 @@ namespace GroupProject.Services
                 Location = Event.Location,
                 CategoryId = Event.Category.Id,
                 AdmissionPrice = Event.AdmissionPrice,
-
                 //Category = Event.Category,
-
                 CreatorId = _uRepo.GetUser(currentUser).First().Id
             };
             _eventRepo.Add(dbEvent);
@@ -127,6 +127,7 @@ namespace GroupProject.Services
             _eventRepo.AddEventUsers(dbEventUser);
         }
 
+
         public IList<EventUserDTO> GetEventsForUser(string currentUser)
         {
 
@@ -136,9 +137,10 @@ namespace GroupProject.Services
                         EventId = eu.Event.Id,
                         UserName = eu.User.UserName,
                         EventName = eu.Event.Name,
-                        
+
                         Events = new EventDTO()
                         {
+                            Id = eu.Event.Id,
                             Name = eu.Event.Name,
                             Description = eu.Event.Description,
                             Status = eu.Event.Status,
@@ -151,34 +153,43 @@ namespace GroupProject.Services
                             EndTime = eu.Event.EndTime,
                             CreatorName = eu.Event.Creator.UserName
 
-        }
-                        
+                        }
 
-                        
                     }).ToList();
 
         }
 
-        public void DeleteEvent(EventDTO EventInfo, string Username)
+        public void UpdateEvent(EventDTO Event, string id)
         {
-            Event dbEvent = new Event()
-            {
-                Name = EventInfo.Name,
-                Status = EventInfo.Status,
-                ImageUrl = EventInfo.ImageUrl,
-                //Feedback = EventInfo.Feedback,
-                EndTime = EventInfo.EndTime,
-                Description = EventInfo.Description,
-                DateOfEvent = EventInfo.DateOfEvent,
-                DateCreated = EventInfo.DateCreated,
-                //Creator = EventInfo.Creator,
-                Category = EventInfo.Category,
-                AdmissionPrice = EventInfo.AdmissionPrice,
+            Event dbEvent = _eventRepo.GetEventById(Event.Id).First();
 
-                //Id = EventInfo.Id
-            };
+            _eventRepo.SaveUpdate(dbEvent);
+        }
 
-            _eventRepo.Remove(dbEvent);
+        public void DeleteEvent(EventDTO Event, string currentUser)
+        {
+
+            _eventRepo.Remove(_eventRepo.GetEventById(Event.Id).First(), currentUser);
+
+
+            //Event dbEvent = new Event()
+            //{
+            //    Name = EventInfo.Name,
+            //    Status = EventInfo.Status,
+            //    ImageUrl = EventInfo.ImageUrl,
+            //    //Feedback = EventInfo.Feedback,
+            //    EndTime = EventInfo.EndTime,
+            //    Description = EventInfo.Description,
+            //    DateOfEvent = EventInfo.DateOfEvent,
+            //    DateCreated = EventInfo.DateCreated,
+            //    //Creator = EventInfo.Creator,
+            //    Category = EventInfo.Category,
+            //    AdmissionPrice = EventInfo.AdmissionPrice,
+
+            //    //Id = EventInfo.Id
+            //};
+
+            //_eventRepo.Remove(dbEvent);
         }
 
     }
