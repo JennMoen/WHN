@@ -42,13 +42,7 @@
       "type": "build"
     },
     
-<<<<<<< HEAD
-    
-=======
 
-   
-
->>>>>>> 39f00a763a093f37c74d969181da2caa33dcf8f5
     "System.Xml.XDocument": "4.0.0.0"
   },
 
