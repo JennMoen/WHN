@@ -159,9 +159,24 @@ namespace GroupProject.Services
 
         }
 
-        public void UpdateEvent(EventDTO Event, string id)
+        public void UpdateEvent(EventDTO Event, int id)
         {
-            Event dbEvent = _eventRepo.GetEventById(Event.Id).First();
+            //Event dbEvent = _eventRepo.GetEventById(id).FirstOrDefault();
+            Event dbEvent = new Event()
+            {
+                Id = Event.Id,
+                Category = Event.Category,
+                Name = Event.Name,
+                Location = Event.Location,
+                AdmissionPrice = Event.AdmissionPrice,
+                DateOfEvent = Event.DateOfEvent,
+                EndTime = Event.EndTime,
+                Description = Event.Description,
+                ImageUrl = Event.ImageUrl,
+                Status = Event.Status,
+                CreatorId = _eventRepo.GetEventByCreatorName(Event.CreatorName).First()
+            };
+
 
             _eventRepo.SaveUpdate(dbEvent);
         }
