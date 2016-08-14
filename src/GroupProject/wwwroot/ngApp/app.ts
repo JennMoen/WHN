@@ -95,6 +95,13 @@ namespace GroupProject {
                 controllerAs: 'controller'
             })
 
+            .state('test', {
+                url: '/test',
+                templateUrl: '/ngApp/views/test.html',
+                controller: GroupProject.Controllers.TestController,
+                controllerAs: 'controller'
+            })
+
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
@@ -131,7 +138,5 @@ namespace GroupProject {
     angular.module('GroupProject').config(function ($httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
     });
-
-    
 
 }

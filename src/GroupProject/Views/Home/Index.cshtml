@@ -5,6 +5,7 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/lib/angular-material-datetimepicker/css/material-datetimepicker.min.css" rel="stylesheet" />
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" >
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
@@ -19,6 +20,7 @@
             <a ui-sref="editEvent">EditEvents</a> /
             <a ui-sref="MyEvents">MyEvents</a> /
             <a ui-sref="about">About</a> /
+            <a ui-sref="test">Test</a> /
             <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
             <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
             <div ng-show="account.isLoggedIn()">
