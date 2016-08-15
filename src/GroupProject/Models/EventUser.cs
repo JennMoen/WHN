@@ -15,5 +15,11 @@ namespace GroupProject.Models
         public int EventId { get; set; }
         [ForeignKey("EventId")]
         public Event Event { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var a = (EventUser)obj;
+            return a.UserId == UserId && a.EventId == EventId;
+        }
     }
 }

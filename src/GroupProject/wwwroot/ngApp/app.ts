@@ -1,6 +1,6 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource',  'ngMaterial', 'ngMaterialDatePicker',  'ngAnimate']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -80,27 +80,30 @@ namespace GroupProject {
                 controllerAs: 'controller'
 
             })
-
             .state('editEvent', {
                 url: '/editEvent',
                 templateUrl: '/ngApp/views/editEvent.html',
                 controller: GroupProject.Controllers.EditEventController,
                 controllerAs: 'controller'
             })
-            
+
             .state('EventDetails', {
                 url: '/EventDetails/:id',
                 templateUrl: '/ngApp/views/EventDetails.html',
                 controller: GroupProject.Controllers.EventDetailsController,
                 controllerAs: 'controller'
             })
-
-            
-
+            .state('test', {
+                url: '/test/:id',
+                templateUrl: '/ngApp/views/test.html',
+                controller: GroupProject.Controllers.TestController,
+                controllerAs: 'controller'
+            })
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
             });
+
 
         // Handle request for non-existent route
         $urlRouterProvider.otherwise('/notFound');
@@ -109,7 +112,6 @@ namespace GroupProject {
         $locationProvider.html5Mode(true);
     });
 
-    
     angular.module('GroupProject').factory('authInterceptor', (
         $q: ng.IQService,
         $window: ng.IWindowService,
@@ -133,7 +135,4 @@ namespace GroupProject {
     angular.module('GroupProject').config(function ($httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
     });
-
-    
-
 }

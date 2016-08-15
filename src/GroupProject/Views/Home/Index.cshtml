@@ -2,17 +2,16 @@
 <head>
     <title>WHN</title>
     <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/lib/angular-material-datetimepicker/css/material-datetimepicker.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
-<body ng-controller="AcountController as account">
+<body ng-controller="AccountController as account">
     <div class="container">
         <h1>WHN</h1>
         <div class="high rock bgnd-purple">
             <a ui-sref="home">Home</a> /
+            <a ui-sref="test">testpage</a> /
             <a ui-sref="eventSearch">Find Events</a> /
             <a ui-sref="eventAdd">AddEvent</a> /
             <a ui-sref="editEvent">EditEvents</a> /
@@ -33,7 +32,6 @@
     <script src="~/lib/angular-resource/angular-resource.js"></script>
     <script src="~/lib/angular-animate/angular-animate.js"></script>
     <script src="~/lib/angular-touch/angular-touch.js"></script>
-    <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="~/lib/angular-aria/angular-aria.js"></script>
     <script src="~/lib/angular-material/angular-material.js"></script>

@@ -69,7 +69,6 @@ namespace GroupProject.Services
         }
 
 
-
         public EventDTO GetEventById(int eventId)
         {
             return (from e in _eventRepo.GetEventById(eventId)
@@ -87,7 +86,10 @@ namespace GroupProject.Services
                         Category = e.Category,
 
 
+                        CreatorName = e.Creator.UserName,
+
                         //CreatorName = e.CreatorName,
+
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
@@ -97,9 +99,6 @@ namespace GroupProject.Services
 
                     }).FirstOrDefault();
         }
-
-
-
 
 
 
