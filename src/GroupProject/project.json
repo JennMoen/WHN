@@ -41,7 +41,9 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Sendgrid": "8.0.1",
+
+    "Sendgrid": "8.0.2",
+
     "System.Xml.XDocument": "4.0.0.0"
   },
 

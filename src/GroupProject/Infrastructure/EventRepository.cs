@@ -15,7 +15,6 @@ namespace GroupProject.Infrastructure
             _db = db;
         }
 
-
         //get all events
         public IQueryable<Event> GetAllEvents()
         {
@@ -25,7 +24,6 @@ namespace GroupProject.Infrastructure
         }
 
         //get single event by its id
-
         public IQueryable<Event> GetEventById(int id)
         {
             return from e in _db.Events
@@ -33,15 +31,15 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
-
-
-        //get all events that a user created
-        public IQueryable<Event> GetAllEventsByUserId(string id)
+        
+        //get all events that a user created (not already-created public events he/she added)
+        public IQueryable<Event> GetEventsByCreatorId(string id)
         {
             return from e in _db.Events
-                   where e.CreatorId == id
+                   where e.Creator.UserName == id
                    select e;
         }
+
 
         /* public IQueryable<Event> GetEventById(int eventId)
          {
@@ -57,10 +55,23 @@ namespace GroupProject.Infrastructure
         //           select e;
         //}
 
+        public IQueryable<string> GetEventByCreatorName(string creatorName)
+        {
+            return from e in _db.Events
+                   where e.Creator.UserName == creatorName
+                   select e.CreatorId;
+        }
+
 
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
+            _db.SaveChanges();
+        }
+
+        public void Remove(Event dbEvent, string user)
+        {
+            _db.Events.Remove(dbEvent);
             _db.SaveChanges();
         }
 
@@ -76,13 +87,20 @@ namespace GroupProject.Infrastructure
             }
         }
 
-
-        public void Remove(Event dbEvent)
+        public IQueryable<EventUser> GetEventsForUser(string id)
         {
-            _db.Events.Remove(dbEvent);
-            _db.SaveChanges();
+
+            return from eu in _db.EventUsers
+                   where eu.User.UserName == id
+                   select eu;
+
         }
 
+        public void SaveUpdate(Event dbEvent)
+        {
+            _db.Events.Update(dbEvent);
+            _db.SaveChanges();
+        }
 
     }
 

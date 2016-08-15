@@ -10,19 +10,30 @@
             <li><a ui-sref="createGroup">Create a Group</a></li>
 
         </ul>
-    </div>
 
+    </div>
 
     <div class="flex-col mainCol containerMainCol">
-        <div class="flex-col mainCol containerMainCol" ng-repeat="searchData in controller.eventSearchData">
-            <div class="flex-row f-jc-sb mainCol"><div>{{searchData.name}}</div><div>{{searchData.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
+        <div class="flex-col mainCol containerMainCol" ng-repeat="event in controller.events">
+
+            <div class="flex-row f-jc-sb mainCol"><div>{{event.events.name}}</div><div>{{event.events.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
             <div class="flex-row f-jc-sa mainCol">
-                <img ng-src="{{searchData.imageUrl}}" class="img-fixed" />
-                <p class="f-wrap description-width-and-height collapse ta-j">{{searchData.description}}<a>+Read More</a></p>
+                <img ng-src="{{event.events.imageUrl}}" class="img-fixed" />
+                <p class="f-wrap description-width-and-height collapse ta-j">{{event.events.description}}<a>+Read More</a></p>
             </div>
+            <div class="flex-row f-jc-fe mainCol" ng-click="controller.deleteEvent(event)">Delete</div>
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="addEvent">Add to your events</a></div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
+           
+        </div>
 
+
+        <div class="flex-col mainCol containerMainCol" ng-repeat="e in controller.myevents">
+            <div class="flex-row f-jc-sb mainCol"><div>{{e.name}}</div><div>{{e.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
+            <div class="flex-row f-jc-sa mainCol">
+                <img ng-src="{{e.imageUrl}}" class="img-fixed" />
+                <p class="f-wrap description-width-and-height collapse ta-j">{{e.description}}<a>+Read More</a></p>
+            </div>
+            <div class="flex-row f-jc-fe mainCol">More Info</div>
         </div>
     </div>
-</div>

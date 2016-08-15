@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 using GroupProject.Models;
 using GroupProject.Services;
 using GroupProject.ViewModels.Account;
-using static GroupProject.Services.IEmailService;
+using static GroupProject.Services.IEmailSender;
 
 namespace GroupProject.Controllers
 {
