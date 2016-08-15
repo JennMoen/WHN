@@ -199,7 +199,6 @@ namespace GroupProject.Controllers {
             var p = { eventId: $stateParams.id };
 
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
-
                 .then((response) => {
                     this.event = response.data;
                 }),
@@ -209,56 +208,64 @@ namespace GroupProject.Controllers {
                     });
         }
 
+
+
         public updateEvent(event) {
-            this.$http.post(`/api/events/${this.$stateParams.id}`, event)
+            var p = { eventId: this.$stateParams.id };
+            this.$http.put(`/api/events/${this.$stateParams.id}`, event, { params: p })
                 .then((response) => {
                     this.$state.go('eventSearch');
                 }).catch((reason) => {
                     console.log(reason);
-                })
+                });
         }
 
-            public deleteEvent(event) {
+        public deleteEvent(event) {
             this.$http.delete(`/api/events/${this.$stateParams.id}`, event)
                 .then((response) => {
                     this.$state.go('eventSearch');
 
                 });
         }
-        //public editing
-        //constructor(private $http: ng.IHttpService) {
-        //    $http.get('/api/events')
-        //        .then((response) => {
-        //            this.editing = response.data;
-        //        })
-        //}
-    };
-
-   
-
-        
-
-        
-        //$http.get(`/api/events/${this.eInfo.id}`)
-        //    .then((response) =>
-        //    {
-        //        this.eInfo = response.data;
-        //    })
-    
-
-
-export class EventDetailsController {
-    public eventSearchData;
-
-    constructor(private $http: ng.IHttpService, private $stateParams) {
-        var p = { eventId: $stateParams.id };
-
-        $http.get(`/api/events/${$stateParams.id}`, { params: p })
-            .then((response) => {
-                this.eventSearchData = response.data;
-            })
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    //public editing
+    //constructor(private $http: ng.IHttpService) {
+    //    $http.get('/api/events')
+    //        .then((response) => {
+    //            this.editing = response.data;
+    //        })
+    //}
+    //$http.get(`/api/events/${this.eInfo.id}`)
+//    .then((response) =>
+//    {
+//        this.eInfo = response.data;
+//    })
+
+
+    export class EventDetailsController {
+        public eventSearchData;
+
+        constructor(private $http: ng.IHttpService, private $stateParams) {
+            var p = { eventId: $stateParams.id };
+
+            $http.get(`/api/events/${$stateParams.id}`, { params: p })
+                .then((response) => {
+                    this.eventSearchData = response.data;
+                })
+        }
+
+    }
 }
 
-}

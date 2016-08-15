@@ -40,6 +40,13 @@ namespace GroupProject.Infrastructure
                    select e;
         }
 
+        public IQueryable<string> GetEventByCreatorName(string creatorName)
+        {
+            return from e in _db.Events
+                   where e.Creator.UserName == creatorName
+                   select e.CreatorId;
+        }
+
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
