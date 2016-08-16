@@ -9,14 +9,6 @@ namespace GroupProject.Controllers {
         public categories;
 
 
-
-        //public searchByCategory(category) {
-        //    this.$http.get('/api/events/category')
-        //        .then((response) => {
-        //            this.eventSearchData = response.data;
-        //        });
-        //};
-
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
             $http.get('/api/events')
                 .then((response) => {
@@ -49,19 +41,20 @@ namespace GroupProject.Controllers {
     }
 
     export class EventAddController {
-        public categories;   
+        public categories; 
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent('Your event was added successfully')
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
 
         
 
         // Post the new event to the database
         public addEvent(addEvent) {
-
-
-            //var toDay = moment();
-            //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
-            //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
-            //console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
-            
 
 
             addEvent.admissionPrice = addEvent.admissionPrice;
@@ -81,26 +74,27 @@ namespace GroupProject.Controllers {
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
 
-
-
             this.$http.post('/api/events', addEvent)
                 .then((response) => {
                     this.$state.reload();
+                    this.displayToast(this.$mdToast);
                 })
                 .catch((reason) => {
                     console.log(reason);
                 });
-        };
-       
+
+        }
+
         //constructor info used to build the 'add event' page pull-downs
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService) {
             $http.get('/api/category')
                 .then((response) => {
                     this.categories = response.data;
                 });
 
         }
-    }
+    };
+
 
 
     export class EventController {
@@ -220,5 +214,6 @@ namespace GroupProject.Controllers {
     export class TestController {
         public message = 'Hello from the test page!';
     }
+
 
 }

@@ -1,6 +1,6 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
