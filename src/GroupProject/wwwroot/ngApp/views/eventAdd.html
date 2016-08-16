@@ -14,6 +14,10 @@
             </md-input-container>
             <md-input-container class="md-block">
                 <input required name="name" ng-model="addEvent.name" placeholder="Enter the name of your event" />
+                <div ng-messages="simple.name.$error"
+                     ng-show="simple.name.$dirty">
+                    <div ng-message="required">Please provide a name for your event!</div>
+                </div>
             </md-input-container>
 
             <md-input-container class="md-block">
@@ -23,6 +27,18 @@
             <md-input-container class="md-block">
                 <input required name="admissionPrice" ng-model="addEvent.admissionPrice" placeholder="Enter the admission price for your event or enter zero if your event is free" />
             </md-input-container>
+
+            <md-input-container class="md-select-value">
+                <label>Is This Event Public or Private?</label>
+                <md-select ng-model="addEvent.status"
+                           class="md-select-value">
+                    <md-option ng-value="status"
+                               ng-repeat="status in controller.status">
+                        {{controller.status}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
 
             <div class="layout-column flex-gt-md-30">
                 <md-input-container class="md-input-has-placeholder">
@@ -45,9 +61,11 @@
             </md-input-container>
 
             <md-input-container class="md-block">
-                <md-button class="btn1 md-raised md-cornered" type="submit">Add Event</md-button>
+                <md-button class="btn1 md-raised md-cornered" ng-disabled="simple.$invalid" type="submit">Add Event</md-button>
             </md-input-container>
 
 </form>
     </md-content>
+</div>
+<div id="toastContainer" layout="row" ng-cloak>
 </div>

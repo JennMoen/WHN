@@ -1,6 +1,6 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -98,6 +98,13 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.EventDetailsController,
                 controllerAs: 'controller'
             })
+            .state('test', {
+                url: '/test',
+                templateUrl: '/ngApp/views/test.html',
+                controller: GroupProject.Controllers.TestController,
+                controllerAs: 'controller'
+            })
+
             .state('notFound', {
                 url: '/notFound',
                 templateUrl: '/ngApp/views/notFound.html'
@@ -134,7 +141,5 @@ namespace GroupProject {
     angular.module('GroupProject').config(function ($httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
     });
-
-    
 
 }
