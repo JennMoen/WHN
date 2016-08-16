@@ -12,11 +12,15 @@ namespace GroupProject.Services
     {
         private EventRepository _eventRepo;
         private UserRepository _uRepo;
+        private EventUserRepository _euRepo;
+        private CategoryRepository _catRepo;
 
-        public EventService(EventRepository er, UserRepository ur)
+        public EventService(EventRepository er, UserRepository ur, EventUserRepository eur, CategoryRepository cr)
         {
             _eventRepo = er;
             _uRepo = ur;
+            _euRepo = eur;
+            _catRepo = cr;
         }
 
         // get a list of all events
@@ -100,7 +104,7 @@ namespace GroupProject.Services
                 Id = Event.Id,
                 Name = Event.Name,
                 Status = Event.Status,
-                ImageUrl = Event.ImageUrl,
+                ImageUrl = _catRepo.GetCategoryImageUrlById(Event.Category.Id).First(),
                 //Feedback = Event.Feedback,
                 EndTime = Event.EndTime,
                 Description = Event.Description,
@@ -127,6 +131,12 @@ namespace GroupProject.Services
             _eventRepo.AddEventUsers(dbEventUser);
         }
 
+        public void DeleteEventUser(int eventId, string userName)
+        {
+           EventUser dbEventUser =  _euRepo.GetEventUserByUserId(eventId, userName).First();
+
+            _euRepo.RemoveEventUser(dbEventUser, userName);
+        }
 
         public IList<EventUserDTO> GetEventsForUser(string currentUser)
         {
@@ -172,7 +182,7 @@ namespace GroupProject.Services
                 DateOfEvent = Event.DateOfEvent,
                 EndTime = Event.EndTime,
                 Description = Event.Description,
-                ImageUrl = Event.ImageUrl,
+                ImageUrl = _catRepo.GetCategoryImageUrlById(Event.Category.Id).First(),
                 Status = Event.Status,
                 CreatorId = _eventRepo.GetEventByCreatorName(Event.CreatorName).First()
             };

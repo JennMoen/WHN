@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using GroupProject.Data;
 using GroupProject.Services;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace GroupProject.Controllers
 {
@@ -109,6 +110,21 @@ namespace GroupProject.Controllers
 
 
         }
+
+        [HttpDelete("myevents")]
+        public IActionResult DeleteEventUser([FromQuery]int eventId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            
+            _eventService.DeleteEventUser(eventId, User.Identity.Name);
+
+            return Ok();
+        }
+
         [HttpGet("mycreatedevents")]
         public IList<EventDTO> GetEvents(string userName)
         {

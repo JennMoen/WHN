@@ -15,16 +15,15 @@
 
     <div class="flex-col mainCol containerMainCol">
         <div class="flex-col mainCol containerMainCol" ng-repeat="event in controller.events">
-
             <div class="flex-row f-jc-sb mainCol"><div>{{event.events.name}}</div><div>{{event.events.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
             <div class="flex-row f-jc-sa mainCol">
                 <img ng-src="{{event.events.imageUrl}}" class="img-fixed" />
                 <p class="f-wrap description-width-and-height collapse ta-j">{{event.events.description}}<a>+Read More</a></p>
             </div>
-            <div class="flex-row f-jc-fe mainCol" ng-click="controller.deleteEvent(event)">Delete</div>
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.deleteEvent(event.eventId)">Delete</a></div>
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="addEvent">Add to your events</a></div>
             <div class="flex-row f-jc-fe mainCol">More Info</div>
-           
+
         </div>
 
 
@@ -37,3 +36,4 @@
             <div class="flex-row f-jc-fe mainCol">More Info</div>
         </div>
     </div>
+</div>

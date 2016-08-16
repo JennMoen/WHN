@@ -69,6 +69,8 @@ namespace GroupProject
             services.AddScoped<GroupRepository>();
             services.AddScoped<GroupService>();
 
+            services.AddScoped<EventUserRepository>();
+
 
              // add security policies
                 services.AddAuthorization(options =>
