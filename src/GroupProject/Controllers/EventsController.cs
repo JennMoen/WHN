@@ -21,8 +21,7 @@ namespace GroupProject.Controllers
             _categoryService = cs;
         }
 
-<<<<<<< HEAD
-=======
+
 
         [HttpGet]
         public IList<EventDTO> GetAllEvents()
@@ -36,7 +35,7 @@ namespace GroupProject.Controllers
         //    return _eventService.GetEventsForCategory();
 
         //}
->>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
+
         [HttpGet("{eventId}")]
         public EventDTO GetEventById(int eventId)
         {

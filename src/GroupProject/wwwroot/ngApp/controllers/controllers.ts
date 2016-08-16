@@ -56,15 +56,15 @@ namespace GroupProject.Controllers {
 
         // Post the new event to the database
         public addEvent(addEvent) {
-<<<<<<< HEAD
+
             var toDay = moment();
             //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
-=======
 
 
->>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
+
+
 
             addEvent.admissionPrice = addEvent.admissionPrice;
             addEvent.categoryId = addEvent.category.id;
@@ -93,10 +93,7 @@ namespace GroupProject.Controllers {
                 .catch((reason) => {
                     console.log("Error: " + reason);
                 });
-<<<<<<< HEAD
-=======
 
->>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
         }
 
         //constructor info used to build the 'add event' page pull-downs
@@ -358,7 +355,7 @@ namespace GroupProject.Controllers {
         }
 
     }
-<<<<<<< HEAD
+
 
 
     export class TestController {
@@ -372,14 +369,9 @@ namespace GroupProject.Controllers {
 }
 
 
-=======
 
-    export class TestController {
-        public message = 'Hello from the test page!';
-    }
 
 
     
 
-}
->>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
+
