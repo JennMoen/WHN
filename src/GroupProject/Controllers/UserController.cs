@@ -17,7 +17,7 @@ namespace GroupProject.Controllers
         }
 
         [HttpGet]
-        public IList<UserDTO> GetUserNames() {
+        public IList<string> GetUserNames() {
 
             return _uService.GetUserNames();
         }

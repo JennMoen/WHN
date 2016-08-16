@@ -19,13 +19,13 @@ namespace GroupProject.Infrastructure
 
 
         //gets all user names so a user can select them to invite to an event or add to a group
-        public IQueryable<ApplicationUser> GetAllUserNames()
-        {
+        //public IQueryable<ApplicationUser> GetAllUserNames()
+        //{
 
-            return from u in _db.Users
-                   select u;
+        //    return from u in _db.Users
+        //           select u;
 
-        }
+        //}
 
 
         public IQueryable<ApplicationUser> GetUser(string userName)
@@ -37,6 +37,11 @@ namespace GroupProject.Infrastructure
 
         }
 
-        
+        public IQueryable<string> GetAllUserNames()
+        {
+            return from u in _db.Users
+                   select u.UserName;
+        }
+       
     }
 }

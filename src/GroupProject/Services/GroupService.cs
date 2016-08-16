@@ -11,9 +11,11 @@ namespace GroupProject.Services
     public class GroupService
     {
         private GroupRepository _groupRepo;
-        public GroupService(GroupRepository gr)
+        private UserRepository _uRepo;
+        public GroupService(GroupRepository gr, UserRepository ur)
         {
             _groupRepo = gr;
+            _uRepo = ur;
         }
 
         public IList<GroupDTO> GetAllGroups()
@@ -43,6 +45,47 @@ namespace GroupProject.Services
 
         }
 
+        //public void AddMember(string user, int groupId)
+        //{
 
+        //    UserGroup dbUserGroup = new UserGroup()
+        //    {
+        //        GroupId = _groupRepo.GetGroupById(groupId).First().Id,
+        //        UserId = _uRepo.GetUser(user).First().Id
+
+        //    };
+
+        //    _groupRepo.AddMember(dbUserGroup);
+        //}
+
+            public void AddMember(UserGroupDTO userGroup)
+        {
+            UserGroup dbUserGroup = new UserGroup()
+            {
+                GroupId = userGroup.GroupId,
+                UserId = userGroup.UserName
+
+            };
+
+            _groupRepo.AddMember(dbUserGroup);
+
+        }
+
+
+
+        public GroupDTO GetGroupById(int groupId) {
+
+            return (from g in _groupRepo.GetGroupById(groupId)
+                    select new GroupDTO()
+                    {
+                        Name= g.Name,
+                        Id=g.Id
+                      
+
+
+                    }).FirstOrDefault();
+
+
+        }
     }
 }

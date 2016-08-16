@@ -1,13 +1,5 @@
 ﻿<h1>Manage my Groups</h1>
 
-<h3>Search for a friend</h3>
-<input type="text" ng-model="search"
-       uib-tooltip="search" tooltip-placement="bottom" />
-
-<div ng-repeat="user in controller.users | filter: search" ng-show="search">
-    <div>{{user.userName}}</div>
-    <div>{{user.metropolitanArea}}</div>
-</div>
 
 
 <h3>Create a Group</h3>
@@ -16,6 +8,9 @@
     <input type="submit" value="Add Group" />
 </form>
 
+
+<div>My Current Groups</div>
+<br />
 <div ng-repeat="group in controller.groups">
-    <div>{{group.name}}</div>
+    <div ui-sref="groupDetails({id: group.id})">{{group.name}}</div>
 </div>
