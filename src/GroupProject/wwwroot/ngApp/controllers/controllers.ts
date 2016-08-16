@@ -40,23 +40,12 @@ namespace GroupProject.Controllers {
         public timeSlots;
         public timeSlots2;
 
-
-
-
-
         // Post the new event to the database
         public addEvent(addEvent) {
-
-
             var toDay = moment();
             //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
-
-
-            this.$http.post('/api/event', addEvent)
-
-
 
             addEvent.admissionPrice = addEvent.admissionPrice;
             addEvent.categoryId = addEvent.category.id;
@@ -75,17 +64,16 @@ namespace GroupProject.Controllers {
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
 
-
-
             this.$http.post('/api/events', addEvent)
 
                 .then((response) => {
+                    console.log("Success: response");
                     this.$state.reload();
                 })
                 .catch((reason) => {
-                    console.log(reason);
+                    console.log("Error: " + reason);
                 });
-        };
+        }
 
         //constructor info used to build the 'add event' page pull-downs
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
@@ -272,7 +260,7 @@ namespace GroupProject.Controllers {
                 });
         }
 
-    
+
     }
 
 
@@ -302,7 +290,6 @@ namespace GroupProject.Controllers {
 
     export class EventDetailsController {
         public eventSearchData;
-
         constructor(private $http: ng.IHttpService, private $stateParams) {
             var p = { eventId: $stateParams.id };
 

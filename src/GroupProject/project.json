@@ -3,6 +3,8 @@
 
   "dependencies": {
     "angular-moment": "0.10.3",
+    "Google.Apis": "1.15.0",
+    "GoogleMaps.LocationServices": "0.9.8.6",
     "Microsoft.AspNet.Identity.Core": "2.2.1",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
@@ -41,9 +43,7 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-
     "Sendgrid": "8.0.2",
-
     "System.Xml.XDocument": "4.0.0.0"
   },
 
@@ -62,7 +62,7 @@
   },
 
   "frameworks": {
-      "net452": {}
+    "net452": {}
   },
 
   "buildOptions": {
