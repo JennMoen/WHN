@@ -3,6 +3,7 @@
     <title>WHN</title>
     <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
     <link href="~/lib/angular-material-datetimepicker/css/material-datetimepicker.min.css" rel="stylesheet" />
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" >
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
@@ -17,9 +18,16 @@
             <a ui-sref="editEvent">EditEvents</a> /
             <a ui-sref="MyEvents">MyEvents</a> /
             <a ui-sref="about">About</a> /
+<<<<<<< HEAD
             <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a> /
             <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a> /
             @*<div ng-show="account.isLoggedIn()">
+=======
+            <a ui-sref="test">Test</a> /
+            <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
+            <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+            <div ng-show="account.isLoggedIn()">
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
                 Welcome, {{account.getUserName()}} <a href="/myaccount">(My Account)</a>
             </div>*@
         </div>
@@ -41,6 +49,7 @@
     <script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/demo.js"></script>
 
     <script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/angular-material-datetimepicker.js"></script>
+    <script type="text/javascript" src="~/lib/angular-messages/angular-messages.js"></script>
 
     <!-- App Files-->
     <script src="~/ngapp/app.js"></script>

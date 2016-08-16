@@ -6,6 +6,7 @@ namespace GroupProject.Controllers {
 
     export class EventSearchController {
         public eventSearchData;
+        public categories;
 
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
@@ -13,10 +14,15 @@ namespace GroupProject.Controllers {
                 .then((response) => {
                     this.eventSearchData = response.data;
                 });
+            //constructor info used to build the 'search by category' pull-down
+            $http.get('/api/category')
+                .then((response) => {
+                    this.categories = response.data;
+                });
         }
+        
 
         public readMore(searchData) {
-
 
         }
 
@@ -36,16 +42,29 @@ namespace GroupProject.Controllers {
 
     export class EventAddController {
         public categories;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent('Your event was added successfully')
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
 
         public timeSlots;
         public timeSlots2;
 
         // Post the new event to the database
         public addEvent(addEvent) {
+<<<<<<< HEAD
             var toDay = moment();
             //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
             //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
             console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
+=======
+
+
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
 
             addEvent.admissionPrice = addEvent.admissionPrice;
             addEvent.categoryId = addEvent.category.id;
@@ -69,14 +88,19 @@ namespace GroupProject.Controllers {
                 .then((response) => {
                     console.log("Success: response");
                     this.$state.reload();
+                    this.displayToast(this.$mdToast);
                 })
                 .catch((reason) => {
                     console.log("Error: " + reason);
                 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
         }
 
         //constructor info used to build the 'add event' page pull-downs
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService) {
             $http.get('/api/category')
                 .then((response) => {
                     this.categories = response.data;
@@ -97,7 +121,8 @@ namespace GroupProject.Controllers {
 
 
         }
-    }
+    };
+
 
 
     export class EventController {
@@ -107,7 +132,7 @@ namespace GroupProject.Controllers {
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 
         public addEvent(event) {
-            this.$http.post('/api/event', event)
+            this.$http.post('/api/events', event)
                 .then((response) => {
                     this.$state.reload();
                 })
@@ -155,12 +180,14 @@ namespace GroupProject.Controllers {
 
     export class GroupController {
 
-        public users;
+        public groups;
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-            $http.get('/api/user').then((results) => {
-                this.users = results.data;
-            });
+            
+                $http.get('/api/groups').then((results) => {
+                    this.groups = results.data;
+                });
+            
         }
 
         public addGroup(group) {
@@ -171,7 +198,38 @@ namespace GroupProject.Controllers {
                 .catch((reason) => {
                     console.log(reason);
                 });
+        }
 
+        
+
+    }
+
+    export class GroupDetailsController {
+        public group;
+        public users;
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+            $http.get(`/api/groups/${$stateParams['id']}`)
+                .then((response) => {
+                    this.group = response.data;
+                });
+            $http.get('/api/user').then((results) => {
+                this.users = results.data;
+            });
+        }
+        
+       
+        public addMember(member) {
+            var p = { groupId: this.$stateParams.id, member: member };
+            this.$http.post(`/api/groups/${this.$stateParams.id}/members`, { params: p })
+                .then((response) => {
+                    
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(member);
+                    console.log(reason);
+                });
         }
 
 
@@ -296,10 +354,11 @@ namespace GroupProject.Controllers {
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
                 .then((response) => {
                     this.eventSearchData = response.data;
-                })
+                });
         }
 
     }
+<<<<<<< HEAD
 
 
     export class TestController {
@@ -313,3 +372,14 @@ namespace GroupProject.Controllers {
 }
 
 
+=======
+
+    export class TestController {
+        public message = 'Hello from the test page!';
+    }
+
+
+    
+
+}
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c

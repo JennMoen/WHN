@@ -220,25 +220,6 @@ namespace GroupProject.Services
 
             _eventRepo.Remove(_eventRepo.GetEventById(Event.Id).First(), currentUser);
 
-
-            //Event dbEvent = new Event()
-            //{
-            //    Name = EventInfo.Name,
-            //    Status = EventInfo.Status,
-            //    ImageUrl = EventInfo.ImageUrl,
-            //    //Feedback = EventInfo.Feedback,
-            //    EndTime = EventInfo.EndTime,
-            //    Description = EventInfo.Description,
-            //    DateOfEvent = EventInfo.DateOfEvent,
-            //    DateCreated = EventInfo.DateCreated,
-            //    //Creator = EventInfo.Creator,
-            //    Category = EventInfo.Category,
-            //    AdmissionPrice = EventInfo.AdmissionPrice,
-
-            //    //Id = EventInfo.Id
-            //};
-
-            //_eventRepo.Remove(dbEvent);
         }
 
     }

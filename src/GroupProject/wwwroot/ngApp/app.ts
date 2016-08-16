@@ -1,6 +1,10 @@
 namespace GroupProject {
 
+<<<<<<< HEAD
     angular.module('GroupProject', ['ui.router', 'ngResource', 'ngMaterial', 'ngMaterialDatePicker', 'ngAnimate']).config((
+=======
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages']).config((
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -67,6 +71,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.GroupController,
                 controllerAs: 'controller'
             })
+            .state('groupDetails', {
+                url: '/groupDetails/:id',
+                templateUrl: '/ngApp/views/groupDetails.html',
+                controller: GroupProject.Controllers.GroupDetailsController,
+                controllerAs: 'controller'
+            })
             .state('eventadd', {
                 url: '/eventadd',
                 templateUrl: '/ngApp/views/eventadd.html',
@@ -93,9 +103,14 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.EventDetailsController,
                 controllerAs: 'controller'
             })
+<<<<<<< HEAD
 
             .state('test', {
                 url: '/test/:id',
+=======
+            .state('test', {
+                url: '/test',
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
                 templateUrl: '/ngApp/views/test.html',
                 controller: GroupProject.Controllers.TestController,
                 controllerAs: 'controller'
