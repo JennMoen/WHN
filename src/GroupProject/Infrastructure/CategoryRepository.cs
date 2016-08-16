@@ -19,5 +19,20 @@ namespace GroupProject.Infrastructure
             return _db.Categories;
         }
 
+        public IQueryable<Category> GetCategoryByName(string catName)
+        {
+            return from c in _db.Categories
+                   where c.Name == catName
+                   select c;
+                
+        }
+
+        public IQueryable<string> GetCategoryImageUrlById(int catId)
+        {
+            return from c in _db.Categories
+                   where c.Id == catId
+                   select c.ImageUrl;
+        }
+
     }
 }

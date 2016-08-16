@@ -258,8 +258,11 @@ namespace GroupProject.Controllers {
                 });
         }
 
-        public deleteEvent(event) {
-            this.$http.delete(`/api/events/${event.id}`, event)
+        public deleteEvent(eventId) {
+            console.log(eventId);
+            var p = { eventId: eventId };
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/events/myevents`, {params: p})
                 .then((response) => {
                     this.$state.reload();
 
