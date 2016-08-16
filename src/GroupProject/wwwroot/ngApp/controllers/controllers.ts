@@ -105,7 +105,7 @@ namespace GroupProject.Controllers {
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) { }
 
         public addEvent(event) {
-            this.$http.post('/api/event', event)
+            this.$http.post('/api/events', event)
                 .then((response) => {
                     this.$state.reload();
                 })
@@ -152,12 +152,14 @@ namespace GroupProject.Controllers {
 
     export class GroupController {
 
-        public users;
+        public groups;
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-            $http.get('/api/user').then((results) => {
-                this.users = results.data;
-            });
+            
+                $http.get('/api/groups').then((results) => {
+                    this.groups = results.data;
+                });
+            
         }
 
         public addGroup(group) {
@@ -168,11 +170,43 @@ namespace GroupProject.Controllers {
                 .catch((reason) => {
                     console.log(reason);
                 });
+        }
 
+        
+
+    }
+
+    export class GroupDetailsController {
+        public group;
+        public users;
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+            $http.get(`/api/groups/${$stateParams['id']}`)
+                .then((response) => {
+                    this.group = response.data;
+                });
+            $http.get('/api/user').then((results) => {
+                this.users = results.data;
+            });
+        }
+        
+       
+        public addMember(member) {
+            var p = { groupId: this.$stateParams.id, member: member };
+            this.$http.post(`/api/groups/${this.$stateParams.id}/members`, { params: p })
+                .then((response) => {
+                    
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(member);
+                    console.log(reason);
+                });
         }
 
 
     }
+
     export class MyEventsController {
         public events;
         public myevents;
@@ -260,10 +294,10 @@ namespace GroupProject.Controllers {
     //        })
     //}
     //$http.get(`/api/events/${this.eInfo.id}`)
-//    .then((response) =>
-//    {
-//        this.eInfo = response.data;
-//    })
+    //    .then((response) =>
+    //    {
+    //        this.eInfo = response.data;
+    //    })
 
 
     export class EventDetailsController {
@@ -275,7 +309,7 @@ namespace GroupProject.Controllers {
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
                 .then((response) => {
                     this.eventSearchData = response.data;
-                })
+                });
         }
 
     }
@@ -284,5 +318,7 @@ namespace GroupProject.Controllers {
         public message = 'Hello from the test page!';
     }
 
-}
 
+    
+
+}

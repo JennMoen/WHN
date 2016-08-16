@@ -38,5 +38,27 @@ namespace GroupProject.Controllers
             return Ok();
 
         }
+
+        [HttpGet("{id}")]
+        public GroupDTO GetGroupById(int id)
+        {
+            return _groupService.GetGroupById(id);
+        }
+
+
+
+        [HttpPost("{groupId}/members")]
+        public IActionResult Add([FromBody]UserGroupDTO member, int groupId)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            member.GroupId = groupId;
+            _groupService.AddMember(member);
+
+            return Ok();
+        }
     }
 }

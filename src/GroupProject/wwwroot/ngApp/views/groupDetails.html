@@ -1,0 +1,18 @@
+﻿<div>Group Details</div>
+<div>Group name:</div>
+<div>{{controller.group.name}}</div>
+<div>Group members:</div>
+
+
+
+
+<h3>Add a Friend to this Group</h3>
+<input type="text" ng-model="search"
+       uib-tooltip="search" tooltip-placement="bottom" />
+<div ng-repeat="user in controller.users">
+    <div ng-click="controller.addMember(user)">{{user}}</div>
+    
+</div>
+
+
+<!-- | filter: search" ng-show="search"-->

@@ -15,13 +15,15 @@ namespace GroupProject.Services
             _uRepo = ur;
         }
 
-        public IList<UserDTO> GetUserNames() {
+        public IList<string> GetUserNames() {
             return (from u in _uRepo.GetAllUserNames()
-                    select new UserDTO()
-                    {
-                        UserName = u.UserName,
-                        MetropolitanArea = u.MetropolitanArea
-                    }).ToList();
+                    select u).ToList();
+                    
+                    //new UserDTO()
+                    //{
+                    //    UserName = u.UserName,
+                    //    //MetropolitanArea = u.MetropolitanArea
+                    //}).ToList();
 
 
 
