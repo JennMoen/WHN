@@ -21,20 +21,20 @@ namespace GroupProject.Data
             // Ensure db
             context.Database.EnsureCreated();
 
-            // Ensure Stephen (IsAdmin)
-            var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
-            if (stephen == null)
+            // Ensure rob (IsAdmin)
+            var rob = await userManager.FindByNameAsync("rseals13@gmail.com");
+            if (rob == null)
             {
                 // create user
-                stephen = new ApplicationUser
+                rob = new ApplicationUser
                 {
-                    UserName = "Stephen.Walther@CoderCamps.com",
-                    Email = "Stephen.Walther@CoderCamps.com"
+                    UserName = "rseals13@gmail.com",
+                    Email = "rseals13@gmail.com"
                 };
-                await userManager.CreateAsync(stephen, "Secret123!");
+                await userManager.CreateAsync(rob, "Secret123!");
 
                 // add claims
-                await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
+                await userManager.AddClaimAsync(rob, new Claim("IsAdmin", "true"));
             }
 
             // Ensure Mike (not IsAdmin)
@@ -148,7 +148,7 @@ namespace GroupProject.Data
                         Location = "Toyota Center, Tx-Houston",
                         Name = "Drake and Future",
                         Status = "public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -161,7 +161,7 @@ namespace GroupProject.Data
                         Location = "2005 Lake Robbins DriveSpring, Texas 77380 at the Cynthia Woods Pavillion TX-Spring",
                         Name = "The Dixie Chicks",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
 
                     new Event()
@@ -175,7 +175,7 @@ namespace GroupProject.Data
                         Location = "NRG Stadium, Houston, TX",
                         Name = "Swac Football Championship",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -188,7 +188,7 @@ namespace GroupProject.Data
                         Location = "Minute Maid park, Houston tx",
                         Name = "St. Louis Cardinals vs Houston Astros",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -201,7 +201,7 @@ namespace GroupProject.Data
                         Location = "Brown Education center at Houston zoo 6200 Hermann Park Drive Houston, Texas 77030",
                         Name = "Dinosaurs at the Hoston Zoo",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -214,7 +214,7 @@ namespace GroupProject.Data
                         Location = "El Centro de Corazón - Magnolia Health Center - 7037 Capitol St, STE N100, Houston, TX 77011",
                         Name = "'Be Healthy' Family Expo & Back-to-School Fair in Houston",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -227,7 +227,7 @@ namespace GroupProject.Data
                         Location = "Orinating On San Jacinto Street & Elgin Street Houston, Texas 77004",
                         Name = "The MLK Youth parade",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -240,7 +240,7 @@ namespace GroupProject.Data
                         Location = "Houston, Texas, United States, Texas 77004",
                         Name = "PMP certification training",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -253,7 +253,7 @@ namespace GroupProject.Data
                         Location = "2800 Kirby Cr. Ste. B-130 Houston, Texas 77098",
                         Name = "1/3 off all bottles every Sunday! in Houston",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -266,7 +266,7 @@ namespace GroupProject.Data
                         Location = "One Hope Blvd.Galveston,Texas 77554",
                         Name = "BrewMasters Craft Beer Festival in Galveston",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -279,7 +279,7 @@ namespace GroupProject.Data
                         Location = "Hobby Center for the Performing Arts 800 Bag by Houston,Texas 77002",
                         Name = "The lion King",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -292,7 +292,7 @@ namespace GroupProject.Data
                         Location = "13755 S. Main St Houston,Texas 77035",
                         Name = "The univerSoul circus",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -305,7 +305,7 @@ namespace GroupProject.Data
                         Location = "Audrey Jones Beck Building - MFAH5601 Main Street Houston, Texas 77005",
                         Name = "Franz X. Winterhalter Gallery",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -318,7 +318,7 @@ namespace GroupProject.Data
                         Location = "",
                         Name = "Yuriko Yamaguchi in Houston",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -331,7 +331,7 @@ namespace GroupProject.Data
                         Location = "1424 Westheimer Rd Houston tx",
                         Name = "Anvil bar and refuge",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -344,7 +344,7 @@ namespace GroupProject.Data
                         Location = "Huston tx",
                         Name = "West Alabama Ice house",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -357,7 +357,7 @@ namespace GroupProject.Data
                         Location = "",
                         Name = "Volunteer at Book Waregouse",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -370,7 +370,7 @@ namespace GroupProject.Data
                         Location = "Missouri City Branch Library1530 Texas Parkway Missouri City,Texas 77489",
                         Name = "Service and Volunteer fair",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -383,7 +383,7 @@ namespace GroupProject.Data
                         Location = "3401 Gulf freeway Houston, tx",
                         Name = "Metro Fight club",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {
@@ -396,7 +396,7 @@ namespace GroupProject.Data
                         Location = "2130 W Holcombe Blvd, Houston, TX 77030",
                         Name = "La fitness",
                         Status = "Public",
-                        Creator = stephen
+                        Creator = rob
                     },
                     new Event()
                     {

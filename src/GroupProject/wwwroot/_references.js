@@ -3,6 +3,7 @@
 /// <reference path="lib/angular-animate/angular-animate.js" />
 /// <reference path="lib/angular-aria/angular-aria.js" />
 /// <reference path="lib/angular-bootstrap/ui-bootstrap-tpls.js" />
+/// <reference path="lib/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js" />
 /// <reference path="lib/angular-material/angular-material.js" />
 /// <reference path="lib/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js" />
 /// <reference path="lib/angular-messages/angular-messages.js" />

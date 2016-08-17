@@ -43,13 +43,26 @@ namespace GroupProject.Infrastructure
         }
 
 
-        //get events that a user has created 
+         {
+             return from e in _db.Events
+                    where e.Id == eventId
+                    select e;
+         }*/
+
+        //public IQueryable<Event> GetEventById(int eventId)
+        //{
+        //    return from e in _db.Events
+        //           where e.Id == eventId
+        //           select e;
+        //}
+
         public IQueryable<string> GetEventByCreatorName(string creatorName)
         {
             return from e in _db.Events
                    where e.Creator.UserName == creatorName
                    select e.CreatorId;
         }
+
 
 
         //durrrr, add an event
