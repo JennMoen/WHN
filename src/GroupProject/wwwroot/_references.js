@@ -5,6 +5,7 @@
 /// <reference path="lib/angular-bootstrap/ui-bootstrap-tpls.js" />
 /// <reference path="lib/angular-material/angular-material.js" />
 /// <reference path="lib/angular-material-datetimepicker/js/angular-material-datetimepicker.min.js" />
+/// <reference path="lib/angular-material-icons/angular-material-icons.min.js" />
 /// <reference path="lib/angular-messages/angular-messages.js" />
 /// <reference path="lib/angular-resource/angular-resource.js" />
 /// <reference path="lib/angular-touch/angular-touch.js" />

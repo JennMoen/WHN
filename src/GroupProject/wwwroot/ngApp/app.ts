@@ -1,9 +1,11 @@
 namespace GroupProject {
 
-    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages']).config((
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages', 'ngMdIcons']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
-        $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        $mdThemingProvider: ng.material.IThemingProvider
+        
     ) => {
         // Define routes
         $stateProvider
@@ -115,6 +117,16 @@ namespace GroupProject {
 
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('deep-purple', {
+                'default': '800',
+                'hue-1': '900',
+                'hue-2': '500',
+                'hue-3' : '100'
+            })
+            .accentPalette('brown')
+            .warnPalette('deep-orange');
     });
 
     
