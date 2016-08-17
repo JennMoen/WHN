@@ -33,7 +33,7 @@ namespace GroupProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            _groupService.AddGroup(group);
+            _groupService.AddGroup(group, User.Identity.Name);
 
             return Ok();
 
@@ -46,19 +46,51 @@ namespace GroupProject.Controllers
         }
 
 
+        //not in use for now--controller for adding members to your group
+        //[HttpPost("{groupId}/members")]
+        //public IActionResult Add(int groupId, [FromBody]string member)
+        //{
+        //    //if (member == null) return BadRequest("You fucked up");
 
-        [HttpPost("{groupId}/members")]
-        public IActionResult Add([FromBody]UserGroupDTO member, int groupId)
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    UserGroupDTO ugd = new UserGroupDTO()
+        //    {
+        //        GroupId = groupId,
+        //        UserName = member
+        //    };
+
+        //    _groupService.AddMember(ugd);
+
+        //    return Ok();
+        //}
+
+        [HttpPost("join")]
+        public IActionResult Add([FromBody] int groupId)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            member.GroupId = groupId;
-            _groupService.AddMember(member);
 
+            _groupService.AddMember(User.Identity.Name, groupId);
             return Ok();
+
         }
+
+        [HttpGet("mygroups")]
+        public IList<UserGroupDTO> Get(string userName)
+        {
+            return _groupService.GetGroupsForUser(User.Identity.Name);
+
+
+        }
+
+       
+
+
     }
 }

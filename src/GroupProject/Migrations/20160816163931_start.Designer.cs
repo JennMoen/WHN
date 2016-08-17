@@ -8,7 +8,7 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160811155624_start")]
+    [Migration("20160816163931_start")]
     partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,6 +76,8 @@ namespace GroupProject.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ImageUrl");
 
                     b.Property<string>("Name");
 

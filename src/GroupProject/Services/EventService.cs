@@ -23,6 +23,7 @@ namespace GroupProject.Services
             _catRepo = cr;
         }
 
+
         // get a list of all events
         public IList<EventDTO> GetAllEvents()
         {
@@ -43,9 +44,13 @@ namespace GroupProject.Services
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
-                        //Attendees = e.Attendees, // (from a in e.Attendees select new EventUserDTO(){ ... }).ToList()
+                        Attendees = (from a in e.Attendees
+                                     select new EventUserDTO()
+                                     {
+                                     UserName = a.User.UserName
+                                     }).ToList(),
                         // Feedback = e.Feedback    // Same here
-
+                        NumGoing = e.Attendees.Count()
                     }).ToList();
         }
 
@@ -90,7 +95,7 @@ namespace GroupProject.Services
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
-                        //Attendees = e.Attendees,
+                        //Attendees = 
                         //Feedback = e.Feedback,
                     }).FirstOrDefault();
         }
@@ -133,7 +138,7 @@ namespace GroupProject.Services
 
         public void DeleteEventUser(int eventId, string userName)
         {
-           EventUser dbEventUser =  _euRepo.GetEventUserByUserId(eventId, userName).First();
+            EventUser dbEventUser = _euRepo.GetEventUserByUserId(eventId, userName).First();
 
             _euRepo.RemoveEventUser(dbEventUser, userName);
         }

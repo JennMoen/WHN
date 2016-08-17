@@ -18,7 +18,7 @@ namespace GroupProject.Infrastructure
         }
 
 
-        //gets all user names so a user can select them to invite to an event or add to a group
+        ////gets all user names so a user can select them to invite to an event or add to a group
         //public IQueryable<ApplicationUser> GetAllUserNames()
         //{
 
@@ -42,6 +42,6 @@ namespace GroupProject.Infrastructure
             return from u in _db.Users
                    select u.UserName;
         }
-       
+
     }
 }

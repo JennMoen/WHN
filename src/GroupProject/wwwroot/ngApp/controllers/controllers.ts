@@ -20,7 +20,7 @@ namespace GroupProject.Controllers {
                     this.categories = response.data;
                 });
         }
-        
+
 
         public readMore(searchData) {
 
@@ -150,16 +150,15 @@ namespace GroupProject.Controllers {
 
     }
 
-    export class GroupController {
+    export class MyGroupsController {
 
-        public groups;
+        public myGroups;
+        public events;
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-            
-                $http.get('/api/groups').then((results) => {
-                    this.groups = results.data;
-                });
-            
+            $http.get('/api/groups/mygroups').then((results) => {
+                this.myGroups = results.data;
+            });
         }
 
         public addGroup(group) {
@@ -172,7 +171,58 @@ namespace GroupProject.Controllers {
                 });
         }
 
-        
+
+    }
+
+    export class MyGroupDetailsController {
+        public group;
+        public events;
+        public users;
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+            $http.get(`/api/groups/${$stateParams['id']}`)
+                .then((response) => {
+                    this.group = response.data;
+                });
+            $http.get('/api/user').then((results) => {
+                this.users = results.data;
+            });
+            $http.get('/api/events')
+                .then((response) => {
+                    this.events = response.data;
+                    console.log(this.events);
+                });
+        }
+
+        public groupAttend(eventId) {
+            
+            this.$http.post('/api/eventgroups/${this.$stateParams.id}/attend', eventId)
+                .then((response) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                    console.log("You screwed up all sorts of bad");
+                    console.log(eventId);
+                });
+
+        }
+    }
+
+
+    export class GroupController {
+
+        public groups;
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+
+            $http.get('/api/groups').then((results) => {
+                this.groups = results.data;
+            });
+
+        }
+
+
 
     }
 
@@ -189,18 +239,29 @@ namespace GroupProject.Controllers {
                 this.users = results.data;
             });
         }
-        
-       
-        public addMember(member) {
-            var p = { groupId: this.$stateParams.id, member: member };
-            this.$http.post(`/api/groups/${this.$stateParams.id}/members`, { params: p })
+
+        //not in use for now--lets you add a person to your group
+        //public addMember(m) {
+        //    var member = JSON.stringify(m);
+        //    this.$http.post(`/api/groups/${this.$stateParams.id}/members`, member)
+        //        .then((response) => {
+        //            this.$state.reload();
+        //        })
+        //        .catch((reason) => {
+        //            console.log(member);
+        //            console.log(reason);
+        //        });
+        //}
+
+        public Join(groupId) {
+            this.$http.post(`/api/groups/join`, groupId
+            )
                 .then((response) => {
-                    
                     this.$state.reload();
                 })
                 .catch((reason) => {
-                    console.log(member);
                     console.log(reason);
+
                 });
         }
 
@@ -228,14 +289,13 @@ namespace GroupProject.Controllers {
             console.log(eventId);
             var p = { eventId: eventId };
             //this.$http.delete(`/api/events/${event.id}`, event)
-            this.$http.delete(`/api/events/myevents`, {params: p})
+            this.$http.delete(`/api/events/myevents`, { params: p })
                 .then((response) => {
                     this.$state.reload();
 
                 });
         }
     }
-
 
     export class EditEventController {
 
@@ -276,16 +336,6 @@ namespace GroupProject.Controllers {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     //public editing
     //constructor(private $http: ng.IHttpService) {
     //    $http.get('/api/events')
@@ -319,6 +369,6 @@ namespace GroupProject.Controllers {
     }
 
 
-    
+
 
 }

@@ -1,16 +1,17 @@
-﻿<h1>Manage my Groups</h1>
+﻿<h1>My Groups</h1>
 
 
+<div ng-repeat="group in controller.myGroups">
+    <div ui-sref="myGroupDetails({id: group.groupId})">{{group.groupName}}</div>
+
+</div>
 
 <h3>Create a Group</h3>
 <form ng-submit="controller.addGroup(group)">
-    <input type="text" ng-model="group.name" />
+    <div>Group Name: <input type="text" ng-model="group.name" /></div>
+    <div>Group Location: <input type="text" ng-model="group.location" /></div>
+    <div>Enter a Description for your Group:<textarea ng-model="group.description"></textarea></div>
     <input type="submit" value="Add Group" />
 </form>
 
 
-<div>My Current Groups</div>
-<br />
-<div ng-repeat="group in controller.groups">
-    <div ui-sref="groupDetails({id: group.id})">{{group.name}}</div>
-</div>

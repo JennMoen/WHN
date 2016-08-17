@@ -11,7 +11,10 @@ namespace GroupProject.Data
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public UserGroupDTO Members { get; set; }
+        public IList<UserGroupDTO> Members { get; set; }
+        public string Creator { get; set; }
+        public string Location { get; set; }
+        public string Description { get; set; }
         
     }
 }

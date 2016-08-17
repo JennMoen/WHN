@@ -176,9 +176,17 @@ namespace GroupProject.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("CreatorId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Location");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CreatorId");
 
                     b.ToTable("Groups");
                 });
@@ -353,6 +361,13 @@ namespace GroupProject.Migrations
                     b.HasOne("GroupProject.Models.ApplicationUser", "User")
                         .WithMany("Feedback")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("GroupProject.Models.Group", b =>
+                {
+                    b.HasOne("GroupProject.Models.ApplicationUser", "Creator")
+                        .WithMany()
+                        .HasForeignKey("CreatorId");
                 });
 
             modelBuilder.Entity("GroupProject.Models.UserGroup", b =>

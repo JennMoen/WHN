@@ -61,9 +61,9 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.UserController,
                 controllerAs: 'controller'
             })
-            .state('mygroups', {
-                url: '/mygroups',
-                templateUrl: '/ngApp/views/mygroups.html',
+            .state('groups', {
+                url: '/groups',
+                templateUrl: '/ngApp/views/groups.html',
                 controller: GroupProject.Controllers.GroupController,
                 controllerAs: 'controller'
             })
@@ -71,6 +71,18 @@ namespace GroupProject {
                 url: '/groupDetails/:id',
                 templateUrl: '/ngApp/views/groupDetails.html',
                 controller: GroupProject.Controllers.GroupDetailsController,
+                controllerAs: 'controller'
+            })
+            .state('myGroups', {
+                url: '/myGroups',
+                templateUrl: '/ngApp/views/myGroups.html',
+                controller: GroupProject.Controllers.MyGroupsController,
+                controllerAs: 'controller'
+            })
+            .state('myGroupDetails', {
+                url: '/myGroupDetails/ :id',
+                templateUrl: '/ngApp/views/myGroupDetails.html',
+                controller: GroupProject.Controllers.MyGroupDetailsController,
                 controllerAs: 'controller'
             })
             .state('eventadd', {
