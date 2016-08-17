@@ -8,8 +8,8 @@ using GroupProject.Data;
 namespace GroupProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160816152732_categoryImage")]
-    partial class categoryImage
+    [Migration("20160816163931_start")]
+    partial class start
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

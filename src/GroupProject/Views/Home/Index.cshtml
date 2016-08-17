@@ -3,13 +3,15 @@
     <title>WHN</title>
     <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
     <link href="~/lib/angular-material-datetimepicker/css/material-datetimepicker.min.css" rel="stylesheet" />
+    <link href="~/lib/angular-material/modules/js/icon/icon.css" rel="stylesheet"/>
     <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" >
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
-<body ng-controller="AccountController as account">
+<body ng-controller="AccountController as account" ng-cloak>
     <div class="container flex-col ai-c">
         @*<h1>WHN</h1>*@
+            <a ui-sref="groups">Find Groups</a> /
         
         <div class="flex-row f-jc-c ai-c place high rock bgnd-purple">
             <a ui-sref="home">Home</a> 
@@ -48,6 +50,8 @@
 
     <script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/angular-material-datetimepicker.js"></script>
     <script type="text/javascript" src="~/lib/angular-messages/angular-messages.js"></script>
+    <script type="text/javascript" src="~/lib/angular-material-icons/angular-material-icons.js"></script>
+    <script type="text/javascript" src="~/lib/angular-material/modules/js/core/core.js"></script>
 
     <!-- App Files-->
     <script src="~/ngapp/app.js"></script>

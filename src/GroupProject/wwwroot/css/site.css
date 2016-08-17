@@ -8,6 +8,11 @@ body {
     /*padding-top: 50px;
     padding-bottom: 20px;*/
 
+/* set attributes for ng-cloak */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
 
 
 
@@ -66,6 +71,13 @@ Carousel .carousel-caption {
     color: #C0B3A0;
 }
 
+.md-deep-purple {
+    color: #4527A0;
+}
+
+.bgnd-md-deep-purple {
+    background-color: #4527A0;
+}
 .high {
     font-size: 20px;
     width: 1069.5px;
@@ -393,8 +405,8 @@ a, ui-sref {
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+    /*color: #fff;
+    background: rgba(255,255,255,0.2);*/
 }
 
 .sidebar-nav li a:active,
@@ -410,11 +422,11 @@ a, ui-sref {
 
 .sidebar-nav > .sidebar-brand a {
     /*color: #999999;*/
-    color: #C0B3A0;
+    /*color: #C0B3A0;*/
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    /*color: #fff;*/
     background: none;
 }
 

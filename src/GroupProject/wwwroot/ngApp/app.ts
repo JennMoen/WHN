@@ -1,13 +1,15 @@
 namespace GroupProject {
 
-
+    angular.module('GroupProject', ['ui.router', 'ngResource', 'ui.bootstrap', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages', 'ngMdIcons']).config((
  
 
         angular.module('GroupProject', ['ui.router', 'ngResource', 'ngMaterial', 'ngMaterialDatePicker', 'ngMessages']).config((
 
             $stateProvider: ng.ui.IStateProvider,
             $urlRouterProvider: ng.ui.IUrlRouterProvider,
-            $locationProvider: ng.ILocationProvider
+        $locationProvider: ng.ILocationProvider,
+        $mdThemingProvider: ng.material.IThemingProvider
+        
         ) => {
             // Define routes
             $stateProvider
@@ -65,9 +67,9 @@ namespace GroupProject {
                     controller: GroupProject.Controllers.UserController,
                     controllerAs: 'controller'
                 })
-                .state('mygroups', {
-                    url: '/mygroups',
-                    templateUrl: '/ngApp/views/mygroups.html',
+            .state('groups', {
+                url: '/groups',
+                templateUrl: '/ngApp/views/groups.html',
                     controller: GroupProject.Controllers.GroupController,
                     controllerAs: 'controller'
                 })
@@ -75,6 +77,18 @@ namespace GroupProject {
                     url: '/groupDetails/:id',
                     templateUrl: '/ngApp/views/groupDetails.html',
                     controller: GroupProject.Controllers.GroupDetailsController,
+                controllerAs: 'controller'
+            })
+            .state('myGroups', {
+                url: '/myGroups',
+                templateUrl: '/ngApp/views/myGroups.html',
+                controller: GroupProject.Controllers.MyGroupsController,
+                controllerAs: 'controller'
+            })
+            .state('myGroupDetails', {
+                url: '/myGroupDetails/ :id',
+                templateUrl: '/ngApp/views/myGroupDetails.html',
+                controller: GroupProject.Controllers.MyGroupDetailsController,
                     controllerAs: 'controller'
                 })
                 .state('eventadd', {
@@ -126,6 +140,16 @@ namespace GroupProject {
 
             // Enable HTML5 navigation
             $locationProvider.html5Mode(true);
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('deep-purple', {
+                'default': '800',
+                'hue-1': '900',
+                'hue-2': '500',
+                'hue-3' : '100'
+            })
+            .accentPalette('brown')
+            .warnPalette('deep-orange');
         });
 
     angular.module('GroupProject').factory('authInterceptor', (

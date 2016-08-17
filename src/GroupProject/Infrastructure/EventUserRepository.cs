@@ -28,5 +28,13 @@ namespace GroupProject.Infrastructure
             _db.SaveChanges();
         }
 
+        public IQueryable<EventUser> GetAttendeesByEventId(int id)
+        {
+            return from eu in _db.EventUsers
+                   where eu.EventId == id
+                   select eu;
+
+        }
+
     }
 }

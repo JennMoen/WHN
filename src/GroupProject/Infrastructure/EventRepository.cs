@@ -15,6 +15,7 @@ namespace GroupProject.Infrastructure
             _db = db;
         }
 
+
         //get all events
         public IQueryable<Event> GetAllEvents()
         {
@@ -22,6 +23,7 @@ namespace GroupProject.Infrastructure
                    orderby e.DateOfEvent descending
                    select e;
         }
+
 
         //get single event by its id
         public IQueryable<Event> GetEventById(int id)
@@ -41,7 +43,6 @@ namespace GroupProject.Infrastructure
         }
 
 
-        /* public IQueryable<Event> GetEventById(int eventId)
          {
              return from e in _db.Events
                     where e.Id == eventId
@@ -63,18 +64,23 @@ namespace GroupProject.Infrastructure
         }
 
 
+
+        //durrrr, add an event
         public void Add(Event dbEvent)
         {
             _db.Events.Add(dbEvent);
             _db.SaveChanges();
         }
 
+
+        //get rid of an event you don't wanna go to!
         public void Remove(Event dbEvent, string user)
         {
             _db.Events.Remove(dbEvent);
             _db.SaveChanges();
         }
 
+        //user wants to attend an existing public event
         public void AddEventUsers(EventUser attendee)
         {
             if ((from eu in _db.EventUsers
@@ -87,6 +93,7 @@ namespace GroupProject.Infrastructure
             }
         }
 
+        //grabs events from eventuser table that match a single userId
         public IQueryable<EventUser> GetEventsForUser(string id)
         {
 
@@ -96,6 +103,7 @@ namespace GroupProject.Infrastructure
 
         }
 
+        //edit an event
         public void SaveUpdate(Event dbEvent)
         {
             _db.Events.Update(dbEvent);
