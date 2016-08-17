@@ -1,0 +1,11 @@
+﻿<h1>Find Groups in your Area</h1>
+
+<div><a ui-sref="myGroups">Go to my groups</a></div>
+
+
+
+<div ng-repeat="group in controller.groups">
+    <div ui-sref="groupDetails({id: group.id})">{{group.name}}</div>
+
+</div>
+

@@ -1,43 +1,42 @@
+
+/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+
 body {
     font-family: 'Roboto', sans-serif;
     /*padding-top: 50px;
     padding-bottom: 20px;*/
-}
 
 /* set attributes for ng-cloak */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
 
-/* Wrapping element 
- Set some basic padding to keep content from hitting the edges 
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
 
- Set widths on the form inputs since otherwise they're 100% wide 
-input,
+
+
+/*Set widths on the form inputs since otherwise they're 100% wide input,
 select,
 textarea {
     max-width: 280px;
 }
 
- Carousel 
-.carousel-caption {
+Carousel .carousel-caption {
     z-index: 10 !important;
 }
 
-    .carousel-caption p {
-        font-size: 20px;
-        line-height: 1.4;
-    }
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
 
 @media (min-width: 768px) {
     .carousel-caption {
         z-index: 10 !important;
-    }
-}*/
+    }*/
+
+    
 
 .bgnd-salmon {
     background-color: #E14658;
@@ -78,24 +77,24 @@ textarea {
 .bgnd-md-deep-purple {
     background-color: #4527A0;
 }
-.high{
-    font-size:24px;
-    width:1150.5px;
+.high {
+    font-size: 24px;
+    width: 1150.5px;
 }
 
 .photo {
     position: relative;
-    width:1150.5px;
-    height:767px;
+    width: 1150.5px;
+    height: 767px;
 }
 
 .titleBar {
     position: absolute;
-    top:500px;
-    width:1150.5px;
+    top: 500px;
+    width: 1150.5px;
     height: 65px;
-    background-color:#3f3250;
-    font-size:48px;
+    background-color: #3f3250;
+    font-size: 48px;
     color: #C0B3A0;
 }
 
@@ -108,34 +107,34 @@ textarea {
 }
 
 .homeList {
-    display:inline;
+    display: inline;
     /*width:auto;*/
 }
 
 .homeUList {
     list-style-type: none;
-    margin:0;
-    padding:0;
-    width:1150.5px;
-    text-align:center;
+    margin: 0;
+    padding: 0;
+    width: 1150.5px;
+    text-align: center;
 }
 
-* {
-    font-family:sans-serif;
-}
+
+    font-family: serif;
+
 
 a, ui-sref {
-    cursor:pointer;
-   color:#C0B3A0;
+    cursor: pointer;
+    color: #C0B3A0;
 }
 
-a:hover, ui-sref:hover {
-    color:#E14658;
-}
+    a:hover, ui-sref:hover {
+        color: #E14658;
+    }
 
-.flex-col{
+.flex-col {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     /*background-color: red;*/
 }
 
@@ -148,15 +147,15 @@ a:hover, ui-sref:hover {
 
 .sideBarUList {
     list-style-type: none;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     /*text-align:center;*/
 }
 
 .myeventsideBarUlist {
     list-style-type: none;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     /*text-align:center;*/
 }
 
@@ -165,39 +164,39 @@ a:hover, ui-sref:hover {
     font-size: 18px;
 }
 
-.myeventsideBarDiv{
+.myeventsideBarDiv {
     width: 30%;
     font-size: 18px;
 }
 
-.sideBarDiv>ul>li>a {
-    color:#3F3250;
+.sideBarDiv > ul > li > a {
+    color: #3F3250;
 }
 
-.myeventsideBarDiv>ul>li>a{
-    color:#3F3250;
+.myeventsideBarDiv > ul > li > a {
+    color: #3F3250;
 }
 
-.myeventsideBarDiv>ul>li>a:hover{
-    color: #E14658;
-}
+    .myeventsideBarDiv > ul > li > a:hover {
+        color: #E14658;
+    }
 
 
-.sideBarDiv>ul>li>a:hover {
+.sideBarDiv > ul > li > a:hover {
     color: #E14658;
 }
 
 .containerMainCol {
-    border:solid;
-    border-width:1px;
-    border-color:#22252C;
+    border: solid;
+    border-width: 1px;
+    border-color: #22252C;
 }
 
 
 
 .black-border {
     border-bottom: solid;
-    border-bottom-width:1px;
+    border-bottom-width: 1px;
     border-bottom-color: #22252C;
 }
 
@@ -207,12 +206,12 @@ a:hover, ui-sref:hover {
 }
 
 .content {
-    width:1150.5px;
+    width: 1150.5px;
 }
 
 .f-jc-sb {
-    display:flex;
-    justify-content:space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .f-wrap {
@@ -221,53 +220,51 @@ a:hover, ui-sref:hover {
 }
 
 .f-jc-fe {
-    display:flex;
-    justify-content:flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .f-jc-fs {
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
 }
 
 .f-jc-c {
-    display:flex;
-    justify-content:center;
+    display: flex;
+    justify-content: center;
 }
 
 .f-jc-sa {
-    display:flex;
-    justify-content:space-around
+    display: flex;
+    justify-content: space-around;
 }
 
 .img-fixed {
-    height:100px;
-    width:100px;
+    height: 100px;
+    width: 100px;
 }
 
 .f-as {
-    display:flex;
-    align-self:center;
+    display: flex;
+    align-self: center;
 }
 
 .description-width-and-height {
     width: 400px;
-    height:auto;
+    height: auto;
 }
 
 .ta-center {
-    
-    text-align:center;
+    text-align: center;
 }
 
 .p-fixed {
-    position:fixed;
-    height:auto;
-    
+    position: fixed;
+    height: auto;
 }
 
 .ai-c {
-    display:flex;
+    display: flex;
     align-items: center;
 }
 
@@ -288,8 +285,11 @@ a:hover, ui-sref:hover {
 
 .md-button.md-raised:not([disabled]) {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+    color: #3F3250;
+
     color: #3F3250
-    
+
 }
 
 .md-button.md-cornered {
@@ -302,6 +302,7 @@ a:hover, ui-sref:hover {
 .ta-j {
     text-align: justify;
 }
+
 
 .f-as-c {
     display:flex;
@@ -326,6 +327,7 @@ a:hover, ui-sref:hover {
     color:white;
     background-color:#0D47A1;
 }
+
 
 /* Toggle Styles */
 
@@ -453,3 +455,4 @@ a:hover, ui-sref:hover {
 /*!
  * end - Simple Sidebar
 /*!
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c

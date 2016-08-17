@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
+
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using GroupProject.Data;
 using GroupProject.Services;
 using Microsoft.AspNetCore.Authorization;
 using System;
 
+
+
 namespace GroupProject.Controllers
 {
     [Route("api/[controller]")]
-
     public class EventsController : Controller
     {
         private EventService _eventService;
@@ -19,6 +21,7 @@ namespace GroupProject.Controllers
             _eventService = es;
             _categoryService = cs;
         }
+
 
 
         [HttpGet]
@@ -33,18 +36,17 @@ namespace GroupProject.Controllers
         //    return _eventService.GetEventsForCategory();
 
         //}
+
         [HttpGet("{eventId}")]
         public EventDTO GetEventById(int eventId)
         {
             return _eventService.GetEventById(eventId);
         }
 
-
         [HttpPost]
         [Authorize]
         public IActionResult PostEvents([FromBody] EventDTO Event)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -52,11 +54,8 @@ namespace GroupProject.Controllers
 
             _eventService.CreateEvent(Event, User.Identity.Name);
 
-
             return Ok();
         }
-
-
 
         [HttpDelete("{id}")]
         public IActionResult DeleteEvent(EventDTO Event, int id)
@@ -68,12 +67,13 @@ namespace GroupProject.Controllers
             Event.Id = id;
             _eventService.DeleteEvent(Event, User.Identity.Name);
 
+            _eventService.CreateEvent(Event, User.Identity.Name);
 
             return Ok();
         }
 
         [HttpPut("{eventId}")]
-        public IActionResult UpdateEvent([FromBody] EventDTO Event,[FromQuery] int eventId)
+        public IActionResult UpdateEvent([FromBody] EventDTO Event, [FromQuery] int eventId)
         {
             if (!ModelState.IsValid)
             {
@@ -82,15 +82,13 @@ namespace GroupProject.Controllers
             Event.Id = eventId;
             _eventService.UpdateEvent(Event, eventId);
 
+
             return Ok();
         }
 
-
-        [HttpPost("attend")]
-        public IActionResult Add([FromBody] int eventId)
+        [HttpPost("{id}/attend")]
+        public IActionResult Add(int eventId, string user)
         {
-
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -135,3 +133,13 @@ namespace GroupProject.Controllers
 
     }
 }
+
+
+
+
+
+
+
+
+
+

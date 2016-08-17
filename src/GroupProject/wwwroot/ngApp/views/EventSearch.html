@@ -4,8 +4,18 @@
         <ul class="flex-col sideBarUList p-fixed">
 
 
+
             <li><a ui-sref="eventSearch">Find Events</a></li>
 
+<<<<<<< HEAD
+          
+
+
+
+           
+
+            <!--<li><a ui-sref="">Find Events</a></li>-->
+=======
             <li>
                 <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
                 <!--<form name="searchByCategory">-->
@@ -23,6 +33,7 @@
             </li>
                 <li><a ui-sref="eventSearch">Find Events</a></li>
                 <!--<li><a ui-sref="">Find Events</a></li>-->
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
 
                 <li><a ui-sref="eventAdd">Create Event</a></li>
                 <li><a ui-sref="mygroups">My Groups</a></li>
@@ -36,20 +47,46 @@
         <div class="flex-col mainCol containerMainCol" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
         <!--<div class="flex-col mainCol containerMainCol" ng-repeat="searchData in controller.eventSearchData">-->
                 <div class="flex-row f-jc-sb mainCol"><div ng-model="searchData.name">{{searchData.name}}</div><div ng-model="searchData.dateOfEvent">{{searchData.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
+            
                 <div class="flex-row f-jc-sa mainCol">
                     <img ng-src="{{searchData.imageUrl}}" ng-model="searchData.imageUrl" class="img-fixed" />
+                   
                     <p class="f-wrap description-width-and-height collapse ta-j" ng-model="searchData.description">{{searchData.description}}<a>+Read More</a></p>
                 </div>
 
-                <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
-                <div class="flex-row f-jc-fe mainCol">More Info</div>
-                <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
-            <div class="flex-row f-jc-fe mainCol"><a ui-sref="editEvent({id:searchData.id})">Edit Event</a></div>
-                <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
-                <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
+<<<<<<< HEAD
+
+            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
+            <div class="flex-row f-jc-fe mainCol">More Info</div>
+            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
+
+
+
+            <!--<div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
+            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>-->
+
 
             
+
+
+            <div class="flex-row f-jc-fe mainCol"><a ui-sref="editEvent({id:searchData.id})">Edit Event</a></div>
+
+        </div>
+=======
+                <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
+                <div class="flex-row f-jc-fe mainCol">More Info</div>
+            
+                <div class="flex-row f-jc-sb mainCol"><div>Number of people going: {{searchData.numGoing}}</div><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
+                <div class="flex-row f-jc-fe mainCol"><a ui-sref="editEvent({id:searchData.id})">Edit Event</a></div>
+                <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
+                <div class="flex-row f-jc-sb mainCol">
+                    
+            <a ui-sref="EventDetails({id:searchData.id})">More Info</a>
+                </div>
+
+
             </div>
+>>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
 
         <!--9 ng-repeat="searchData" in controller.eventSearchData
         11 {{searchData.dateOfEvent}}

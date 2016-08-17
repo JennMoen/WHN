@@ -27,6 +27,8 @@ namespace GroupProject.Data
         public DateTime DateOfEvent { get; set; }
         public DateTime EndTime { get; set; }
 
+        public int NumGoing { get; set; }
+
         public IList<EventUserDTO> Attendees { get; set; }  // Turn into IList<EventUserDTO>
         public IList<FeedbackDTO> Feedback { get; set; }    // Turn into IList<FeedbackDTO>
        

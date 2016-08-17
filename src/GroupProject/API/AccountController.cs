@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using GroupProject.Models;
 using GroupProject.Services;
 using GroupProject.ViewModels.Account;
+using static GroupProject.Services.IEmailSender;
 
 namespace GroupProject.Controllers
 {
@@ -455,6 +456,8 @@ namespace GroupProject.Controllers
                 return View(model);
             }
         }
+
+     
 
         #region Helpers
 

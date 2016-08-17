@@ -13,6 +13,7 @@
     "angular-touch": "1.x",
     "angular-ui-router": "0.x",
     "angular-material": "^1.0.9",
-    "angular-material-datetimepicker": "^1.4.0"
+    "angular-material-datetimepicker": "^1.4.0",
+    "angular-bootstrap-calendar": "^0.23.0"
   }
 }

@@ -18,6 +18,9 @@ namespace GroupProject
 {
     public class Startup
     {
+        public static string AdminEmailAddress;
+        public static string AdminEmailPw;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -33,6 +36,9 @@ namespace GroupProject
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            AdminEmailAddress = Configuration["AdminEmail"];
+            AdminEmailPw = Configuration["AdminEmailPw"];
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -59,9 +65,10 @@ namespace GroupProject
 
             services.AddScoped<EventRepository>();
             services.AddScoped<EventService>();
+            services.AddScoped<EmailService>();
 
             services.AddScoped<UserRepository>();
-            services.AddScoped<UserService>();            
+            services.AddScoped<UserService>();
 
             services.AddScoped<FeedbackRepository>();
             services.AddScoped<FeedbackService>();
@@ -71,20 +78,23 @@ namespace GroupProject
 
             services.AddScoped<EventUserRepository>();
 
+            services.AddScoped<EventGroupRepository>();
+            services.AddScoped<EventGroupService>();
 
-             // add security policies
-                services.AddAuthorization(options =>
-                {
-                    options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
-                });
-          
 
-                        // add security policies
-                        services.AddAuthorization(options =>
-                        {
-                            options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
-                        });
-            
+            // add security policies
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
+            });
+
+
+            // add security policies
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim("IsAdmin"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -119,8 +129,8 @@ namespace GroupProject
                 );
             });
 
-           // initialize sample data
-           SampleData.Initialize(app.ApplicationServices).Wait();
+            // initialize sample data
+            SampleData.Initialize(app.ApplicationServices).Wait();
 
         }
     }

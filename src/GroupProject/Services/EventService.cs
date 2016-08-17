@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using GroupProject.Data;
 using GroupProject.Infrastructure;
 using GroupProject.Models;
+using System.Net.Mail;
+using SendGrid;
+using System.Net;
+using System.Net.Mime;
 
 namespace GroupProject.Services
 {
@@ -12,16 +16,21 @@ namespace GroupProject.Services
     {
         private EventRepository _eventRepo;
         private UserRepository _uRepo;
-        private EventUserRepository _euRepo;
+        private EmailService _emailService;
         private CategoryRepository _catRepo;
 
-        public EventService(EventRepository er, UserRepository ur, EventUserRepository eur, CategoryRepository cr)
+
+        public EventService(EventRepository er, UserRepository ur, EmailService es)
         {
             _eventRepo = er;
             _uRepo = ur;
-            _euRepo = eur;
+            _emailService = es;
             _catRepo = cr;
+        {
+            
+           
         }
+
 
         // get a list of all events
         public IList<EventDTO> GetAllEvents()
@@ -43,12 +52,15 @@ namespace GroupProject.Services
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
-                        //Attendees = e.Attendees, // (from a in e.Attendees select new EventUserDTO(){ ... }).ToList()
+                        Attendees = (from a in e.Attendees
+                                     select new EventUserDTO()
+                                     {
+                                     UserName = a.User.UserName
+                                     }).ToList(),
                         // Feedback = e.Feedback    // Same here
-
+                        NumGoing = e.Attendees.Count()
                     }).ToList();
         }
-
 
         public IList<EventDTO> GetEventsByCreatorId(string Id)
         {
@@ -72,7 +84,6 @@ namespace GroupProject.Services
                     }).ToList();
         }
 
-
         public EventDTO GetEventById(int eventId)
         {
             return (from e in _eventRepo.GetEventById(eventId)
@@ -91,13 +102,10 @@ namespace GroupProject.Services
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
                         //Attendees = e.Attendees,
-                        //Feedback = e.Feedback,
                     }).FirstOrDefault();
         }
 
-
         public void CreateEvent(EventDTO Event, string currentUser)
-
         {
             Event dbEvent = new Event()
             {
@@ -116,8 +124,42 @@ namespace GroupProject.Services
                 //Category = Event.Category,
                 CreatorId = _uRepo.GetUser(currentUser).First().Id
             };
-            _eventRepo.Add(dbEvent);
 
+
+            try
+            {
+                //string sgUsername = "robseals13";
+                //string sgPassword = "hughey1398SMU";
+
+
+                var user = _uRepo.GetUser(currentUser).First();
+                List<string> to = new List<string>();
+                List<string> toNames = new List<string>();
+
+                to.Add(user.Email);
+                toNames.Add(user.UserName);
+
+                _emailService.SendMessage(to.ToArray(), toNames.ToArray(), Startup.AdminEmailAddress, "WHN Admin",
+                    Event.Name + " Created",
+                    "Your event, " + Event.Name + ", has been successfully created.\n\nBest regards,\nWHN Team");
+                //var myMessage = new SendGrid();
+
+                
+
+
+                //var credentials = new NetworkCredential(sgUsername, sgPassword);
+
+                //var transportWeb = new Web(credentials);
+
+                //// Send the email.
+                //transportWeb.Deliver(myMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            _eventRepo.Add(dbEvent);
         }
 
         public void AddEventUser(string currentUser, int eventId)
@@ -133,7 +175,7 @@ namespace GroupProject.Services
 
         public void DeleteEventUser(int eventId, string userName)
         {
-           EventUser dbEventUser =  _euRepo.GetEventUserByUserId(eventId, userName).First();
+            EventUser dbEventUser = _euRepo.GetEventUserByUserId(eventId, userName).First();
 
             _euRepo.RemoveEventUser(dbEventUser, userName);
         }
