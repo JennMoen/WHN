@@ -8,19 +8,17 @@
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account">
-    <div class="container">
-        <h1>WHN</h1>
-        <div class="high rock bgnd-purple">
-            <a ui-sref="home">Home</a> /
-            <a ui-sref="test">testpage</a> /
-            <a ui-sref="eventSearch">Find Events</a> /
-            <a ui-sref="eventAdd">AddEvent</a> /
-            <a ui-sref="editEvent">EditEvents</a> /
-            <a ui-sref="MyEvents">MyEvents</a> /
-            <a ui-sref="about">About</a> /
+    <div class="container flex-col ai-c">
+        @*<h1>WHN</h1>*@
+        
+        <div class="flex-row f-jc-c ai-c place high rock bgnd-purple">
+            <a ui-sref="home">Home</a> 
+            <a ui-sref="test">testpage</a> 
+            <a ui-sref="eventSearch">Find Events</a> 
+            <a ui-sref="about">About</a> 
 
-            <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a> /
-            <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a> /
+            <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a> 
+            <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a> 
             @*<div ng-show="account.isLoggedIn()">
 
             <a ui-sref="test">Test</a> /

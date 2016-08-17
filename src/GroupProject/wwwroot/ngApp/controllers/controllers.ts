@@ -28,8 +28,7 @@ namespace GroupProject.Controllers {
 
 
         public Attend(eventId) {
-            this.$http.post(`/api/events/attend`, eventId
-            )
+            this.$http.post(`/api/events/attend`, eventId)
                 .then((response) => {
                     this.$state.reload();
                 })
