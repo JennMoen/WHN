@@ -46,5 +46,12 @@ namespace GroupProject.Controllers
             return _eGroupService.GetEventsForGroup(groupId);
 
         }
+
+        [HttpGet("{eventId}/groupsattending")]
+        public IList<EventGroupDTO> GetGroupsforEvent(int eventId)
+        {
+            return _eGroupService.GetGroupsforEvent(eventId);
+
+        }
     }
 }

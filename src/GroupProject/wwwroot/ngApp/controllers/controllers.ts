@@ -181,10 +181,14 @@ namespace GroupProject.Controllers {
 
         public myGroups;
         public events;
+        public groups;
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             $http.get('/api/groups/createdgroups').then((results) => {
                 this.myGroups = results.data;
+            });
+            $http.get('/api/groups/mygroups').then((results) => {
+                this.groups = results.data;
             });
         }
 
@@ -195,6 +199,17 @@ namespace GroupProject.Controllers {
                 })
                 .catch((reason) => {
                     console.log(reason);
+                });
+        }
+
+        public leaveGroup(groupId) {
+            console.log(groupId);
+            var p = { groupId: groupId };
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/groups/mygroups`, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+
                 });
         }
     }
@@ -410,12 +425,18 @@ namespace GroupProject.Controllers {
 
     export class EventDetailsController {
         public eventSearchData;
+        public groups;
+
         constructor(private $http: ng.IHttpService, private $stateParams) {
             var p = { eventId: $stateParams.id };
 
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
                 .then((response) => {
                     this.eventSearchData = response.data;
+                });
+            $http.get(`/api/eventgroups/${$stateParams.id}/groupsattending`, { params: p })
+                .then((response) => {
+                    this.groups = response.data;
                 });
         }
 

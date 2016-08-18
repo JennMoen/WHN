@@ -18,7 +18,7 @@
 
 
 <h3> Events this Group is Attending: </h3>
-<div ng-repeat="e in controller.eventGroups">
+<div ng-repeat="e in controller.eventGroups" ui-sref="EventDetails({id:e.eventId})">
     {{e.eventName}}
 
 </div>

@@ -99,8 +99,17 @@ namespace GroupProject.Controllers
 
         }
 
-       
+       [HttpDelete("mygroups")]
+       public IActionResult DeleteUserGroup([FromQuery]int groupId)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _ugService.DeleteUserGroup(groupId, User.Identity.Name);
+            return Ok();
+        }
 
     }
 }

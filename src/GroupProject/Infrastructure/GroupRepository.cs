@@ -52,16 +52,7 @@ namespace GroupProject.Infrastructure
 
         }
 
-        //gets all groups from userGroups table that match a single userId
-        public IQueryable<UserGroup> GetGroupsForUser(string id)
-            {
-
-            return from ug in _db.UserGroups
-                   where ug.User.UserName == id
-                   select ug;
-
-
-            }
+        
 
         //get all groups that a user created
         public IQueryable<Group> GetGroupsByCreatorId(string id)

@@ -41,5 +41,14 @@ namespace GroupProject.Infrastructure
 
         }
 
+        //grab groups for a certain event
+        public IQueryable<EventGroup> GetGroupsForEvent(int eventId)
+        {
+            return from eg in _db.EventGroups
+                   where eg.Event.Id == eventId
+                   select eg;
+
+        }
+
     }
 }

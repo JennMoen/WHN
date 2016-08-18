@@ -27,7 +27,7 @@ namespace GroupProject.Services
             {
                 EventId = _eventRepo.GetEventById(eventGroup.EventId).First().Id,
                 GroupId = eventGroup.GroupId
-                
+
             };
 
             _egRepo.addEventGroup(dbEventGroup);
@@ -40,12 +40,27 @@ namespace GroupProject.Services
             return (from eg in _egRepo.GetGroupEvents(groupId)
                     select new EventGroupDTO()
                     {
-                        EventId= eg.Event.Id,
+                        EventId = eg.Event.Id,
                         EventName = eg.Event.Name,
                         GroupId = eg.Group.Id,
                         GroupName = eg.Group.Name
-            }).ToList();
+                    }).ToList();
 
         }
+
+        public IList<EventGroupDTO> GetGroupsforEvent(int eventId)
+        {
+            return (from eg in _egRepo.GetGroupsForEvent(eventId)
+                    select new EventGroupDTO()
+                    {
+                        EventId = eg.Event.Id,
+                        EventName = eg.Event.Name,
+                        GroupId = eg.Group.Id,
+                        GroupName = eg.Group.Name
+
+                    }).ToList();
+
+        }
+
     }
 }

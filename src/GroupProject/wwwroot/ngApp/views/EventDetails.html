@@ -13,6 +13,8 @@
         </ul>
 
     </div>
+
+    
     <div class="flex-row mainCol containerMainCol">
         <div class="flex-col mainCol">
             {{controller.eventSearchData.category.name}}
@@ -25,12 +27,23 @@
             <h4 class="ta-center underline">Admission Price: {{controller.eventSearchData.admissionPrice | currency}}</h4>
             <div class="ta-center">Ends: {{controller.eventSearchData.endTime | date: 'h:mm a EEEE MMMM d, yyyy'}}</div>
             <p class="f-wrap description-width-and-height collapse ta-j">{{controller.eventSearchData.description}}</p>
+            <p>Groups Near you Attending this Event:</p>
+            <div ng-repeat="g in controller.groups">
+                {{g.groupName}}
+            </div>
         </div>
+       
         <div class="flex-col mainCol f-jc-fe">
+            
             <div class="f-jc-fe"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
         </div>
-
+        
     </div>
+
+
+
+
+    
     <!--<div class="flex-col mainCol containerMainCol">
         <div class="flex-col mainCol containerMainCol">
             <div class="flex-row f-jc-sb mainCol">
