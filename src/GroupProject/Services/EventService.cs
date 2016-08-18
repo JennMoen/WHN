@@ -18,19 +18,18 @@ namespace GroupProject.Services
         private UserRepository _uRepo;
         private EmailService _emailService;
         private CategoryRepository _catRepo;
-        private EventUserRepository _euRepo;
+       
 
-        public EventService(CategoryRepository cr, EventRepository er, UserRepository ur, EmailService es, EventUserRepository eur)
-        public EventService(EventRepository er, UserRepository ur, EmailService es, CategoryRepository cr, EventUserRepository eur)
+
+        public EventService(EventRepository er, UserRepository ur, EmailService es, CategoryRepository cr)
         {
             _eventRepo = er;
             _uRepo = ur;
             _emailService = es;
             _catRepo = cr;
-            _euRepo = eur;
-        
             
-           
+
+        }
         
 
 
@@ -63,6 +62,7 @@ namespace GroupProject.Services
                         NumGoing = e.Attendees.Count()
                     }).ToList();
         }
+
 
         public IList<EventDTO> GetEventsByCreatorId(string Id)
         {
@@ -163,55 +163,6 @@ namespace GroupProject.Services
             }
 
             _eventRepo.Add(dbEvent);
-        }
-
-        public void AddEventUser(string currentUser, int eventId)
-        {
-            EventUser dbEventUser = new EventUser()
-            {
-                EventId = _eventRepo.GetEventById(eventId).First().Id,
-                UserId = _uRepo.GetUser(currentUser).First().Id
-            };
-
-            _eventRepo.AddEventUsers(dbEventUser);
-        }
-
-        public void DeleteEventUser(int eventId, string userName)
-        {
-            EventUser dbEventUser = _euRepo.GetEventUserByUserId(eventId, userName).First();
-
-            _euRepo.RemoveEventUser(dbEventUser, userName);
-        }
-
-        public IList<EventUserDTO> GetEventsForUser(string currentUser)
-        {
-
-            return (from eu in _eventRepo.GetEventsForUser(currentUser)
-                    select new EventUserDTO()
-                    {
-                        EventId = eu.Event.Id,
-                        UserName = eu.User.UserName,
-                        EventName = eu.Event.Name,
-
-                        Events = new EventDTO()
-                        {
-                            Id = eu.Event.Id,
-                            Name = eu.Event.Name,
-                            Description = eu.Event.Description,
-                            Status = eu.Event.Status,
-                            Location = eu.Event.Location,
-                            AdmissionPrice = eu.Event.AdmissionPrice,
-                            ImageUrl = eu.Event.ImageUrl,
-                            Category = eu.Event.Category,
-                            DateCreated = eu.Event.DateCreated,
-                            DateOfEvent = eu.Event.DateOfEvent,
-                            EndTime = eu.Event.EndTime,
-                            CreatorName = eu.Event.Creator.UserName
-
-                        }
-
-                    }).ToList();
-
         }
 
         public void UpdateEvent(EventDTO Event, int id)

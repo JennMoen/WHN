@@ -12,18 +12,18 @@
 
 
 <h3>Add Events for Your Groups</h3>
-<form ng-submit="controller.groupAttend(controller.event.id)">
-    <select>
 
-        <option ng-repeat="event in controller.events">{{event.name}}
-        </option>
-    </select>
-<input type="submit" value="Add Event" />    
+<form  ng-submit="controller.groupAttend(event.id)">
+    
+        <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
+
+        <input type="submit" value="Add Event" />
+   
 </form>
 
 
 <h3> Events this Group is Attending: </h3>
-<div ng-repeat="event in controller.group.events">
-    {{event.name}}
+<div ng-repeat="e in controller.eventGroups">
+    <div>{{e.eventName}}</div>
 
 </div>

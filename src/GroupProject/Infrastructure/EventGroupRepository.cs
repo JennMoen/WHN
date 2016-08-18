@@ -29,6 +29,17 @@ namespace GroupProject.Infrastructure
                 _db.SaveChanges();
 
             }
+
         }
+
+        //grab all events for a certain group
+        public IQueryable<EventGroup> GetGroupEvents(int groupId)
+        {
+            return from eg in _db.EventGroups
+                   where eg.GroupId == groupId
+                   select eg;
+
+        }
+
     }
 }

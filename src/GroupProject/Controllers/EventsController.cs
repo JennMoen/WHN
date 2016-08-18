@@ -15,11 +15,13 @@ namespace GroupProject.Controllers
     {
         private EventService _eventService;
         private CategoryService _categoryService;
+        private EventUserService _euService;
 
-        public EventsController(EventService es, CategoryService cs)
+        public EventsController(EventService es, CategoryService cs, EventUserService eus)
         {
             _eventService = es;
             _categoryService = cs;
+            _euService = eus;
         }
 
 
@@ -94,7 +96,7 @@ namespace GroupProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            _eventService.AddEventUser(User.Identity.Name, eventId);
+            _euService.AddEventUser(User.Identity.Name, eventId);
 
             return Ok();
         }
@@ -106,7 +108,7 @@ namespace GroupProject.Controllers
         public IList<EventUserDTO> Get(string userName)
         {
 
-            return _eventService.GetEventsForUser(User.Identity.Name);
+            return _euService.GetEventsForUser(User.Identity.Name);
 
 
         }
@@ -120,7 +122,7 @@ namespace GroupProject.Controllers
             }
             
             
-            _eventService.DeleteEventUser(eventId, User.Identity.Name);
+            _euService.DeleteEventUser(eventId, User.Identity.Name);
 
             return Ok();
         }

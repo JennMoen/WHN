@@ -63,6 +63,15 @@ namespace GroupProject.Infrastructure
 
             }
 
+        //get all groups that a user created
+        public IQueryable<Group> GetGroupsByCreatorId(string id)
+        {
+            return from g in _db.Groups
+                   where g.Creator.UserName == id
+                   select g;
+
+        }
+
     }
 
 }

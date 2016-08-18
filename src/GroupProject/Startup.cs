@@ -77,9 +77,13 @@ namespace GroupProject
             services.AddScoped<GroupService>();
 
             services.AddScoped<EventUserRepository>();
+            services.AddScoped<EventUserService>();
 
             services.AddScoped<EventGroupRepository>();
             services.AddScoped<EventGroupService>();
+
+            services.AddScoped<UserGroupRepository>();
+            services.AddScoped<UserGroupService>();
 
 
             // add security policies
