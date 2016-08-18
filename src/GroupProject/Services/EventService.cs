@@ -18,18 +18,19 @@ namespace GroupProject.Services
         private UserRepository _uRepo;
         private EmailService _emailService;
         private CategoryRepository _catRepo;
+        private EventUserRepository _euRepo;
 
-
-        public EventService(EventRepository er, UserRepository ur, EmailService es)
+        public EventService(CategoryRepository cr, EventRepository er, UserRepository ur, EmailService es, EventUserRepository eur)
         {
             _eventRepo = er;
             _uRepo = ur;
             _emailService = es;
             _catRepo = cr;
-        {
+            _euRepo = eur;
+        }
             
            
-        }
+        
 
 
         // get a list of all events
