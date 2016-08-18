@@ -2,35 +2,37 @@
 <head>
     <title>WHN</title>
     <link href="~/lib/angular-material/angular-material.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/lib/angular-material-datetimepicker/css/material-datetimepicker.min.css" rel="stylesheet" />
-    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" >
+    <link href="~/lib/angular-material/modules/js/icon/icon.css" rel="stylesheet" />
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
 </head>
-<body ng-controller="AccountController as account">
-    <div class="container">
-        <h1>WHN</h1>
-        <div class="high rock bgnd-purple">
-            <a ui-sref="home">Home</a> /
-            <a ui-sref="test">testpage</a> /
-            <a ui-sref="eventSearch">Find Events</a> /
-            <a ui-sref="groups">Find Groups</a> /
-            <a ui-sref="eventAdd">AddEvent</a> /
-            <a ui-sref="editEvent">EditEvents</a> /
-            <a ui-sref="MyEvents">MyEvents</a> /
-            <a ui-sref="about">About</a> /
+<body ng-controller="AccountController as account" ng-cloak>
+    <div class="container flex-col ai-c">
+        @*<h1>WHN</h1>*@
 
-            <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a> /
-            <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a> /
-            @*<div ng-show="account.isLoggedIn()">
 
-            <a ui-sref="test">Test</a> /
+        <div class="flex-row f-jc-c ai-c place high rock bgnd-purple">
+            <a ui-sref="home">Home</a>
+            <a ui-sref="test">testpage</a>
+            <a ui-sref="groups">Find Groups</a>
+            <a ui-sref="eventSearch">Find Events</a>
+            <a ui-sref="about">About</a>
+
             <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
             <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-            <div ng-show="account.isLoggedIn()">
+            @*<div ng-show="account.isLoggedIn()">
 
-                Welcome, {{account.getUserName()}} <a href="/myaccount">(My Account)</a>
-            </div>*@
+                <a ui-sref="test">Test</a> /
+                <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
+                <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                <div ng-show="account.isLoggedIn()">
+
+                    Welcome, {{account.getUserName()}} <a href="/myaccount">(My Account)</a>
+                </div>*@
         </div>
         <ui-view></ui-view>
     </div>
@@ -41,6 +43,7 @@
     <script src="~/lib/angular-resource/angular-resource.js"></script>
     <script src="~/lib/angular-animate/angular-animate.js"></script>
     <script src="~/lib/angular-touch/angular-touch.js"></script>
+
     <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="~/lib/angular-aria/angular-aria.js"></script>
     <script src="~/lib/angular-material/angular-material.js"></script>
@@ -51,6 +54,8 @@
 
     <script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/angular-material-datetimepicker.js"></script>
     <script type="text/javascript" src="~/lib/angular-messages/angular-messages.js"></script>
+    <script type="text/javascript" src="~/lib/angular-material-icons/angular-material-icons.js"></script>
+    <script type="text/javascript" src="~/lib/angular-material/modules/js/core/core.js"></script>
 
     <!-- App Files-->
     <script src="~/ngapp/app.js"></script>

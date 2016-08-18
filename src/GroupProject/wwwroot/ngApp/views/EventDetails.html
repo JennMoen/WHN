@@ -13,11 +13,29 @@
         </ul>
 
     </div>
-    <div class="flex-col mainCol containerMainCol">
+    <div class="flex-row mainCol containerMainCol">
+        <div class="flex-col mainCol">
+            {{controller.eventSearchData.category.name}}
+            <img ng-src="{{controller.eventSearchData.imageUrl}}" class="img-fixed" />
+        </div>
+        <div class="flex-col mainCol" >
+            <h1 class="ta-center">{{controller.eventSearchData.name}}</h1>
+            <h3 class="ta-center">{{controller.eventSearchData.dateOfEvent | date: 'h:mm a EEEE MMMM d, yyyy'}}</h3>
+            <h3 class="ta-center">{{controller.eventSearchData.location}}</h3>
+            <h4 class="ta-center underline">Admission Price: {{controller.eventSearchData.admissionPrice | currency}}</h4>
+            <div class="ta-center">Ends: {{controller.eventSearchData.endTime | date: 'h:mm a EEEE MMMM d, yyyy'}}</div>
+            <p class="f-wrap description-width-and-height collapse ta-j">{{controller.eventSearchData.description}}</p>
+        </div>
+        <div class="flex-col mainCol f-jc-fe">
+            <div class="f-jc-fe"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
+        </div>
+
+    </div>
+    <!--<div class="flex-col mainCol containerMainCol">
         <div class="flex-col mainCol containerMainCol">
             <div class="flex-row f-jc-sb mainCol">
                 <div>{{controller.eventSearchData.category.name}}</div>
-                <div>Admision Price: {{controller.eventSearchData.admissionPrice | currency}}</div>
+                <div>Admission Price: {{controller.eventSearchData.admissionPrice | currency}}</div>
             </div>
             <div class="flex-row mainCol">
                 <div class="f-jc-fs"><img ng-src="{{controller.eventSearchData.imageUrl}}" class="img-fixed" /></div>
@@ -47,7 +65,7 @@
         </div>
 
 
-    </div>
+    </div>-->
 </div>
 
 

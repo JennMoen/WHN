@@ -86,8 +86,8 @@ namespace GroupProject.Controllers
             return Ok();
         }
 
-        [HttpPost("{id}/attend")]
-        public IActionResult Add(int eventId, string user)
+        [HttpPost("attend")]
+        public IActionResult Add([FromBody]int eventId)
         {
             if (!ModelState.IsValid)
             {
@@ -98,6 +98,8 @@ namespace GroupProject.Controllers
 
             return Ok();
         }
+
+
 
 
         [HttpGet("myevents")]

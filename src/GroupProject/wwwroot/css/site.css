@@ -8,6 +8,11 @@ body {
     /*padding-top: 50px;
     padding-bottom: 20px;*/
 
+/* set attributes for ng-cloak */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
 
 
 
@@ -31,7 +36,7 @@ Carousel .carousel-caption {
         z-index: 10 !important;
     }*/
 
-    
+
 
 .bgnd-salmon {
     background-color: #E14658;
@@ -51,6 +56,7 @@ Carousel .carousel-caption {
 
 .bgnd-purple {
     background-color: #3F3250;
+   
 }
 
 .purple {
@@ -65,21 +71,28 @@ Carousel .carousel-caption {
     color: #C0B3A0;
 }
 
+.md-deep-purple {
+    color: #4527A0;
+}
+
+.bgnd-md-deep-purple {
+    background-color: #4527A0;
+}
 .high {
-    font-size: 24px;
-    width: 1150.5px;
+    font-size: 20px;
+    width: 1069.5px;
 }
 
 .photo {
     position: relative;
-    width: 1150.5px;
-    height: 767px;
+    width: 1069.5px;
+    height: 712px;
 }
 
 .titleBar {
     position: absolute;
     top: 500px;
-    width: 1150.5px;
+    width: 1069.5px;
     height: 65px;
     background-color: #3f3250;
     font-size: 48px;
@@ -88,9 +101,9 @@ Carousel .carousel-caption {
 
 .loginInfo {
     position: absolute;
-    top: 800px;
+    top: 650px;
     color: #f2efec;
-    padding-left: 525px;
+    padding-left: 500px;
     font-size: 18px;
 }
 
@@ -103,12 +116,9 @@ Carousel .carousel-caption {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 1150.5px;
+    width: 1069.5px;
     text-align: center;
 }
-
-
-    font-family: serif;
 
 
 a, ui-sref {
@@ -149,7 +159,7 @@ a, ui-sref {
 
 .sideBarDiv {
     width: 30%;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .myeventsideBarDiv {
@@ -180,7 +190,15 @@ a, ui-sref {
     border-color: #22252C;
 }
 
+.containerBottom {
+    border-bottom:solid;
+    border-width: 1px;
+    border-color: #22252C;
+}
 
+.containerBottom:last-child {
+    border:none;
+}
 
 .black-border {
     border-bottom: solid;
@@ -189,12 +207,12 @@ a, ui-sref {
 }
 
 .mainCol {
-    font-size: 18px;
+    font-size: 15px;
     width: 100%;
 }
 
 .content {
-    width: 1150.5px;
+    width: 1069.5px;
 }
 
 .f-jc-sb {
@@ -228,8 +246,8 @@ a, ui-sref {
 }
 
 .img-fixed {
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 200px;
 }
 
 .f-as {
@@ -387,8 +405,8 @@ a, ui-sref {
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+    /*color: #fff;
+    background: rgba(255,255,255,0.2);*/
 }
 
 .sidebar-nav li a:active,
@@ -404,11 +422,11 @@ a, ui-sref {
 
 .sidebar-nav > .sidebar-brand a {
     /*color: #999999;*/
-    color: #C0B3A0;
+    /*color: #C0B3A0;*/
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    /*color: #fff;*/
     background: none;
 }
 
@@ -440,7 +458,23 @@ a, ui-sref {
     }
 }
 
-/*!
- * end - Simple Sidebar
-/*!
->>>>>>> a85347ce25cc0b1c0d08c28493a2c78b75c33f0c
+.place>a {
+    /*border-right:solid 1px #C0B3A0;
+    border-bottom:solid 1px #C0B3A0;
+    border-top:solid 1px #C0B3A0;*/
+    text-align:center;
+    padding:8px 16px;
+}
+
+.place>a:first-child{
+    /*border-left:solid 1px #C0B3A0;*/
+}
+
+.place>a:hover {
+    background-color:#C0B3A0;
+    color:#3F3250;
+}
+
+.underline {
+    text-decoration:underline;
+}

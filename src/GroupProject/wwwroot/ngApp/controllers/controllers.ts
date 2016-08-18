@@ -28,8 +28,7 @@ namespace GroupProject.Controllers {
 
 
         public Attend(eventId) {
-            this.$http.post(`/api/events/attend`, eventId
-            )
+            this.$http.post(`/api/events/attend`, eventId)
                 .then((response) => {
                     this.$state.reload();
                 })
@@ -42,10 +41,12 @@ namespace GroupProject.Controllers {
 
     export class EventAddController {
         public categories;
+        public eventStatus;
+        public toastMsg;
         public displayToast($mdToast) {
             var toast = $mdToast.simple()
-                .textContent('Your event was added successfully')
-                .position('bottom left')
+                .textContent(this.toastMsg)
+                .position('top left')
                 .hideDelay(5000);
 
             $mdToast.show(toast);
@@ -74,7 +75,7 @@ namespace GroupProject.Controllers {
             addEvent.endTime = addEvent.endDate;
             addEvent.location = addEvent.location;
             addEvent.name = addEvent.name;
-            addEvent.status = "private";
+            addEvent.status = addEvent.status;
 
             console.log(`price: ${addEvent.admissionPrice} category ID:  ${addEvent.category.id}`);
             console.log(`category name: ${addEvent.category.name}`);
@@ -88,6 +89,7 @@ namespace GroupProject.Controllers {
                 .then((response) => {
                     console.log("Success: response");
                     this.$state.reload();
+                    this.toastMsg = "Your event was added successfully";
                     this.displayToast(this.$mdToast);
                 })
                 .catch((reason) => {
@@ -96,26 +98,26 @@ namespace GroupProject.Controllers {
 
         }
 
-        //constructor info used to build the 'add event' page pull-downs
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService) {
+        //constructor info used to build the 'add event' category pull-down
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+            // make sure the user is logged in
+            if (!accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before adding an event";
+                this.displayToast(this.$mdToast);
+            }
+            
             $http.get('/api/category')
                 .then((response) => {
                     this.categories = response.data;
-                });
+                }),
 
-
-            this.timeSlots = ["12:00 am", "12:30 am", "1:00 am", "1:30 am", "2:00 am", "2:30 am", "3:00 am", "3:30 am", "4:00 am", "4:30 am",
-                "5:00 am", "5:30 am", "6:00 am", "6:30 am", "7:00 am", "7:30 am", "8:00 am", "8:30 am", "9:00 am", "9:30 am", "10:00 am",
-                "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm",
-                "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm",
-                "9:30 pm", "10:00 pm", "10:30 pm", "11:00 pm", "11:30 pm"];
-
-            this.timeSlots2 = ["12:00 am", "12:30 am", "1:00 am", "1:30 am", "2:00 am", "2:30 am", "3:00 am", "3:30 am", "4:00 am", "4:30 am",
-                "5:00 am", "5:30 am", "6:00 am", "6:30 am", "7:00 am", "7:30 am", "8:00 am", "8:30 am", "9:00 am", "9:30 am", "10:00 am",
-                "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm",
-                "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm",
-                "9:30 pm", "10:00 pm", "10:30 pm", "11:00 pm", "11:30 pm"];
-
+                //constructor used to build the 'add event' event status radio buttons
+                this.eventStatus = [
+                    "private",
+                    "public"
+                ];
+               
 
         }
     };
