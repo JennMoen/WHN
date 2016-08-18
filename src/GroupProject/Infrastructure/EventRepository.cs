@@ -43,12 +43,7 @@ namespace GroupProject.Infrastructure
         }
 
 
-         {
-             return from e in _db.Events
-                    where e.Id == eventId
-                    select e;
-         }*/
-
+    
         //public IQueryable<Event> GetEventById(int eventId)
         //{
         //    return from e in _db.Events
