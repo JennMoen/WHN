@@ -221,7 +221,7 @@ namespace GroupProject.Controllers {
                     this.events = response.data;
                     console.log(this.events);
                 });
-            $http.get('/api/eventGroups/groupevents').then((results) => {
+            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
                 this.eventGroups = results.data;
             });
         }
@@ -283,7 +283,7 @@ namespace GroupProject.Controllers {
             $http.get('/api/user').then((results) => {
                 this.users = results.data;
             });
-            $http.get('/api/eventgroups/groupevents').then((results) => {
+            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
                 this.eventGroups = results.data;
             });
         }

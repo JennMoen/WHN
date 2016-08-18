@@ -42,7 +42,7 @@ namespace GroupProject.Services
                     {
                         EventId= eg.Event.Id,
                         EventName = eg.Event.Name,
-                        GroupId = groupId,
+                        GroupId = eg.Group.Id,
                         GroupName = eg.Group.Name
             }).ToList();
 

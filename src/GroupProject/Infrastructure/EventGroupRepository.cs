@@ -36,7 +36,7 @@ namespace GroupProject.Infrastructure
         public IQueryable<EventGroup> GetGroupEvents(int groupId)
         {
             return from eg in _db.EventGroups
-                   where eg.GroupId == groupId
+                   where eg.Group.Id == groupId
                    select eg;
 
         }

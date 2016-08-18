@@ -40,7 +40,7 @@ namespace GroupProject.Controllers
 
         }
 
-        [HttpGet("groupevents")]
+        [HttpGet("{groupId}/groupevents")]
         public IList<EventGroupDTO> GetGroupEvents(int groupId)
         {
             return _eGroupService.GetEventsForGroup(groupId);
