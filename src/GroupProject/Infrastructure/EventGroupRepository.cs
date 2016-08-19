@@ -50,5 +50,21 @@ namespace GroupProject.Infrastructure
 
         }
 
+        //singles out one particular eventGroupfor deletion
+        public IQueryable<EventGroup> GetEventbyGroupId(int eventId, int groupId)
+        {
+            return from eg in _db.EventGroups
+                   where eg.GroupId == groupId && eg.EventId == eventId
+                   select eg;
+        }
+
+
+        //deletes eventGroup, i.e. a group no longer wants to attend an event
+        public void Delete(EventGroup dbEventGroup)
+        {
+            _db.EventGroups.Remove(dbEventGroup);
+            _db.SaveChanges();
+
+        }
     }
 }

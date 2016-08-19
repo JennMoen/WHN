@@ -4,8 +4,26 @@
 
 
 
-<div ng-repeat="group in controller.groups">
+<!--<div ng-repeat="group in controller.groups">
     <div ui-sref="groupDetails({id: group.id})">{{group.name}}</div>
 
+</div>-->
+
+<div>
+    <md-content class="md-padding" layout-xs="row" layout="row" ng-repeat="group in controller.groups">
+       
+            <div flex-lg flex-gt-lg="40" layout="row">
+
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="start center">
+                        <md-card-header>
+                            <md-card-header-text>
+                                <div class="md-title" ui-sref="groupDetails({id:group.id})">{{group.name}}</div>
+                            </md-card-header-text>
+                        </md-card-header>
+
+                    </div>
+            </div>
+        
 </div>
 

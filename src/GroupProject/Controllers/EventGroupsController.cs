@@ -53,5 +53,19 @@ namespace GroupProject.Controllers
             return _eGroupService.GetGroupsforEvent(eventId);
 
         }
+
+        [HttpDelete("{groupId}/groupevents")]
+        public IActionResult DeleteEventGroup(int groupId, [FromQuery]int eventId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _eGroupService.DeleteEventGroup(eventId, groupId);
+            return Ok();
+
+
+        }
     }
 }
