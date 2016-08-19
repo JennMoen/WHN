@@ -29,11 +29,11 @@
 
     </div>
 
-    <div>
-        <md-content class="md-padding" layout-xs="column" layout="row" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
-            <div flex-xs flex-gt-xs="50" layout="column">
-                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <div layout="row" layout-align="center center">
+    <div class="containerMainCol mainCol" layout="row"  layout-wrap>
+        <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
+            <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
+                <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
+                    <div layout="row" layout-align="center center" >
                         <md-card-header>
                             <md-card-header-text>
                                 <div class="md-title" ui-sref="EventDetails({id:searchData.id})">{{searchData.name}}</div>
@@ -52,7 +52,7 @@
                             <div layout="column">
                                 <div>{{searchData.dateOfEvent | date:'h:mm a'}} - {{searchData.endTime | date: 'h:mm a'}}</div>
                                 <div>{{searchData.location}}</div>
-                                <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{searchData.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>{{searchData.numGoing}}</div>
+                                <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{searchData.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>FIX GROUP INFO</div>
                             </div>
                         </div>
                     </md-card-content>
@@ -61,6 +61,6 @@
                     </md-card-actions>
                 </md-card>
             </div>
-        </md-content>
+        <!--</md-content>-->
     </div>
 </div>

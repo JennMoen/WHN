@@ -125,12 +125,12 @@ Carousel .carousel-caption {
 }
 
 
-a, ui-sref {
+a, [ui-sref] {
     cursor: pointer;
     color: #C0B3A0;
 }
 
-    a:hover, ui-sref:hover {
+    a:hover, [ui-sref]:hover {
         color: #E14658;
     }
 
@@ -516,4 +516,13 @@ a, ui-sref {
 .dateFont{
     font-size:20px;
     font-weight:bold;
+}
+
+.width100{
+    width:100%;
+}
+
+.card{
+    width:350px;
+    height:350px;
 }
