@@ -105,6 +105,25 @@ namespace GroupProject.Services
 
         }
 
+        public void EditGroup(GroupDTO group, int id, string currentUser)
+        {
+            Group dbGroup = new Group()
+            {
+                Id = group.Id,
+                Name = group.Name,
+                Location = group.Location,
+                Description = group.Description,
+                //CreatorId = _groupRepo.GetGroupByCreator(group.Creator).First()
+                CreatorId = _uRepo.GetUser(currentUser).First().Id,
+            };
+
+            _groupRepo.UpdateGroup(dbGroup);
+
+
+
+
+
+        }
         
     }
 }

@@ -62,7 +62,21 @@ namespace GroupProject.Infrastructure
                    select g;
 
         }
+        //edit group
+        public void UpdateGroup(Group dbGroup)
+        {
+            _db.Groups.Update(dbGroup);
+            _db.SaveChanges();
 
+        }
+
+        public IQueryable<string> GetGroupByCreator(string creatorName)
+        {
+            return from g in _db.Groups
+                   where g.Creator.UserName == creatorName
+                   select g.CreatorId;
+
+        }
     }
 
 }

@@ -111,5 +111,19 @@ namespace GroupProject.Controllers
             return Ok();
         }
 
+        [HttpPut("{groupId}")]
+        public IActionResult EditGroup([FromBody] GroupDTO Group, [FromQuery] int groupId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Group.Id = groupId;
+            _groupService.EditGroup(Group, groupId, User.Identity.Name);
+
+            return Ok();
+
+        }
     }
 }

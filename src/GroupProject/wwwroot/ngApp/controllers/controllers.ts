@@ -241,6 +241,16 @@ namespace GroupProject.Controllers {
             });
         }
 
+        public updateGroup(group) {
+            var p = { groupId: this.$stateParams.id };
+            this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+                }).catch((reason) => {
+                    console.log(reason);
+                });
+        }
+
         public groupAttend(eventId) {
 
             this.$http.post(`/api/eventgroups/${this.$stateParams.id}/attend`, eventId)
