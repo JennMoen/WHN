@@ -12,6 +12,9 @@
     <input type="submit" value="Edit Group Details" />
 </form>
 
+<form ng-submit="controller.deleteGroup(group)">
+    <input type="submit" value="Delete this Group"/>
+</form>
 
 <h3>Members:</h3>
 <div ng-repeat="member in controller.group.members">{{member.userName}}</div>

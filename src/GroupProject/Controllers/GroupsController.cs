@@ -125,5 +125,19 @@ namespace GroupProject.Controllers
             return Ok();
 
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteGroup(GroupDTO group, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            group.Id = id;
+            _groupService.DeleteGroup(group, User.Identity.Name);
+
+            return Ok();
+
+        }
     }
 }

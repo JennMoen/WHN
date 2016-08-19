@@ -251,6 +251,14 @@ namespace GroupProject.Controllers {
                 });
         }
 
+        public deleteGroup(group) {
+            this.$http.delete(`/api/groups/${this.$stateParams.id}`, group)
+                .then((response) => {
+                    this.$state.go('myGroups');
+
+                });
+        }
+
         public groupAttend(eventId) {
 
             this.$http.post(`/api/eventgroups/${this.$stateParams.id}/attend`, eventId)

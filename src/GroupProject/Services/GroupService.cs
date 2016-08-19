@@ -113,15 +113,18 @@ namespace GroupProject.Services
                 Name = group.Name,
                 Location = group.Location,
                 Description = group.Description,
-                //CreatorId = _groupRepo.GetGroupByCreator(group.Creator).First()
+                
                 CreatorId = _uRepo.GetUser(currentUser).First().Id,
             };
 
             _groupRepo.UpdateGroup(dbGroup);
 
+        }
 
-
-
+        public void DeleteGroup(GroupDTO group, string currentUser)
+        {
+            _groupRepo.Delete(_groupRepo.GetGroupById(group.Id).First(),
+                currentUser);
 
         }
         

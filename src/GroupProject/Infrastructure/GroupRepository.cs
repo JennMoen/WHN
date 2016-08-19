@@ -70,11 +70,11 @@ namespace GroupProject.Infrastructure
 
         }
 
-        public IQueryable<string> GetGroupByCreator(string creatorName)
+        //creator can delete a group
+        public void Delete(Group dbGroup, string user)
         {
-            return from g in _db.Groups
-                   where g.Creator.UserName == creatorName
-                   select g.CreatorId;
+            _db.Groups.Remove(dbGroup);
+            _db.SaveChanges();
 
         }
     }
