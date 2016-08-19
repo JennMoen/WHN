@@ -504,7 +504,9 @@ a, ui-sref {
     white-space:normal;
 }
 
-.lineheight{
+.lineheight {
+}
+
 md-checkbox {
     box-sizing: border-box;
     display: inline-block;
