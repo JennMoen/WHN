@@ -62,5 +62,12 @@ namespace GroupProject.Services
 
         }
 
+        public void DeleteEventGroup(int eventId, int groupId)
+        {
+            EventGroup dbEventGroup = _egRepo.GetEventbyGroupId(eventId, groupId).First();
+
+            _egRepo.Delete(dbEventGroup);
+        }
+
     }
 }

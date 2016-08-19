@@ -1,38 +1,61 @@
-﻿[]<h1>Group Details</h1>
+﻿<h1>Group Details</h1>
 <div>Group name:  {{controller.group.name}}</div>
 <div>Creator: {{controller.group.creator}}</div>
 <div> Location: {{controller.group.location}}</div>
 <div> About us: {{controller.group.description}}</div>
 
 <h6>Edit Group</h6>
-<form ng-submit="controller.updateGroup(group)">
+
+<!--<form ng-submit="controller.updateGroup(group)">
   <label>Name:</label>  <input type="text" ng-model="group.name"/>
   <label>Location:</label>  <input type="text" ng-model="group.location"/>
   <label>Description:</label>  <input type="text" ng-model="group.description" />
     <input type="submit" value="Edit Group Details" />
+</form>-->
+
+<form ng-submit="controller.updateGroup(group)">
+    <md-input-container class="md-block" md-no-float>
+        <div layout="row" flex>
+            <input ng-required="true" name="Name" ng-model="group.name" placeholder="Group Name" />
+        </div>
+    </md-input-container>
+    <br />
+    <md-input-container class="md-block" md-no-float>
+        <div layout="row" flex>
+            <input ng-required="true" name="Location" ng-model="group.location" placeholder="Edit location" />
+        </div>
+    </md-input-container>
+    <br />
+    <md-input-container class="md-block" md-no-float>
+        <div layout="row" flex>
+            <input ng-required="true" name="Description" ng-model="group.description" placeholder="Change your group's description" />
+        </div>
+    </md-input-container>
+    <input type="submit" value="Edit Group Details" />
 </form>
 
+
 <form ng-submit="controller.deleteGroup(group)">
-    <input type="submit" value="Delete this Group"/>
+    <input type="submit" value="Delete this Group" />
 </form>
 
 <h3>Members:</h3>
 <div ng-repeat="member in controller.group.members">{{member.userName}}</div>
 
 
+<h3> Events this Group is Attending: </h3>
+<div ng-repeat="e in controller.eventGroups">
+    <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
+    <div> <a ng-click="controller.deleteEvent(e.eventId)">Remove this event</a></div>
+</div>
+
 <h3>Add Events for Your Groups</h3>
+<form ng-submit="controller.groupAttend(event.id)">
 
-<form  ng-submit="controller.groupAttend(event.id)">
-    
-        <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
+    <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
 
-        <input type="submit" value="Add Event" />
-   
+    <input type="submit" value="Add Event" />
+
 </form>
 
 
-<h3> Events this Group is Attending: </h3>
-<div ng-repeat="e in controller.eventGroups" ui-sref="EventDetails({id:e.eventId})">
-    <div>{{e.eventName}}</div>
-
-</div>

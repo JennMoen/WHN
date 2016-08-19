@@ -283,6 +283,18 @@ namespace GroupProject.Controllers {
                 });
 
         }
+
+        public deleteEvent(eventId) {
+            var p = { eventId: eventId };
+            console.log(eventId);
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/eventgroups/${this.$stateParams.id}/groupevents`, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+
+                });
+        }
+
     }
 
     //not in use for now--lets you add a person to your group
