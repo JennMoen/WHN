@@ -15,8 +15,10 @@
     </div>
     <div class="flex-row mainCol containerMainCol">
         <div class="flex-col mainCol">
-            {{controller.eventSearchData.category.name}}
+            
             <img ng-src="{{controller.eventSearchData.imageUrl}}" class="img-fixed" />
+            <br/>
+            <div class="f-jc-c">{{controller.eventSearchData.category.name}}</div>
         </div>
         <div class="flex-col mainCol" >
             <h1 class="ta-center">{{controller.eventSearchData.name}}</h1>
@@ -24,6 +26,7 @@
             <h3 class="ta-center">{{controller.eventSearchData.location}}</h3>
             <h4 class="ta-center underline">Admission Price: {{controller.eventSearchData.admissionPrice | currency}}</h4>
             <div class="ta-center">Ends: {{controller.eventSearchData.endTime | date: 'h:mm a EEEE MMMM d, yyyy'}}</div>
+            <br/>
             <p class="f-wrap description-width-and-height collapse ta-j">{{controller.eventSearchData.description}}</p>
         </div>
         <div class="flex-col mainCol f-jc-fe">

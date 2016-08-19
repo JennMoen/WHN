@@ -7,12 +7,16 @@ namespace GroupProject.Controllers {
     export class EventSearchController {
         public eventSearchData;
         public categories;
+        
 
-
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService) {
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private $scope) {
+            
             $http.get('/api/events')
                 .then((response) => {
                     this.eventSearchData = response.data;
+                    for (let i = 0; i < this.eventSearchData.length; i++) {
+                        this.eventSearchData[i].numLimit = 100;
+                    }
                 });
             //constructor info used to build the 'search by category' pull-down
             $http.get('/api/category')
@@ -20,6 +24,7 @@ namespace GroupProject.Controllers {
                     this.categories = response.data;
                 });
         }
+
 
 
         public readMore(searchData) {
@@ -36,6 +41,12 @@ namespace GroupProject.Controllers {
                     console.log(reason);
 
                 });
+        }
+
+        public showWords(s) {
+            s.numLimit = 10000;
+            
+            
         }
     }
 

@@ -52,19 +52,6 @@ namespace GroupProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Groups",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Groups", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
@@ -90,6 +77,28 @@ namespace GroupProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatorId = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Location = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Groups_AspNetUsers_CreatorId",
+                        column: x => x.CreatorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -169,30 +178,6 @@ namespace GroupProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserGroups",
-                columns: table => new
-                {
-                    UserId = table.Column<string>(nullable: false),
-                    GroupId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserGroups", x => new { x.UserId, x.GroupId });
-                    table.ForeignKey(
-                        name: "FK_UserGroups_Groups_GroupId",
-                        column: x => x.GroupId,
-                        principalTable: "Groups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserGroups_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -231,6 +216,30 @@ namespace GroupProject.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserGroups",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(nullable: false),
+                    GroupId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserGroups", x => new { x.UserId, x.GroupId });
+                    table.ForeignKey(
+                        name: "FK_UserGroups_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserGroups_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -362,6 +371,11 @@ namespace GroupProject.Migrations
                 name: "IX_Feedback_UserId",
                 table: "Feedback",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Groups_CreatorId",
+                table: "Groups",
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserGroups_GroupId",
