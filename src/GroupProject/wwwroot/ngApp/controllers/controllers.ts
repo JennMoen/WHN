@@ -53,30 +53,22 @@ namespace GroupProject.Controllers {
     export class EventAddController {
         public categories;
         public eventStatus;
+        public myGroups;
+        public myGroupsNames;
         public toastMsg;
+        public i;
         public displayToast($mdToast) {
             var toast = $mdToast.simple()
                 .textContent(this.toastMsg)
-                .position('top left')
+                .position('bottom left')
                 .hideDelay(5000);
 
             $mdToast.show(toast);
         };
 
-        public timeSlots;
-        public timeSlots2;
-
+        
         // Post the new event to the database
         public addEvent(addEvent) {
-
-            var toDay = moment();
-            //addEvent.startDate = moment(addEvent.startDt).add(addEvent.startTimeSlotSelection);
-            //addEvent.endDate = moment(addEvent.endDt).add(addEvent.endTimeSlotSelection);
-            console.log(`Start: ${addEvent.startDate} End: ${addEvent.endDate}`);
-
-
-
-
 
             addEvent.admissionPrice = addEvent.admissionPrice;
             addEvent.categoryId = addEvent.category.id;
@@ -94,6 +86,7 @@ namespace GroupProject.Controllers {
             console.log(`description: ${addEvent.description}`);
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
+            console.log(`group name: ${addEvent.group.id}`);
 
             this.$http.post('/api/events', addEvent)
 
@@ -109,7 +102,7 @@ namespace GroupProject.Controllers {
 
         }
 
-        //constructor info used to build the 'add event' category pull-down
+        //constructor info used to build the 'add event' category pull-down, the groups checkbox, and the event status radio buttons
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
             // make sure the user is logged in
             if (!accountService.isLoggedIn()) {
@@ -123,11 +116,18 @@ namespace GroupProject.Controllers {
                     this.categories = response.data;
                 }),
 
-                //constructor used to build the 'add event' event status radio buttons
-                this.eventStatus = [
-                    "private",
-                    "public"
-                ];
+                $http.get('/api/groups/createdgroups').then((results) => {
+                this.myGroups = results.data;
+                console.log(this.myGroups);
+                console.log(`myGroups is: ${this.myGroups} myGroups.name is: ${this.myGroups.name}`);
+                console.log(this.myGroupsNames);
+                    
+                }),
+
+            this.eventStatus = [
+                "private",
+                "public"
+            ];
 
 
         }
