@@ -15,6 +15,7 @@ namespace GroupProject.Infrastructure
             _db = db;
         }
         
+        //grabs for deleting
         public IQueryable<EventUser> GetEventUserByUserId(int eventId, string userName)
         {
             return from eu in _db.EventUsers

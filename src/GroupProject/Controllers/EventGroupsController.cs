@@ -39,5 +39,19 @@ namespace GroupProject.Controllers
 
 
         }
+
+        [HttpGet("{groupId}/groupevents")]
+        public IList<EventGroupDTO> GetGroupEvents(int groupId)
+        {
+            return _eGroupService.GetEventsForGroup(groupId);
+
+        }
+
+        [HttpGet("{eventId}/groupsattending")]
+        public IList<EventGroupDTO> GetGroupsforEvent(int eventId)
+        {
+            return _eGroupService.GetGroupsforEvent(eventId);
+
+        }
     }
 }

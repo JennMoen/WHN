@@ -52,17 +52,31 @@ namespace GroupProject.Infrastructure
 
         }
 
-        //gets all groups from userGroups table that match a single userId
-        public IQueryable<UserGroup> GetGroupsForUser(string id)
-            {
+        
 
-            return from ug in _db.UserGroups
-                   where ug.User.UserName == id
-                   select ug;
+        //get all groups that a user created
+        public IQueryable<Group> GetGroupsByCreatorId(string id)
+        {
+            return from g in _db.Groups
+                   where g.Creator.UserName == id
+                   select g;
 
+        }
+        //edit group
+        public void UpdateGroup(Group dbGroup)
+        {
+            _db.Groups.Update(dbGroup);
+            _db.SaveChanges();
 
-            }
+        }
 
+        //creator can delete a group
+        public void Delete(Group dbGroup, string user)
+        {
+            _db.Groups.Remove(dbGroup);
+            _db.SaveChanges();
+
+        }
     }
 
 }

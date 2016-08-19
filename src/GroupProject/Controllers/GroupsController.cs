@@ -13,9 +13,12 @@ namespace GroupProject.Controllers
     public class GroupsController : Controller
     {
         private GroupService _groupService;
-        public GroupsController(GroupService gs)
+        private UserGroupService _ugService;
+
+        public GroupsController(GroupService gs, UserGroupService ugs)
         {
             _groupService = gs;
+            _ugService = ugs;
         }
 
 
@@ -43,6 +46,13 @@ namespace GroupProject.Controllers
         public GroupDTO GetGroupById(int id)
         {
             return _groupService.GetGroupById(id);
+        }
+
+        [HttpGet("createdgroups")]
+        public IList<GroupDTO> GetGroups(string userName)
+        {
+
+            return _groupService.GetGroupsByCreatorId(User.Identity.Name);
         }
 
 
@@ -76,7 +86,7 @@ namespace GroupProject.Controllers
                 return BadRequest(ModelState);
             }
 
-            _groupService.AddMember(User.Identity.Name, groupId);
+            _ugService.AddMember(User.Identity.Name, groupId);
             return Ok();
 
         }
@@ -84,13 +94,50 @@ namespace GroupProject.Controllers
         [HttpGet("mygroups")]
         public IList<UserGroupDTO> Get(string userName)
         {
-            return _groupService.GetGroupsForUser(User.Identity.Name);
+            return _ugService.GetGroupsForUser(User.Identity.Name);
 
 
         }
 
-       
+       [HttpDelete("mygroups")]
+       public IActionResult DeleteUserGroup([FromQuery]int groupId)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _ugService.DeleteUserGroup(groupId, User.Identity.Name);
+            return Ok();
+        }
 
+        [HttpPut("{groupId}")]
+        public IActionResult EditGroup([FromBody] GroupDTO Group, [FromQuery] int groupId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Group.Id = groupId;
+            _groupService.EditGroup(Group, groupId, User.Identity.Name);
+
+            return Ok();
+
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteGroup(GroupDTO group, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            group.Id = id;
+            _groupService.DeleteGroup(group, User.Identity.Name);
+
+            return Ok();
+
+        }
     }
 }

@@ -117,7 +117,7 @@ namespace GroupProject.Controllers {
                 this.toastMsg = "Please log in before adding an event";
                 this.displayToast(this.$mdToast);
             }
-            
+
             $http.get('/api/category')
                 .then((response) => {
                     this.categories = response.data;
@@ -128,7 +128,7 @@ namespace GroupProject.Controllers {
                     "private",
                     "public"
                 ];
-               
+
 
         }
     };
@@ -192,10 +192,14 @@ namespace GroupProject.Controllers {
 
         public myGroups;
         public events;
+        public groups;
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-            $http.get('/api/groups/mygroups').then((results) => {
+            $http.get('/api/groups/createdgroups').then((results) => {
                 this.myGroups = results.data;
+            });
+            $http.get('/api/groups/mygroups').then((results) => {
+                this.groups = results.data;
             });
         }
 
@@ -209,13 +213,26 @@ namespace GroupProject.Controllers {
                 });
         }
 
+        public leaveGroup(groupId) {
+            console.log(groupId);
+            var p = { groupId: groupId };
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/groups/mygroups`, { params: p })
+                .then((response) => {
+                    this.$state.reload();
 
+                });
+        }
     }
+
+
+
 
     export class MyGroupDetailsController {
         public group;
         public events;
         public users;
+        public eventGroups;
 
         constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
             $http.get(`/api/groups/${$stateParams['id']}`)
@@ -230,11 +247,32 @@ namespace GroupProject.Controllers {
                     this.events = response.data;
                     console.log(this.events);
                 });
+            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
+                this.eventGroups = results.data;
+            });
+        }
+
+        public updateGroup(group) {
+            var p = { groupId: this.$stateParams.id };
+            this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+                }).catch((reason) => {
+                    console.log(reason);
+                });
+        }
+
+        public deleteGroup(group) {
+            this.$http.delete(`/api/groups/${this.$stateParams.id}`, group)
+                .then((response) => {
+                    this.$state.go('myGroups');
+
+                });
         }
 
         public groupAttend(eventId) {
-            
-            this.$http.post('/api/eventgroups/${this.$stateParams.id}/attend', eventId)
+
+            this.$http.post(`/api/eventgroups/${this.$stateParams.id}/attend`, eventId)
                 .then((response) => {
                     this.$state.reload();
                 })
@@ -247,13 +285,25 @@ namespace GroupProject.Controllers {
         }
     }
 
+    //not in use for now--lets you add a person to your group
+    //public addMember(m) {
+    //    var member = JSON.stringify(m);
+    //    this.$http.post(`/api/groups/${this.$stateParams.id}/members`, member)
+    //        .then((response) => {
+    //            this.$state.reload();
+    //        })
+    //        .catch((reason) => {
+    //            console.log(member);
+    //            console.log(reason);
+    //        });
+    //}
 
     export class GroupController {
 
         public groups;
+        
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-
             $http.get('/api/groups').then((results) => {
                 this.groups = results.data;
             });
@@ -267,6 +317,7 @@ namespace GroupProject.Controllers {
     export class GroupDetailsController {
         public group;
         public users;
+        public eventGroups;
 
         constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
             $http.get(`/api/groups/${$stateParams['id']}`)
@@ -276,20 +327,12 @@ namespace GroupProject.Controllers {
             $http.get('/api/user').then((results) => {
                 this.users = results.data;
             });
+            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
+                this.eventGroups = results.data;
+            });
         }
 
-        //not in use for now--lets you add a person to your group
-        //public addMember(m) {
-        //    var member = JSON.stringify(m);
-        //    this.$http.post(`/api/groups/${this.$stateParams.id}/members`, member)
-        //        .then((response) => {
-        //            this.$state.reload();
-        //        })
-        //        .catch((reason) => {
-        //            console.log(member);
-        //            console.log(reason);
-        //        });
-        //}
+
 
         public Join(groupId) {
             this.$http.post(`/api/groups/join`, groupId
@@ -411,12 +454,18 @@ namespace GroupProject.Controllers {
 
     export class EventDetailsController {
         public eventSearchData;
+        public groups;
+
         constructor(private $http: ng.IHttpService, private $stateParams) {
             var p = { eventId: $stateParams.id };
 
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
                 .then((response) => {
                     this.eventSearchData = response.data;
+                });
+            $http.get(`/api/eventgroups/${$stateParams.id}/groupsattending`, { params: p })
+                .then((response) => {
+                    this.groups = response.data;
                 });
         }
 
@@ -433,6 +482,9 @@ namespace GroupProject.Controllers {
     }
 
 }
+
+
+
 
 
 

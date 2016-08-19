@@ -57,34 +57,7 @@ namespace GroupProject.Services
 
         }
 
-        //method to add yourself to/join a group
-        public void AddMember(string currentUser, int groupId)
-        {
-
-            UserGroup dbUserGroup = new UserGroup()
-            {
-                GroupId = _groupRepo.GetGroupById(groupId).First().Id,
-                UserId = _uRepo.GetUser(currentUser).First().Id
-
-            };
-
-            _groupRepo.AddMember(dbUserGroup);
-        }
-
-
-        // Not in use for now--old method used to add members to a group
-        //public void AddMember(UserGroupDTO userGroup)
-        //{
-        //    UserGroup dbUserGroup = new UserGroup()
-        //    {
-        //        GroupId = userGroup.GroupId,
-        //        UserId = _uRepo.GetUser(userGroup.UserName).First().Id
-
-        //    };
-
-
-        //        _groupRepo.AddMember(dbUserGroup);
-        //}
+       
 
         public GroupDTO GetGroupById(int groupId)
         {
@@ -109,17 +82,51 @@ namespace GroupProject.Services
 
         }
 
-        public IList<UserGroupDTO> GetGroupsForUser(string currentUser)
+
+        public IList<GroupDTO> GetGroupsByCreatorId(string Id)
         {
-            return (from ug in _groupRepo.GetGroupsForUser(currentUser)
-                    select new UserGroupDTO()
+            return (from g in _groupRepo.GetGroupsByCreatorId(Id)
+                    select new GroupDTO()
                     {
-                        GroupId= ug.Group.Id,
-                        GroupName = ug.Group.Name,
-                        UserName= currentUser
-                        
+                        Id=g.Id,
+                        Name = g.Name,
+                        Location = g.Location,
+                        Creator = g.Creator.UserName,
+                        Description = g.Description,
+                        Members = (from u in g.UserGroups
+                                   select new UserGroupDTO()
+                                   {
+                                       UserName = u.User.UserName
+
+
+                                   }).ToList()
                     }).ToList();
 
+
         }
+
+        public void EditGroup(GroupDTO group, int id, string currentUser)
+        {
+            Group dbGroup = new Group()
+            {
+                Id = group.Id,
+                Name = group.Name,
+                Location = group.Location,
+                Description = group.Description,
+                
+                CreatorId = _uRepo.GetUser(currentUser).First().Id,
+            };
+
+            _groupRepo.UpdateGroup(dbGroup);
+
+        }
+
+        public void DeleteGroup(GroupDTO group, string currentUser)
+        {
+            _groupRepo.Delete(_groupRepo.GetGroupById(group.Id).First(),
+                currentUser);
+
+        }
+        
     }
 }
