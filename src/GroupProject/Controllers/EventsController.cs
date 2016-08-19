@@ -17,12 +17,20 @@ namespace GroupProject.Controllers
         private CategoryService _categoryService;
         private EventUserService _euService;
 
-        public EventsController(EventService es, CategoryService cs, EventUserService eus)
-        {
+        public EventsController(EventService es, CategoryService cs, EventUserService eus) {
             _eventService = es;
             _categoryService = cs;
             _euService = eus;
         }
+
+        //private GroupService _groupService;
+
+        //public EventsController(EventService es, CategoryService cs, GroupService gs) 
+        //{
+        //    _eventService = es;
+        //    _categoryService = cs;
+        //    _groupService = gs;
+        //}
 
 
 
