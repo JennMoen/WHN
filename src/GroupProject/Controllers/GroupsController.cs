@@ -99,8 +99,45 @@ namespace GroupProject.Controllers
 
         }
 
-       
+       [HttpDelete("mygroups")]
+       public IActionResult DeleteUserGroup([FromQuery]int groupId)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            _ugService.DeleteUserGroup(groupId, User.Identity.Name);
+            return Ok();
+        }
 
+        [HttpPut("{groupId}")]
+        public IActionResult EditGroup([FromBody] GroupDTO Group, [FromQuery] int groupId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Group.Id = groupId;
+            _groupService.EditGroup(Group, groupId, User.Identity.Name);
+
+            return Ok();
+
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteGroup(GroupDTO group, int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            group.Id = id;
+            _groupService.DeleteGroup(group, User.Identity.Name);
+
+            return Ok();
+
+        }
     }
 }

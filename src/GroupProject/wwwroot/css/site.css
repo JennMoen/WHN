@@ -83,6 +83,10 @@ Carousel .carousel-caption {
     width: 1069.5px;
 }
 
+.page-width {
+    width:1069.5px;
+}
+
 .photo {
     position: relative;
     width: 1069.5px;
@@ -207,8 +211,9 @@ a, ui-sref {
 }
 
 .mainCol {
-    font-size: 15px;
+    font-size: 14px;
     width: 100%;
+   
 }
 
 .content {
@@ -246,8 +251,8 @@ a, ui-sref {
 }
 
 .img-fixed {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
 }
 
 .f-as {
@@ -477,6 +482,29 @@ a, ui-sref {
 .underline {
     text-decoration:underline;
 }
+
+#eventAddContainer{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+}
+
+.ease{
+    
+    transition-property:height;
+    transition-duration:1s;
+    transition-delay:2s;
+    transition-timing-function:ease;
+
+}
+
+.opacity {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:normal;
+}
+
+.lineheight{
 md-checkbox {
     box-sizing: border-box;
     display: inline-block;
@@ -498,4 +526,16 @@ ng-md-icon {
     font-size: 16px;
     font-weight: normal;
     font-style: normal;
+}
+
+    line-height:1px;
+}
+
+.paddingRight{
+    padding-right:20px;
+}
+
+.dateFont{
+    font-size:20px;
+    font-weight:bold;
 }

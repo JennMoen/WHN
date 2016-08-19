@@ -4,8 +4,17 @@
 <div> Location: {{controller.group.location}}</div>
 <div> About us: {{controller.group.description}}</div>
 
+<h6>Edit Group</h6>
+<form ng-submit="controller.updateGroup(group)">
+  <label>Name:</label>  <input type="text" ng-model="group.name"/>
+  <label>Location:</label>  <input type="text" ng-model="group.location"/>
+  <label>Description:</label>  <input type="text" ng-model="group.description" />
+    <input type="submit" value="Edit Group Details" />
+</form>
 
-
+<form ng-submit="controller.deleteGroup(group)">
+    <input type="submit" value="Delete this Group"/>
+</form>
 
 <h3>Members:</h3>
 <div ng-repeat="member in controller.group.members">{{member.userName}}</div>
@@ -23,7 +32,7 @@
 
 
 <h3> Events this Group is Attending: </h3>
-<div ng-repeat="e in controller.eventGroups">
+<div ng-repeat="e in controller.eventGroups" ui-sref="EventDetails({id:e.eventId})">
     <div>{{e.eventName}}</div>
 
 </div>

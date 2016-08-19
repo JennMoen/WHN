@@ -1,6 +1,6 @@
 ﻿<h1>My Groups</h1>
 
-
+<h2>My created Groups</h2>
 <div ng-repeat="group in controller.myGroups">
     <div ui-sref="myGroupDetails({id: group.id})">{{group.name}}</div>
 
@@ -13,5 +13,13 @@
     <div>Enter a Description for your Group:<textarea ng-model="group.description"></textarea></div>
     <input type="submit" value="Add Group" />
 </form>
+
+
+<h2>Groups I Belong To</h2>
+<div ng-repeat="group in controller.groups">
+    <div ui-sref="groupDetails({id: group.groupId})">{{group.groupName}}</div>
+    <a ng-click="controller.leaveGroup(group.groupId)">Leave group</a>
+
+</div>
 
 

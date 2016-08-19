@@ -55,7 +55,7 @@ namespace GroupProject.Services
 
         public IList<UserGroupDTO> GetGroupsForUser(string currentUser)
         {
-            return (from ug in _groupRepo.GetGroupsForUser(currentUser)
+            return (from ug in _ugRepo.GetGroupsForUser(currentUser)
                     select new UserGroupDTO()
                     {
                         GroupId = ug.Group.Id,
@@ -66,6 +66,13 @@ namespace GroupProject.Services
 
         }
 
+        public void DeleteUserGroup(int groupId, string userName)
+        {
 
+            UserGroup dbUserGroup = _ugRepo.GetUserGroupbyUserId(groupId, userName).First();
+
+            _ugRepo.RemoveUserGroup(dbUserGroup, userName);
+
+        }
     }
 }

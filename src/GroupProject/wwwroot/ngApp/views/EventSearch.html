@@ -23,64 +23,44 @@
             <li><a ui-sref="editEvent">Edit an Event</a></li>
             <li><a ui-sref="mygroups">My Groups</a></li>
             <li><a ui-sref="createGroup">Create a Group</a></li>
-           
+
 
         </ul>
 
     </div>
-    <div class="flex-col mainCol containerMainCol">
-        <div class="flex-col mainCol containerBottom" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
-            <!--<div class="flex-col mainCol containerMainCol" ng-repeat="searchData in controller.eventSearchData">-->
-            <div class="flex-row f-jc-sb mainCol"><div ng-model="searchData.name">{{searchData.name}}</div><div ng-model="searchData.dateOfEvent">{{searchData.dateOfEvent | date: 'MMM d yyyy h:mm a'}}</div></div>
-            
-            <div class="flex-row f-jc-sa mainCol">
-                <img ng-src="{{searchData.imageUrl}}" ng-model="searchData.imageUrl" class="img-fixed" />
-                   
-                <p class="f-wrap description-width-and-height collapse ta-j" ng-model="searchData.description">{{searchData.description}}<a>+Read More</a></p>
+
+    <div>
+        <md-content class="md-padding" layout-xs="column" layout="row" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="center center">
+                        <md-card-header>
+                            <md-card-header-text>
+                                <div class="md-title" ui-sref="EventDetails({id:searchData.id})">{{searchData.name}}</div>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </div>
+                    <div layout="row" layout-align="center center">
+                        <img ng-src="{{searchData.imageUrl}}" class="img-fixed" />
+                    </div>
+                    <md-card-content>
+                        <div layout="row">
+                            <div layout="column" layout-align="center center" class="paddingRight dateFont">
+                                <div>{{searchData.dateOfEvent | date:'d'}}</div>
+                                <div>{{searchData.dateOfEvent | date:'MMM'}}</div>
+                            </div>
+                            <div layout="column">
+                                <div>{{searchData.dateOfEvent | date:'h:mm a'}} - {{searchData.endTime | date: 'h:mm a'}}</div>
+                                <div>{{searchData.location}}</div>
+                                <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{searchData.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>{{searchData.numGoing}}</div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="center center">
+                        <md-button ng-click="controller.Attend(searchData.id)">Add Event</md-button>
+                    </md-card-actions>
+                </md-card>
             </div>
-            
-
-
-            <div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
-            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
-
-
-
-            <!--<div class="flex-row f-jc-fe mainCol"><a ng-click="controller.Attend(searchData.id)">Add to your events</a></div>
-            <div class="flex-row f-jc-fe mainCol"><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>-->
-
-
-
-
-
-            
-                <div class="flex-row f-jc-sb mainCol"><div>Number of people going: {{searchData.numGoing}}</div><a ui-sref="EventDetails({id:searchData.id})">More Info</a></div>
-                <div class="flex-row f-jc-fe mainCol"><a ui-sref="editEvent({id:searchData.id})">Edit Event</a></div>
-                <div class="flex-row f-jc-sb mainCol">
-                    
-            <a ui-sref="EventDetails({id:searchData.id})">More Info</a>
-                </div>
-            
-
-        </div>
+        </md-content>
     </div>
-
-
-    <!--9 ng-repeat="searchData" in controller.eventSearchData
-    11 {{searchData.dateOfEvent}}
-    13 ng-src = {{searchData.imageUrl}}
-    14 {{searchData.description}}-->
-    <!--<div class="f-jc-sb mainCol">
-        <span>There</span>
-        <span>Here</span>
-        <span>Info</span>
-        <span>Go</span>
-    </div>-->
 </div>
-
-
-<!--<div class="flex-col">
-    <div class="flex-row f-jc-fe">Date</div>
-    <div class="flex-row f-jc-sa"><span>Hey</span><span>Hey</span></div>
-    <div class="flex-row f-jc-fe">More Info</div>
-</div>-->
