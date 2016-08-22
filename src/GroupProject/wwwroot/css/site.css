@@ -596,3 +596,8 @@ span[contenteditable='true']:hover {
     cursor: pointer;
     color: #C0B3A0;
 }
+
+.img-Details{
+    width:250px;
+    height:250px;
+}

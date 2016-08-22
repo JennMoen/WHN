@@ -14,8 +14,46 @@
 
     </div>
 
-    
-    <div class="flex-row mainCol containerMainCol">
+    <div class="containerMainCol mainCol" layout="column">
+        <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
+        <div  layout="row" layout-align="center center">
+            <md-card class="mainCol" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <div layout="row" layout-align="center center">
+                    <!--<md-card-header>
+                        <md-card-header-text>
+                            <div class="md-title" ui-sref="EventDetails({id:searchData.id})">{{controller.eventSearchData.name}}</div>
+                        </md-card-header-text>
+                    </md-card-header>-->
+                </div>
+                <div layout="row" layout-align="center center">
+                    <img ng-src="{{controller.eventSearchData.imageUrl}}" class="img-Details" />
+                </div>
+                <md-card-content>
+                    <div layout="row">
+                        <div layout="column" layout-align="center center" class="paddingRight dateFont">
+                            <div>{{controller.eventSearchData.dateOfEvent | date:'d'}}</div>
+                            <div>{{controller.eventSearchData.dateOfEvent | date:'MMM'}}</div>
+                        </div>
+                        <div layout="column">
+                            <h3>{{controller.eventSearchData.name}}</h3>
+                            <div>{{controller.eventSearchData.status}} &bull; {{controller.eventSearchData.category.name}} &bull; Created by: {{controller.eventSearchData.creatorName}}</div>
+                            <div>{{controller.eventSearchData.dateOfEvent | date:'h:mm a'}} - {{controller.eventSearchData.endTime | date: 'h:mm a'}}</div>
+                            <div>{{controller.eventSearchData.location}}</div>
+                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{controller.eventSearchData.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>FIX GROUP INFO</div>
+                            <br />
+                             <div>{{controller.eventSearchData.description}}</div>
+                        </div>
+                    </div>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="center center">
+                    <md-button ng-click="controller.Attend(searchData.id)">Add Event</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+        <!--</md-content>-->
+    </div>
+
+    <!--<div class="flex-row mainCol containerMainCol">
         <div class="flex-col mainCol">
             
             <img ng-src="{{controller.eventSearchData.imageUrl}}" class="img-fixed" />
@@ -41,7 +79,7 @@
             <div class="f-jc-fe"><a ng-click="controller.addEvent(searchData)">Add to your events</a></div>
         </div>
         
-    </div>
+    </div>-->
 
 
 
