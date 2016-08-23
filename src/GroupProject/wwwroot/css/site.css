@@ -94,7 +94,7 @@ Carousel .carousel-caption {
 }
 
 .photo {
-    position: relative;
+    position:page;
     /*width: 1069.5px;*/
     width:100%;
     /*height: 712px;*/
@@ -103,9 +103,10 @@ Carousel .carousel-caption {
 
 .titleBar {
     position: absolute;
-    top: 500px;
-    width: 1069.5px;
-    height: 65px;
+    /*top: 500px;*/
+    top:55%;
+    width: 100%;
+    height: 55px;
     background-color: #262229;
     font-size: 48px;
     color: white;
@@ -127,9 +128,11 @@ Carousel .carousel-caption {
 
 .loginInfo {
     position: absolute;
-    top: 650px;
+    /*top: 650px;*/
+    top:75%;
     color: white;
-    padding-left: 500px;
+    /*padding-left: 500px;*/
+    padding-left:45%;
     font-size: 18px;
 }
 
@@ -145,9 +148,11 @@ Carousel .carousel-caption {
 .homeUList {
     
     margin: 0;
-    padding-left:200px;
-    padding-top:5px;
-    width: 1069.5px;
+    /*padding-left:250px;
+    padding-top:5px;*/
+    padding-left:31%;
+    padding-top:0%;
+    width: 100%;
     /*text-align: center;*/
 }
 
@@ -596,7 +601,7 @@ line-height:1px;
     
     width: 350px;
     height: 350px;
-    
+    box-shadow:3px 3px black;
 }
 
 .searchbox {
@@ -921,4 +926,16 @@ span[contenteditable='true']:hover {
 
     .text {
         bottom: 40px;
+    }
+
+    .width30{
+        width:30%;
+    }
+
+    .width40{
+        width:40%;
+    }
+
+    .font16{
+        font-size:16px;
     }

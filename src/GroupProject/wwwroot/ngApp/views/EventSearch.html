@@ -58,7 +58,7 @@
 
     <div class="containerMainCol mainCol light-white" layout="row"  layout-wrap >
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
-            <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
+            <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name"><!--can get rid of flex-gt-xs=50-->
                 <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
                     <div layout="row" layout-align="center center" >
                         <md-card-header>
