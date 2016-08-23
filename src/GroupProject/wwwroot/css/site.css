@@ -80,7 +80,13 @@ Carousel .carousel-caption {
 }
 .high {
     font-size: 20px;
-    width: 1069.5px;
+    
+}
+
+
+
+.font12{
+    font-size:14px;
 }
 
 .page-width {
@@ -89,8 +95,10 @@ Carousel .carousel-caption {
 
 .photo {
     position: relative;
-    width: 1069.5px;
-    height: 712px;
+    /*width: 1069.5px;*/
+    width:100%;
+    /*height: 712px;*/
+    height:100%;
 }
 
 .titleBar {
@@ -98,17 +106,35 @@ Carousel .carousel-caption {
     top: 500px;
     width: 1069.5px;
     height: 65px;
-    background-color: #3f3250;
+    background-color: #262229;
     font-size: 48px;
-    color: #C0B3A0;
+    color: white;
+}
+
+.topBar {
+    color:#FAFAFA;
+    
+}
+
+.light-white{
+    background-color:#f8f8f8;
+}
+
+.topBar>a {
+
+    color:#FAFAFA;
 }
 
 .loginInfo {
     position: absolute;
     top: 650px;
-    color: #f2efec;
+    color: white;
     padding-left: 500px;
     font-size: 18px;
+}
+
+.loginInfo>a {
+    color:white;
 }
 
 .homeList {
@@ -117,22 +143,28 @@ Carousel .carousel-caption {
 }
 
 .homeUList {
-    list-style-type: none;
+    
     margin: 0;
-    padding: 0;
+    padding-left:200px;
+    padding-top:5px;
     width: 1069.5px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 
 a, [ui-sref] {
     cursor: pointer;
-    color: #C0B3A0;
+    color:black;
 }
 
     a:hover, [ui-sref]:hover {
         color: #E14658;
     }
+
+    /*a:visited, [ui-sref]:visited{
+        color:#FAFAFA;
+        
+    }*/
 
 .flex-col {
     display: flex;
@@ -151,6 +183,8 @@ a, [ui-sref] {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    
+
     /*text-align:center;*/
 }
 
@@ -164,6 +198,15 @@ a, [ui-sref] {
 .sideBarDiv {
     width: 30%;
     font-size: 16px;
+    
+}
+
+.bgnd-darkpurple{
+    background-color:#262229;
+}
+
+.bgnd-grey{
+    background-color:#bdbdbd;
 }
 
 .myeventsideBarDiv {
@@ -188,11 +231,18 @@ a, [ui-sref] {
     color: #E14658;
 }
 
+/*.sideBarDiv > md-card> md-card-actions>md-button>[ui-sref] {
+    color:black;
+}*/
+
 .containerMainCol {
-    border: solid;
+    /*border: solid;
     border-width: 1px;
-    border-color: #22252C;
+    border-color: #22252C;*/
+    /*background-color:#512DA8;*/
 }
+
+
 
 .containerBottom {
     border-bottom:solid;
@@ -467,17 +517,15 @@ a, [ui-sref] {
     border-bottom:solid 1px #C0B3A0;
     border-top:solid 1px #C0B3A0;*/
     text-align:center;
-    padding:8px 16px;
+    padding: 16px 16px 16px 16px;
+    /*padding:8px 16px;*/
 }
 
 .place>a:first-child{
     /*border-left:solid 1px #C0B3A0;*/
 }
 
-.place>a:hover {
-    background-color:#C0B3A0;
-    color:#3F3250;
-}
+
 
 .underline {
     text-decoration:underline;
@@ -545,11 +593,284 @@ ng-md-icon {
 }
 
 .card{
+    
     width:350px;
     height:350px;
+    
 }
 
 .img-Details{
     width:250px;
     height:250px;
 }
+
+/*Start of Animation on home page*/
+
+.Words {
+        display: inline-block;
+        position: absolute;
+        /*margin: 5px auto;*/
+        /* top: 100%; */
+        font-size: 40px;
+        color: #FFF;
+        
+        font-weight: 400;
+        
+    }
+
+        /*div.Words {
+            top: 510px;
+        }*/
+
+    .start {
+        display: inline-block;
+        position: absolute;
+        margin: 5px -70px;
+        /* top: 100%; */
+        font-size: 40px;
+        color: white;
+        
+        font-weight: 400;
+        float: left;
+    }
+    
+    
+
+    .rw-words {
+        display: inline;
+    }
+
+    /* Animated Text Effect */
+
+    .rw-words-1 span {
+        display: inline-block;
+        position: absolute;
+        opacity: 0;
+        margin-left: 430px;
+        overflow: hidden;
+        -webkit-animation: rotateWord 15s linear 0s infinite;
+        -moz-animation: rotateWord 15s linear 0s infinite;
+        -o-animation: rotateWord 15s linear 0s infinite;
+        -ms-animation: rotateWord 15s linear 0s infinite;
+        animation: rotateWord 15s linear 0s infinite;
+        color: #CCC;
+    }
+
+        .rw-words-1 span:nth-child(1) {
+            -webkit-animation-delay: 0s;
+            -moz-animation-delay: 0s;
+            -o-animation-delay: 0s;
+            -ms-animation-delay: 0s;
+            animation-delay: 0s;
+            color: #9b59b6;
+        }
+
+        .rw-words-1 span:nth-child(2) {
+            -webkit-animation-delay: 3s;
+            -moz-animation-delay: 3s;
+            -o-animation-delay: 3s;
+            -ms-animation-delay: 3s;
+            animation-delay: 3s;
+            color: #2ecc71;
+        }
+
+        .rw-words-1 span:nth-child(3) {
+            -webkit-animation-delay: 6s;
+            -moz-animation-delay: 6s;
+            -o-animation-delay: 6s;
+            -ms-animation-delay: 6s;
+            animation-delay: 6s;
+            color: #f1c40f;
+        }
+
+        .rw-words-1 span:nth-child(4) {
+            -webkit-animation-delay: 9s;
+            -moz-animation-delay: 9s;
+            -o-animation-delay: 9s;
+            -ms-animation-delay: 9s;
+            animation-delay: 9s;
+            color: #FC4349;
+        }
+
+        .rw-words-1 span:nth-child(5) {
+            -webkit-animation-delay: 12s;
+            -moz-animation-delay: 12s;
+            -o-animation-delay: 12s;
+            -ms-animation-delay: 12s;
+            animation-delay: 12s;
+            color: #3498db;
+        }
+
+    @-webkit-keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+
+        2% {
+            opacity: 0;
+            -webkit-transform: translateY(-30px);
+        }
+
+        5% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+        }
+
+        17% {
+            opacity: 1;
+            -webkit-transform: translateY(0px);
+        }
+
+        20% {
+            opacity: 0;
+            -webkit-transform: translateY(30px);
+        }
+
+        80% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-moz-keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+
+        2% {
+            opacity: 0;
+            -moz-transform: translateY(-30px);
+        }
+
+        5% {
+            opacity: 1;
+            -moz-transform: translateY(0px);
+        }
+
+        17% {
+            opacity: 1;
+            -moz-transform: translateY(0px);
+        }
+
+        20% {
+            opacity: 0;
+            -moz-transform: translateY(30px);
+        }
+
+        80% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-o-keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+
+        2% {
+            opacity: 0;
+            -o-transform: translateY(-30px);
+        }
+
+        5% {
+            opacity: 1;
+            -o-transform: translateY(0px);
+        }
+
+        17% {
+            opacity: 1;
+            -o-transform: translateY(0px);
+        }
+
+        20% {
+            opacity: 0;
+            -o-transform: translateY(30px);
+        }
+
+        80% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-ms-keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+
+        2% {
+            opacity: 0;
+            -ms-transform: translateY(-30px);
+        }
+
+        5% {
+            opacity: 1;
+            -ms-transform: translateY(0px);
+        }
+
+        17% {
+            opacity: 1;
+            -ms-transform: translateY(0px);
+        }
+
+        20% {
+            opacity: 0;
+            -ms-transform: translateY(30px);
+        }
+
+        80% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes rotateWord {
+        0% {
+            opacity: 0;
+        }
+
+        2% {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+
+        5% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        17% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        20% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        80% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .text {
+        bottom: 40px;
+    }

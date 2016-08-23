@@ -77,8 +77,6 @@ namespace GroupProject.Controllers
             Event.Id = id;
             _eventService.DeleteEvent(Event, User.Identity.Name);
 
-            _eventService.CreateEvent(Event, User.Identity.Name);
-
             return Ok();
         }
 

@@ -1,11 +1,11 @@
-﻿<div class="flex-row content">
+﻿<div class="flex-row width100">
 
     <div class="flex-col sideBarDiv bgnd-rock">
 
         <ul class="flex-col sideBarUList p-fixed">
 
-            <li><a ui-sref="eventAdd">Create Event</a></li>
-            <li><a ui-sref="mygroups">My Groups</a></li>
+            <li><a ui-sref="eventAdd">Create an Event</a></li>
+            <li><a ui-sref="myGroups">My Groups</a></li>
             <li><a ui-sref="createGroup">Create a Group</a></li>
 
         </ul>
@@ -34,7 +34,7 @@
                         <div layout="column">
                             <div>{{event.events.dateOfEvent | date:'h:mm a'}} - {{event.events.endTime | date: 'h:mm a'}}</div>
                             <div>{{event.events.location}}</div>
-                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{event.events.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>FIX GROUP INFO</div>
+                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{event.events.numGoing}}</div>
                         </div>
                     </div>
                 </md-card-content>
@@ -68,7 +68,7 @@
                         <div layout="column">
                             <div>{{e.dateOfEvent | date:'h:mm a'}} - {{e.endTime | date: 'h:mm a'}}</div>
                             <div>{{e.location}}</div>
-                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{e.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>FIX GROUP INFO</div>
+                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{e.numGoing}}</div>
                         </div>
                     </div>
                 </md-card-content>

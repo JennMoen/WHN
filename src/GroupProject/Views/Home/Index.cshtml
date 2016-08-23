@@ -11,31 +11,26 @@
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account" ng-cloak>
-    <div class="container flex-col ai-c ">
+    <div  class="flex-col ai-c">
         @*<h1>WHN</h1>*@
 
-
-        <div class="flex-row f-jc-c ai-c place high rock bgnd-purple">
+        
+        <div class="flex-row f-jc-c ai-c place high width100 topBar bgnd-darkpurple">
             <a ui-sref="home">Home</a>
-            <a ui-sref="test">testpage</a>
             <a ui-sref="groups">Find Groups</a>
             <a ui-sref="eventSearch">Find Events</a>
-            <a ui-sref="about">About</a>
+            
 
             <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
             <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-            @*<div ng-show="account.isLoggedIn()">
+            </div>
+            <div class="flex-row f-jc-c ai-c font12 width100 topBar bgnd-darkpurple" ng-show="account.isLoggedIn()">
 
-                <a ui-sref="test">Test</a> /
-                <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
-                <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-                <div ng-show="account.isLoggedIn()">
-
-                    Welcome, {{account.getUserName()}} <a href="/myaccount">(My Account)</a>
-                </div>*@
+                    Welcome, {{account.getUserName()}} <a ui-sref="myaccount">(My Account)</a>
         </div>
         <ui-view></ui-view>
     </div>
+        
 
     <!-- Library Files -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
