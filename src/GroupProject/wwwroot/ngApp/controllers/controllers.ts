@@ -86,7 +86,7 @@ namespace GroupProject.Controllers {
             console.log(`description: ${addEvent.description}`);
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
-            console.log(`group name: ${addEvent.group.id}`);
+            //console.log(`group name: ${addEvent.group.id}`);
 
             this.$http.post('/api/events', addEvent)
 
@@ -194,7 +194,7 @@ namespace GroupProject.Controllers {
         public events;
         public groups;
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
             $http.get('/api/groups/createdgroups').then((results) => {
                 this.myGroups = results.data;
             });
@@ -223,6 +223,15 @@ namespace GroupProject.Controllers {
 
                 });
         }
+        //public updateGroup(group) {
+        //    var p = { groupId: this.$stateParams.id };
+        //    this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
+        //        .then((response) => {
+        //            this.$state.reload();
+        //        }).catch((reason) => {
+        //            console.log(reason);
+        //        });
+        //}
     }
 
 
@@ -251,6 +260,8 @@ namespace GroupProject.Controllers {
                 this.eventGroups = results.data;
             });
         }
+
+        public editgroup = false;
 
         public updateGroup(group) {
             var p = { groupId: this.$stateParams.id };

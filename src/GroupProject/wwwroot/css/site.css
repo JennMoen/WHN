@@ -941,3 +941,7 @@ span[contenteditable='true']:hover {
     .font16{
         font-size:16px;
     }
+
+    .height100 {
+        height: 100%;
+    }
