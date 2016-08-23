@@ -652,7 +652,10 @@ ng-md-icon {
 .groupcard {
     /*background-color: #3f3250;*/
     width: 300px;
-    height: 75px;
+    height: 100px;
+    box-shadow:0 10px 20px
+    rgba(0,0,0,0.19), 0 6px 6px
+    rgba(0,0,0,0.23);
 }
 
 .groupdiv {
@@ -667,6 +670,9 @@ ng-md-icon {
 .biggroupcard {
     width: 500px;
     height: 500px;
+    box-shadow:0 10px 20px
+    rgba(0,0,0,0.19), 0 6px 6px
+    rgba(0,0,0,0.23);
 }
 
 #addgroup {

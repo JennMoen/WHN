@@ -95,6 +95,7 @@ namespace GroupProject.Controllers
         }
 
         [HttpPost("attend")]
+        [Authorize]
         public IActionResult Add([FromBody]int eventId)
         {
             if (!ModelState.IsValid)

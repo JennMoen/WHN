@@ -1,5 +1,6 @@
 ﻿using GroupProject.Data;
 using GroupProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -79,6 +80,7 @@ namespace GroupProject.Controllers
         //}
 
         [HttpPost("join")]
+        [Authorize]
         public IActionResult Add([FromBody] int groupId)
         {
             if (!ModelState.IsValid)
