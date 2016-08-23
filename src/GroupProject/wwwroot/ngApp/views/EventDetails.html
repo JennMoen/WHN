@@ -1,20 +1,34 @@
 ﻿<div class="flex-row content">
-    <div class="flex-col sideBarDiv bgnd-rock">
+    <div class="flex-col sideBarDiv bgnd-grey">
 
-        <ul class="flex-col sideBarUList p-fixed">
-
+        <div class="flex-col sideBarUList p-fixed">
+            <md-card>
+                <md-card-actions>
+                    <md-button class="width100" ui-sref="eventAdd">Create an Event</md-button>
+                </md-card-actions>
+            </md-card>
+            <md-card>
+                <md-card-actions>
+                    <md-button class="width100" ui-sref="myGroups">My Groups</md-button>
+                </md-card-actions>
+            </md-card>
+            <md-card>
+                <md-card-actions>
+                    <md-button class="width100" ui-sref="createGroup">Create a Group</md-button>
+                </md-card-actions>
+            </md-card>
             <!--<li><a ui-sref="">Find Events</a></li>-->
 
-            <li><a ui-sref="eventAdd">Create Event</a></li>
+            <!--<li><a ui-sref="eventAdd">Create Event</a></li>
             <li><a ui-sref="mygroups">My Groups</a></li>
             <li><a ui-sref="createGroup">Create a Group</a></li>
-            <li><a ui-sref="MyEvents"> My Events</a></li>
+            <li><a ui-sref="MyEvents"> My Events</a></li>-->
 
-        </ul>
+        </div>
 
     </div>
 
-    <div class="containerMainCol mainCol" layout="column">
+    <div class="containerMainCol mainCol light-white" layout="column">
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
         <div  layout="row" layout-align="center center">
             <md-card class="mainCol" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
@@ -39,8 +53,8 @@
                             <div>{{controller.eventSearchData.status}} &bull; {{controller.eventSearchData.category.name}} &bull; Created by: {{controller.eventSearchData.creatorName}}</div>
                             <div>{{controller.eventSearchData.dateOfEvent | date:'h:mm a'}} - {{controller.eventSearchData.endTime | date: 'h:mm a'}}</div>
                             <div>{{controller.eventSearchData.location}}</div>
-                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{controller.eventSearchData.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>FIX GROUP INFO</div>
-                            <br />
+                            <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{controller.eventSearchData.numGoing}}</div>
+                            <br/>
                              <div>{{controller.eventSearchData.description}}</div>
                         </div>
                     </div>
