@@ -1,19 +1,35 @@
 ﻿<div class="flex-row width100">
 
-    <div class="flex-col sideBarDiv bgnd-rock">
-
-        <ul class="flex-col sideBarUList p-fixed">
+    <div class="flex-col sideBarDiv bgnd-grey">
+        <md-card>
+            <md-card-actions>
+                <md-button class="width100" ui-sref="eventAdd">Create an Event</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-actions>
+                <md-button class="width100" ui-sref="myGroups">My Groups</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-actions>
+                <md-button class="width100" ui-sref="createGroup">Create a Group</md-button>
+            </md-card-actions>
+        </md-card>
+        <br />
+        <br />
+        <!--<ul class="flex-col sideBarUList p-fixed">
 
             <li><a ui-sref="eventAdd">Create an Event</a></li>
             <li><a ui-sref="myGroups">My Groups</a></li>
             <li><a ui-sref="createGroup">Create a Group</a></li>
 
-        </ul>
+        </ul>-->
 
     </div>
     <div class="containerMainCol mainCol" layout="row" layout-wrap>
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
-        <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="event in controller.events | filter : searchByCategory.category.name">
+        <div flex-xs layout="column" layout-align="center center" ng-repeat="event in controller.events | filter : searchByCategory.category.name">
             <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
                 <div layout="row" layout-align="center center">
                     <md-card-header>
@@ -52,7 +68,7 @@
                 <div layout="row" layout-align="center center">
                     <md-card-header>
                         <md-card-header-text>
-                            <div class="md-title" ui-sref="EventDetails({id:event.id})">{{e.name}}</div>
+                            <div class="md-title" ui-sref="EventDetails({id:e.id})">{{e.name}}</div>
                         </md-card-header-text>
                     </md-card-header>
                 </div>

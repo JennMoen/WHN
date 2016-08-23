@@ -54,9 +54,7 @@ namespace GroupProject.Controllers {
         public categories;
         public eventStatus;
         public myGroups;
-        public myGroupsNames;
         public toastMsg;
-        public i;
         public displayToast($mdToast) {
             var toast = $mdToast.simple()
                 .textContent(this.toastMsg)
@@ -79,6 +77,7 @@ namespace GroupProject.Controllers {
             addEvent.location = addEvent.location;
             addEvent.name = addEvent.name;
             addEvent.status = addEvent.status;
+            addEvent.group = addEvent.group;
 
             console.log(`price: ${addEvent.admissionPrice} category ID:  ${addEvent.category.id}`);
             console.log(`category name: ${addEvent.category.name}`);
@@ -86,7 +85,9 @@ namespace GroupProject.Controllers {
             console.log(`description: ${addEvent.description}`);
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
-            //console.log(`group name: ${addEvent.group.id}`);
+            console.log(`status: ${addEvent.status}`);
+            console.log(`group name: ${addEvent.group}`);
+            
 
             this.$http.post('/api/events', addEvent)
 
@@ -118,10 +119,6 @@ namespace GroupProject.Controllers {
 
                 $http.get('/api/groups/createdgroups').then((results) => {
                 this.myGroups = results.data;
-                console.log(this.myGroups);
-                console.log(`myGroups is: ${this.myGroups} myGroups.name is: ${this.myGroups.name}`);
-                console.log(this.myGroupsNames);
-                    
                 }),
 
             this.eventStatus = [
@@ -423,17 +420,38 @@ namespace GroupProject.Controllers {
 
         public event;
         public categories;
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+        public eventStatus;
+        public toastMsg;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService) {
             var p = { eventId: $stateParams.id };
 
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
                 .then((response) => {
                     this.event = response.data;
+                    if (this.event.status == "public") {
+                        this.event.status.checked = "public"
+                    } else {
+                        this.event.status.checked = "private"
+                    }
+                    this.eventStatus = [
+                        "private", "public"]
+                   
+                        
                 }),
-                $http.get('/api/category')
-                    .then((response) => {
-                        this.categories = response.data;
-                    });
+
+            $http.get('/api/category')
+                .then((response) => {
+                    this.categories = response.data;
+                });
 
         }
 
@@ -444,6 +462,8 @@ namespace GroupProject.Controllers {
             this.$http.put(`/api/events/${this.$stateParams.id}`, event, { params: p })
                 .then((response) => {
                     this.$state.go('eventSearch');
+                    this.toastMsg = "Your event was updated successfully";
+                    this.displayToast(this.$mdToast);
                 }).catch((reason) => {
                     console.log(reason);
                 });
@@ -453,8 +473,12 @@ namespace GroupProject.Controllers {
             this.$http.delete(`/api/events/${this.$stateParams.id}`, event)
                 .then((response) => {
                     this.$state.go('eventSearch');
-
+                    this.toastMsg = "Your event was successfully deleted";
+                    this.displayToast(this.$mdToast);
+                }).catch((reason) => {
+                    console.log(reason);
                 });
+
         }
 
 

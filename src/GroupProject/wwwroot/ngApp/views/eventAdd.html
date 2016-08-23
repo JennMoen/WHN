@@ -3,7 +3,8 @@
     <md-content flex id="content" class="md-default-theme">
         <form name="addEventForm" novalidate ng-submit="controller.addEvent(addEvent)">
 
-            <md-input-container class="md-block" md-no-float>
+            <br />
+            <md-input-container class="md-block" md-no-float flex="30">
                 <label><ng-md-icon icon="label" style="fill:#4527A0"></ng-md-icon>Select a category for your event</label>
                 <md-select ng-model="addEvent.category"
                            class="md-select-value"
@@ -30,16 +31,18 @@
 
             <md-radio-group
                             ng-model="addEvent.status"
-                            ng-init="addEvent.status=private">
+                            ng-init="addEvent.status=private"
+                            flex="30">
                 <label id="eventAddRadioGroup">Is this a private event or a public event?</label>
                 <md-radio-button ng-repeat="status in controller.eventStatus"
                                  aria-label="{{status}}"
+                                 class="md-primary"
                                  ng-value="status">
                     {{status}}
                 </md-radio-button>
             </md-radio-group>
 
-            <md-divider></md-divider>
+            
             <md-input-container class="md-block" md-no-float>
                 <div layout="row" flex>
                     <ng-md-icon icon="add_location" style="fill:#4527A0"></ng-md-icon>
@@ -50,25 +53,26 @@
                     </div>
                 </div>
             </md-input-container>
-            <br>
+            <br />
 
             <!--<md-input-container class="md-block" md-no-float>
-                <label class="md-checkbox-label" id="eventAddCheckbox"><ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon> Select your groups to include in this event</label>
+                <label class="md-checkbox-label" id="eventAddCheckbox"><ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon> Select your groups to include in this event (group members will be notified via email)</label>
+                <br />
                 <div ng-repeat="group in controller.myGroups">
-                    <md-checkbox ng-model="addEvent.group" 
-                        class="md-primary" 
-                        ng-value="{{group}}" 
-                        name="selectedGroups">
-                        ng-click="toggleSelection{{group}}">
-                        ng-checked="{{selection.indexOf(group) > -1}}">
-                            <small>&nbsp;{{group.name}}</small>
-                    </md-checkbox>
+                    <md-switch ng-model="addEvent[group.name]"
+                         class="md-primary"
+                         ng-value="group.name">
+                        {{group.name}}
+                    </md-switch>
+
                 </div>
             </md-input-container>-->
 
+            <!--name="selectedGroups">-->
+            
             
             <md-input-container class="md-block" md-no-float>
-                <div layout="row" flex>
+                <div layout="row" flex="30">
                     <ng-md-icon icon="payment" style="fill:#4527A0"></ng-md-icon>
                     <input ng-required="true" name="admissionPrice" ng-model="addEvent.admissionPrice" placeholder="Enter the admission price for your event" />
                 </div>

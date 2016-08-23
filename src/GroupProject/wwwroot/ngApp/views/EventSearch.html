@@ -22,15 +22,13 @@
                 <md-button class="width100" ui-sref="createGroup">Create a Group</md-button>
             </md-card-actions>
         </md-card>
-        <br/>
-        <br/>
-        <ul class="flex-col sideBarUList p-fixed">
-            <!--<li><a ui-sref="">Find Events</a></li>-->
+        <!--<br/>
+        <br/>-->
+        <!--<ul class="flex-col sideBarUList p-fixed">-->
             
-            <li>
+            <!--<li>-->
                 <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
-                    <!--<form name="searchByCategory">-->
-                    <md-input-container class="md-select-value">
+                    <md-input-container class="md-select-value searchByCategory">
                         <label>Find Events By Category</label>
                         <md-select ng-model="searchByCategory.category"
                                    class="md-select-value">
@@ -43,7 +41,7 @@
                 </form>
                 
 
-            </li>
+            <!--</li>-->
 
 
             <!--<li><input type="button" class="submit" ui-sref="MyEvents" value="My Events"/></li>
@@ -55,6 +53,9 @@
         </ul>
 
     </div>
+    
+
+
 
     <div class="containerMainCol mainCol light-white" layout="row"  layout-wrap >
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
@@ -90,4 +91,5 @@
             </div>
         <!--</md-content>-->
     </div>
+    
 </div>
