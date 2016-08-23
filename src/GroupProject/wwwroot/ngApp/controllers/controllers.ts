@@ -55,6 +55,7 @@ namespace GroupProject.Controllers {
         public eventStatus;
         public myGroups;
         public toastMsg;
+        public addEvent;
         public displayToast($mdToast) {
             var toast = $mdToast.simple()
                 .textContent(this.toastMsg)
@@ -86,7 +87,7 @@ namespace GroupProject.Controllers {
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
             console.log(`status: ${addEvent.status}`);
-            console.log(`group name: ${addEvent.group}`);
+            console.log(`group name: ${addEvent.group.name}`);
             
 
             this.$http.post('/api/events', addEvent)
@@ -124,7 +125,9 @@ namespace GroupProject.Controllers {
             this.eventStatus = [
                 "private",
                 "public"
-            ];
+                ];
+
+            this.addEvent = {};
 
 
         }

@@ -587,10 +587,11 @@ body {
     white-space: normal;
 }
 
-.lineheight {
+/*.lineheight {
     md-checkbox;
+}*/
 
-{
+md-checkbox {
     box-sizing: border-box;
     display: inline-block;
     margin-top: 15px;
@@ -598,6 +599,7 @@ body {
     white-space: nowrap;
     cursor: pointer;
     outline: none;
+    line-height:1px;
 }
 
 .md-checkbox-label {
@@ -615,8 +617,8 @@ ng-md-icon {
     font-style: normal;
 }
 
-line-height:1px;
-}
+/*line-height:1px;
+}*/
 
 .paddingRight {
     padding-right: 20px;
@@ -981,6 +983,6 @@ span[contenteditable='true']:hover {
         height: 100%;
     }
 md-input-container label{
-    color: #C0B3A0;
-    fill: #C0B3A0; 
+    color: #000000;
+    fill: #000000; 
 }

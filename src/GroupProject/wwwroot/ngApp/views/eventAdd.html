@@ -5,7 +5,7 @@
 
             <br />
             <md-input-container class="md-block" md-no-float flex="30">
-                <label><ng-md-icon icon="label" style="fill:#4527A0"></ng-md-icon>Select a category for your event</label>
+                <label><ng-md-icon icon="label" style="fill:#000000"></ng-md-icon>Select a category for your event</label>
                 <md-select ng-model="addEvent.category"
                            class="md-select-value"
                            id="eventAddSelect"
@@ -19,7 +19,7 @@
 
             <md-input-container class="md-block" md-no-float>
                 <div layout="row" flex>
-                    <ng-md-icon icon="event" style="fill:#4527A0"></ng-md-icon>
+                    <ng-md-icon icon="event" style="fill:#000000"></ng-md-icon>
                     <input ng-required="true" name="name" ng-model="addEvent.name" placeholder="Enter the name of your event" />
                     <div ng-messages="simple.name.$error"
                          ng-show="simple.name.$dirty">
@@ -45,7 +45,7 @@
             
             <md-input-container class="md-block" md-no-float>
                 <div layout="row" flex>
-                    <ng-md-icon icon="add_location" style="fill:#4527A0"></ng-md-icon>
+                    <ng-md-icon icon="add_location" style="fill:#000000"></ng-md-icon>
                     <input ng-required="true" name="location" ng-model="addEvent.location" placeholder="Enter the location of your event"/>
                     <div ng-messages="simple.location.$error.required"
                         ng-show="simple.location.$dirty">
@@ -56,11 +56,12 @@
             <br />
 
             <!--<md-input-container class="md-block" md-no-float>
-                <label class="md-checkbox-label" id="eventAddCheckbox"><ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon> Select your groups to include in this event (group members will be notified via email)</label>
+                <label class="md-checkbox-label" id="eventAddCheckbox"><ng-md-icon icon="group" style="fill:#000000"></ng-md-icon> Select your groups to include in this event (group members will be notified via email)</label>
                 <br />
                 <div ng-repeat="group in controller.myGroups">
-                    <md-switch ng-model="addEvent[group.name]"
+                    <md-switch ng-model="selected.controller.addEvent[group.name]"
                          class="md-primary"
+                               aria-label="{{group.name}}"
                          ng-value="group.name">
                         {{group.name}}
                     </md-switch>
@@ -73,15 +74,15 @@
             
             <md-input-container class="md-block" md-no-float>
                 <div layout="row" flex="30">
-                    <ng-md-icon icon="payment" style="fill:#4527A0"></ng-md-icon>
-                    <input ng-required="true" name="admissionPrice" ng-model="addEvent.admissionPrice" placeholder="Enter the admission price for your event" />
+                    <ng-md-icon icon="payment" style="fill:#000000"></ng-md-icon>
+                    <input required name="admissionPrice" ng-model="addEvent.admissionPrice" placeholder="Enter the admission price for your event" />
                 </div>
             </md-input-container>
             <br />
             
             <div class="layout-column flex-gt-md-30">
                 <md-input-container class="md-block">
-                    <label><ng-md-icon icon="date_range" style="fill:#4527A0"></ng-md-icon>Start Date/Time</label>
+                    <label><ng-md-icon icon="date_range" style="fill:#000000"></ng-md-icon>Start Date/Time</label>
                     <input mdc-datetime-picker="" date="true" time="true" type="text" id="input_0"
                            placeholder="Start date and time" min-date="date" max-date="date" class="md-input" ng-model="addEvent.startDate" />
                 </md-input-container>
@@ -89,7 +90,7 @@
 
             <div class="layout-column flex-gt-md-30">
                 <md-input-container class="md-block">
-                    <label><ng-md-icon icon="date_range" style="fill:#4527A0"></ng-md-icon>End Date/Time</label>
+                    <label><ng-md-icon icon="date_range" style="fill:#000000"></ng-md-icon>End Date/Time</label>
                     <input mdc-datetime-picker="" date="true" time="true" type="text" id="input_1"
                            placeholder="End date and time" min-date="date" class="md-input" ng-model="addEvent.endDate" />
                 </md-input-container>
@@ -97,8 +98,8 @@
                
             <md-input-container class="md-block" md-no-float>
                 <div layout="row" flex>
-                    <ng-md-icon icon="description" style="fill:#4527A0"></ng-md-icon>
-                    <textarea ng-required="true" name="description" ng-model="addEvent.description" placeholder="Enter the description for your event"></textarea>
+                    <ng-md-icon icon="description" style="fill:#000000"></ng-md-icon>
+                    <textarea required name="description" ng-model="addEvent.description" placeholder="Enter the description for your event"></textarea>
                 </div>
             </md-input-container>
 
