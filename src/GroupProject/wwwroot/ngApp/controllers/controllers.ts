@@ -86,7 +86,7 @@ namespace GroupProject.Controllers {
             console.log(`description: ${addEvent.description}`);
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
-            console.log(`group name: ${addEvent.group.id}`);
+            //console.log(`group name: ${addEvent.group.id}`);
 
             this.$http.post('/api/events', addEvent)
 

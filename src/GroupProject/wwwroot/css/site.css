@@ -201,7 +201,7 @@ a, [ui-sref] {
 }
 
 .sideBarDiv {
-    width: 30%;
+    width:30%;
     font-size: 16px;
     
 }
@@ -324,7 +324,7 @@ a, [ui-sref] {
 }
 
 .p-fixed {
-    position: fixed;
+    
     height: auto;
 }
 
@@ -346,6 +346,41 @@ a, [ui-sref] {
     outline: none;
 }
 
+.topBar>a:hover{
+    text-decoration:none;
+    background-color:#3b383e;
+    background-image: linear-gradient(to bottom, #3b383e, #262229)
+}
+
+/*.topBar>a:visited{
+    text-decoration:none;
+}*/
+
+.topBar>[ui-sref]{
+    text-decoration:none;
+}
+/*.topBar>a:active{
+    text-decoration:none;
+}*/
+
+.titleCard{
+    text-
+}
+
+.whiteBorder>a{
+    /*background-image: linear-gradient(to bottom, #262229,#3b383e);*/
+    /*border-left:solid 1px white;
+    border-right:solid 1px white;*/
+}
+
+.whiteBorder>a:hover{
+    /*background-color:#3b383e;
+    background-image: linear-gradient(to bottom, #3b383e, #262229)*/
+}
+
+.whiteBorderLogin{
+    border-right:solid 1px white;
+}
 
 .md-button.md-raised:not([disabled]) {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -604,6 +639,7 @@ line-height:1px;
     box-shadow:0 10px 20px
     rgba(0,0,0,0.19), 0 6px 6px
     rgba(0,0,0,0.23);
+    /*background-color:#f8f8f8;*/
 }
 
 .searchbox {

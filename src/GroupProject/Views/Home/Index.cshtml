@@ -11,27 +11,28 @@
     <base href="/" />
 </head>
 <body ng-controller="AccountController as account" ng-cloak>
-    <div  class="flex-col">@*flex-col ai-c*@
-        @*<h1>WHN</h1>*@
+    <div class="flex-col">
+        @*flex-col ai-c*@
+    @*<h1>WHN</h1>*@
     <div class="flex-row width100">
-    <div class="width30 bgnd-darkpurple"></div>
-    <div class="width40 place high topBar bgnd-darkpurple f-jc-c">
-        <a ui-sref="home">Home</a>
-        <a ui-sref="groups">Find Groups</a>
-        <a ui-sref="eventSearch">Find Events</a>
-        <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
-        <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-    </div>
-    <div class="width30 bgnd-darkpurple font16 topBar place f-jc-fe" >
-        <a ui-sref="myaccount" class="ai-c">{{account.getUserName()}}</a>
-        <ng-md-icon icon="account_box" style="fill:gray" size="40" class="ai-c"></ng-md-icon>
-    </div>
+        <div class="width30 bgnd-darkpurple"></div>
+        <div class="width40 place high topBar bgnd-darkpurple f-jc-c whiteBorder">
+            <a ui-sref="home">Home</a>
+            <a ui-sref="eventSearch">Find Events</a>
+            <a ui-sref="groups">Find Groups</a>
+            <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
+            <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
         </div>
-        @*<div class="flex-row f-jc-c ai-c place high width100 topBar bgnd-darkpurple">
+        <div class="width30 bgnd-darkpurple font16 topBar place f-jc-fe whiteBorderLogin">
+            <a ui-sref="myaccount" class="ai-c">{{account.getUserName()}}</a>
+            <ng-md-icon icon="account_box" style="fill:gray" size="40" class="ai-c"></ng-md-icon>
+        </div>
+    </div>
+    @*<div class="flex-row f-jc-c ai-c place high width100 topBar bgnd-darkpurple">
             <a ui-sref="home">Home</a>
             <a ui-sref="groups">Find Groups</a>
             <a ui-sref="eventSearch">Find Events</a>
-            
+
 
             <a ui-sref="login" ng-show="!account.isLoggedIn()">Login</a>
             <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
@@ -40,39 +41,39 @@
 
                     Welcome, {{account.getUserName()}} <a ui-sref="myaccount">(My Account)</a>
         </div>*@
-        <ui-view></ui-view>
-    </div>
-        
-
-    <!-- Library Files -->
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/angular/angular.js"></script>
-    <script src="~/lib/angular-resource/angular-resource.js"></script>
-    <script src="~/lib/angular-animate/angular-animate.js"></script>
-    <script src="~/lib/angular-touch/angular-touch.js"></script>
-
-    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="~/lib/angular-aria/angular-aria.js"></script>
-    <script src="~/lib/angular-material/angular-material.js"></script>
-    <script src="~/lib/momentjs/moment.js"></script>
-    <script type="text/javascript" src="~/lib/angular-material-datetimepicker/beautifier.js"></script>
-
-    <script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/demo.js"></script>
-
-    <script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/angular-material-datetimepicker.js"></script>
-    <script type="text/javascript" src="~/lib/angular-messages/angular-messages.js"></script>
-    <script type="text/javascript" src="~/lib/angular-material-icons/angular-material-icons.js"></script>
-    <script type="text/javascript" src="~/lib/angular-material/modules/js/core/core.js"></script>
-
-    <!-- App Files-->
-    <script src="~/ngapp/app.js"></script>
-    <script src="~/ngapp/controllers/controllers.js"></script>
-    <script src="~/ngapp/services/services.js"></script>
+    <ui-view></ui-view>
+</div>
 
 
-    <!-- Security -->
-    <script src="~/ngapp/controllers/accountcontroller.js"></script>
-    <script src="~/ngapp/services/accountservice.js"></script>
+<!-- Library Files -->
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/angular/angular.js"></script>
+<script src="~/lib/angular-resource/angular-resource.js"></script>
+<script src="~/lib/angular-animate/angular-animate.js"></script>
+<script src="~/lib/angular-touch/angular-touch.js"></script>
+
+<script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="~/lib/angular-aria/angular-aria.js"></script>
+<script src="~/lib/angular-material/angular-material.js"></script>
+<script src="~/lib/momentjs/moment.js"></script>
+<script type="text/javascript" src="~/lib/angular-material-datetimepicker/beautifier.js"></script>
+
+<script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/demo.js"></script>
+
+<script type="text/javascript" src="~/lib/angular-material-datetimepicker/js/angular-material-datetimepicker.js"></script>
+<script type="text/javascript" src="~/lib/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="~/lib/angular-material-icons/angular-material-icons.js"></script>
+<script type="text/javascript" src="~/lib/angular-material/modules/js/core/core.js"></script>
+
+<!-- App Files-->
+<script src="~/ngapp/app.js"></script>
+<script src="~/ngapp/controllers/controllers.js"></script>
+<script src="~/ngapp/services/services.js"></script>
+
+
+<!-- Security -->
+<script src="~/ngapp/controllers/accountcontroller.js"></script>
+<script src="~/ngapp/services/accountservice.js"></script>
 
 </body>
 </html>
