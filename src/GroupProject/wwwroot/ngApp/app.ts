@@ -89,6 +89,12 @@ namespace GroupProject {
                 controller: GroupProject.Controllers.MyGroupDetailsController,
                 controllerAs: 'controller'
             })
+            .state('createGroup', {
+                url: '/createGroup',
+                templateUrl: '/ngApp/views/createGroup.html',
+                controller: GroupProject.Controllers.MyGroupsController,
+                controllerAs: 'controller'
+            })
             .state('eventadd', {
                 url: '/eventadd',
                 templateUrl: '/ngApp/views/eventadd.html',

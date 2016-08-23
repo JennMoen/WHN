@@ -1,8 +1,31 @@
-﻿<div class="flex-row content">
-
+﻿<div class="flex-row width100">
     
-    <div class="flex-col sideBarDiv bgnd-rock">
+
+    <div class="flex-col sideBarDiv bgnd-grey" >
+        <md-card>
+            <md-card-actions >
+                <md-button class="width100" ui-sref="MyEvents">My Events</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-actions>
+                <md-button class="width100" ui-sref="eventAdd">Create an Event</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-actions>
+                <md-button class="width100" ui-sref="myGroups">My Groups</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+            <md-card-actions>
+                <md-button class="width100" ui-sref="createGroup">Create a Group</md-button>
+            </md-card-actions>
+        </md-card>
+        <br/>
+        <br/>
         <ul class="flex-col sideBarUList p-fixed">
+            
             <li>
                 <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
                     <md-input-container class="md-select-value searchByCategory">
@@ -16,11 +39,15 @@
                         </md-select>
                     </md-input-container>
                 </form>
+                
+
             </li>
-            <li><a ui-sref="MyEvents">My Events</a></li>
-            <li><a ui-sref="eventAdd">Add an Event</a></li>
-            <li><a ui-sref="myGroups">My Groups</a></li>
-            <li><a ui-sref="createGroup">Create a Group</a></li>
+
+
+            <!--<li><input type="button" class="submit" ui-sref="MyEvents" value="My Events"/></li>
+            <li><button ui-sref="eventAdd">Create an Event</button></li>
+            <li><button ui-sref="myGroups">My Groups</button></li>
+            <li><button ui-sref="createGroup">Create a Group</button></li>-->
 
 
         </ul>
@@ -30,9 +57,9 @@
 
 
 
-    <div class="containerMainCol mainCol" layout="row"  layout-wrap>
+    <div class="containerMainCol mainCol light-white" layout="row"  layout-wrap >
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
-            <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
+            <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name"><!--can get rid of flex-gt-xs=50-->
                 <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
                     <div layout="row" layout-align="center center" >
                         <md-card-header>
@@ -53,7 +80,7 @@
                             <div layout="column">
                                 <div>{{searchData.dateOfEvent | date:'h:mm a'}} - {{searchData.endTime | date: 'h:mm a'}}</div>
                                 <div>{{searchData.location}}</div>
-                                <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{searchData.numGoing}} &bull; <ng-md-icon icon="group" style="fill:#4527A0"></ng-md-icon>FIX GROUP INFO</div>
+                                <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{searchData.numGoing}}</div>
                             </div>
                         </div>
                     </md-card-content>
