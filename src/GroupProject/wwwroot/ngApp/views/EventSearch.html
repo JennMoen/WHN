@@ -1,12 +1,11 @@
 ﻿<div class="flex-row content">
+
+    
     <div class="flex-col sideBarDiv bgnd-rock">
         <ul class="flex-col sideBarUList p-fixed">
-            <!--<li><a ui-sref="">Find Events</a></li>-->
-
             <li>
                 <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
-                    <!--<form name="searchByCategory">-->
-                    <md-input-container class="md-select-value">
+                    <md-input-container class="md-select-value searchByCategory">
                         <label>Find Events By Category</label>
                         <md-select ng-model="searchByCategory.category"
                                    class="md-select-value">
@@ -20,14 +19,16 @@
             </li>
             <li><a ui-sref="MyEvents">My Events</a></li>
             <li><a ui-sref="eventAdd">Add an Event</a></li>
-            <li><a ui-sref="editEvent">Edit an Event</a></li>
-            <li><a ui-sref="mygroups">My Groups</a></li>
+            <li><a ui-sref="myGroups">My Groups</a></li>
             <li><a ui-sref="createGroup">Create a Group</a></li>
 
 
         </ul>
 
     </div>
+    
+
+
 
     <div class="containerMainCol mainCol" layout="row"  layout-wrap>
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->

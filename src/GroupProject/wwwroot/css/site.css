@@ -523,7 +523,7 @@ md-checkbox {
 ng-md-icon {
     padding-top: -15px;
 }
-#eventAddContainer, #eventAddRadioGroup, #eventAddSelect, #eventAddCheckbox {
+#eventAddContainer, #eventAddRadioGroup, #eventAddSelect, #eventAddCheckbox, #eventUpdateContainer, #eventUpdateRadioGroup, #eventUpdateCheckbox  {
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: 16px;
     font-weight: normal;
@@ -550,3 +550,8 @@ ng-md-icon {
     width:350px;
     height:350px;
 }
+md-input-container label{
+    color: #C0B3A0;
+    fill: #C0B3A0; 
+}
+
