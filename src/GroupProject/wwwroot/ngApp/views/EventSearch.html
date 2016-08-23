@@ -25,12 +25,10 @@
         <!--<br/>
         <br/>-->
         <!--<ul class="flex-col sideBarUList p-fixed">-->
-            <!--<li><a ui-sref="">Find Events</a></li>-->
             
             <!--<li>-->
                 <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
-                    <!--<form name="searchByCategory">-->
-                    <md-input-container class="md-select-value">
+                    <md-input-container class="md-select-value searchByCategory">
                         <label>Find Events By Category</label>
                         <md-select ng-model="searchByCategory.category"
                                    class="md-select-value">
@@ -55,6 +53,9 @@
         </ul>
 
     </div>
+    
+
+
 
     <div class="containerMainCol mainCol light-white" layout="row"  layout-wrap >
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
