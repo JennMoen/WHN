@@ -5,7 +5,7 @@
 
             <br />
             <md-input-container class="md-block" md-no-float flex="30">
-                <label><ng-md-icon icon="label" style="fill:#4527A0"></ng-md-icon> Edit Event Category</label>
+                <label><ng-md-icon icon="label" style="fill:#000000"></ng-md-icon> Edit Event Category</label>
                 <md-select ng-model="controller.event.category.name"
                            class="md-select-value">
                     <md-option 
@@ -17,7 +17,7 @@
 
             <md-input-container class="md-block">
                 <div layout="row" flex>
-                    <ng-md-icon icon="event" style="fill:#4527A0"></ng-md-icon>
+                    <ng-md-icon icon="event" style="fill:#000000"></ng-md-icon>
                     <input required name="name" ng-model="controller.event.name" placeholder="Edit the name of your event" />
                 </div>
             </md-input-container>
@@ -37,28 +37,28 @@
             <br />
             <md-input-container class="md-block">
                 <div layout="row" flex>
-                    <ng-md-icon icon="add_location" style="fill:#4527A0"></ng-md-icon>
+                    <ng-md-icon icon="add_location" style="fill:#000000"></ng-md-icon>
                     <input required name="location" ng-model="controller.event.location" placeholder="Edit the location of your event" />
                 </div>
             </md-input-container>
 
             <md-input-container class="md-block">
                 <div layout="row" flex="30">
-                    <ng-md-icon icon="payment" style="fill:#4527A0"></ng-md-icon>
+                    <ng-md-icon icon="payment" style="fill:#000000"></ng-md-icon>
                     <input required name="admissionPrice" ng-model="controller.event.admissionPrice" placeholder="Edit the admission price for your event" />
                 </div>
             </md-input-container>
 
             <div class="layout-column flex-gt-md-30">
                 <md-input-container class="md-input-has-placeholder">
-                    <label><ng-md-icon icon="date_range" style="fill:#4527A0"></ng-md-icon>Start Date/Time</label>
+                    <label><ng-md-icon icon="date_range" style="fill:#000000"></ng-md-icon>Start Date/Time</label>
                     <input mdc-datetime-picker="" date="true" time="true" type="text" id="input_0"
                            placeholder="Start date and time" min-date="date" max-date="date" class="md-input" ng-model="controller.event.dateOfEvent" />
                 </md-input-container>
             </div>
             <div class="layout-column flex-gt-md-30">
                 <md-input-container class="md-input-has-placeholder">
-                    <label><ng-md-icon icon="date_range" style="fill:#4527A0"></ng-md-icon>End Date/Time</label>
+                    <label><ng-md-icon icon="date_range" style="fill:#000000"></ng-md-icon>End Date/Time</label>
                     <input mdc-datetime-picker="" date="true" time="true" type="text" id="input_1"
                            placeholder="End date and time" min-date="date" class="md-input" ng-model="controller.event.endTime" />
                 </md-input-container>
@@ -66,7 +66,7 @@
 
             <md-input-container class="md-block">
                 <div layout="row" flex>
-                    <ng-md-icon icon="description" style="fill:#4527A0"></ng-md-icon>
+                    <ng-md-icon icon="description" style="fill:#000000"></ng-md-icon>
                     <textarea required name="eventDescription" ng-model="controller.event.description" placeholder="Edit the description for your event"></textarea>
                 </div>
             </md-input-container>

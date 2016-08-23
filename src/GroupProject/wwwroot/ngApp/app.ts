@@ -139,15 +139,15 @@ namespace GroupProject {
         // Enable HTML5 navigation
         $locationProvider.html5Mode(true);
 
-            $mdThemingProvider.theme('default')
-                .primaryPalette('deep-purple', {
-                    'default': '800',
-                    'hue-1': '900',
-                    'hue-2': '500',
-                    'hue-3': '100'
-                })
-                .accentPalette('brown')
-                .warnPalette('deep-orange')
+        $mdThemingProvider.theme('default')
+            .primaryPalette('grey', {
+                'default': '900',
+                'hue-1': '50',
+                'hue-2': '500',
+                'hue-3': '700'
+            })
+                .accentPalette('red')
+                .warnPalette('orange')
         });
 
 

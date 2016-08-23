@@ -1,7 +1,7 @@
 ﻿<div class="content">
     <h1>My Groups</h1>
 
-    <h2>My created Groups</h2>
+    <h2>My Created Groups</h2>
 
     <div layout="row" layout-wrap>
 
@@ -12,7 +12,7 @@
                         <md-card-header-text>
                             <div class="md-title" ui-sref="myGroupDetails({id:group.id})">{{group.name}}</div>
                         </md-card-header-text>
-                        <ng-md-icon icon="group" style="fill:#C0B3A0"></ng-md-icon>
+                        <ng-md-icon icon="group" style="fill:#000000"></ng-md-icon>
                     </md-card-header>
                 </div>
 
@@ -25,7 +25,7 @@
         </div>
         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
             <div layout="row" layout-align="center center" id="addgroup" >
-                <md-card-header><ng-md-icon icon="add" style="fill: #3f3250"></ng-md-icon>
+                <md-card-header><ng-md-icon icon="add" style="fill: #000000"></ng-md-icon>
                     <md-card-header-text>
                         <p class="md-title" ui-sref="createGroup" id="addgrouptext">Add a New Group</p>
                     </md-card-header-text>
@@ -52,7 +52,7 @@
                         <md-card-header-text>
                             <div class="md-title" ui-sref="groupDetails({id:group.groupId})">{{group.groupName}}</div>
                         </md-card-header-text>
-                        <ng-md-icon icon="group" style="fill:#C0B3A0"></ng-md-icon>
+                        <ng-md-icon icon="group" style="fill:#000000"></ng-md-icon>
                     </md-card-header>
                 </div>
 
