@@ -1,49 +1,94 @@
-﻿<h1>Group Details</h1>
-<div>Group name:  {{controller.group.name}}</div>
+﻿<div class="content">
+    <div class="heading">
+        <h1>Group Details</h1>
+    </div>
+    <div class="groupdiv">
+        <div layout="column" layout-align="center center">
+            <div>
+                <md-card class="biggroupcard" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="center center">
+
+                        <md-card-header>
+                            <md-card-header-text>
+                                <div class="md-title">{{controller.group.name}}</div>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </div>
+                    <md-card-content>
+                        <div layout="column">
+                            <div layout="column" layout-align="start">
+                                <div>Creator: {{controller.group.creator}}</div>
+                                <br />
+                                <div>Location: {{controller.group.location}}</div>
+                            </div>
+                            <br />
+                            <div layout="column" layout-align="start">
+                                <div>About Us: {{controller.group.description}}</div>
+                            </div>
+                            <br />
+                            <div layout="column" layout-align="start">
+                                <div>Members:</div>
+                                <div ng-repeat="member in controller.group.members">
+                                    {{member.userName}}
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="center">
+                        <div><a ng-click="controller.Join(controller.group.id)">Join Group</a></div>
+                    </md-card-actions>
+                </md-card>
+            </div>
+        </div>
+    </div>
+
+    <div class="groupdiv">
+        <div layout="column" layout-align="center center">
+            <!--<h1> Events this Group is Attending: </h1>-->
+            <div>
+                <md-card class="biggroupcard" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="center center">
+                        <md-card-header>
+                            <md-card-header-text>
+                                <div class="md-title">Events this Group is Attending</div>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </div>
+                    <md-card-content>
+                        <div layout="column">
+                            <div layout="column" layout-align="center center">
+                                <div ng-repeat="e in controller.eventGroups" layout="column" layout-align="center center">
+                                    <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
+                                    <!--<div layout="column" layout-align="center center"> <a ng-click="controller.deleteEvent(e.eventId)">(Remove this event)</a></div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                    <!--<md-card-actions layout="row" layout-align="center">
+                    </md-card-actions>-->
+                </md-card>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--<div ng-repeat="e in controller.eventGroups" ui-sref="EventDetails({id:e.eventId})">
+    {{e.eventName}}
+
+</div>-->
+<!--<div>Group name:  {{controller.group.name}}</div>
 <div>Creator: {{controller.group.creator}}</div>
 <div> Location: {{controller.group.location}}</div>
 <div> About us: {{controller.group.description}}</div>
 
-
-
-
 <h3>Members:</h3>
-<div ng-repeat="member in controller.group.members">{{member.userName}}</div>
-
-
-
-
-<div><a ng-click="controller.Join(controller.group.id)">Join Group</a></div>
-
-
-
-<h3> Events this Group is Attending: </h3>
-<div ng-repeat="e in controller.eventGroups" ui-sref="EventDetails({id:e.eventId})">
-    {{e.eventName}}
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div ng-repeat="member in controller.group.members">{{member.userName}}</div>-->
 <!--<h3>Add a Friend to this Group</h3>
-<input type="text" ng-model="search"  
+<input type="text" ng-model="search"
        uib-tooltip="search" tooltip-placement="bottom" />
 <div ng-repeat="user in controller.users  | filter: search" ng-show="search">
     <div ng-click="controller.addMember(user)">{{user}}</div>
-    
-</div>-->
 
+ </div>-->
 

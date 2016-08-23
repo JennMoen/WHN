@@ -206,7 +206,7 @@ namespace GroupProject.Controllers {
         public addGroup(group) {
             this.$http.post('/api/groups', group)
                 .then((response) => {
-                    this.$state.reload();
+                    this.$state.go('myGroups');
                 })
                 .catch((reason) => {
                     console.log(reason);

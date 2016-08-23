@@ -1,61 +1,138 @@
-﻿<h1>Group Details</h1>
-<div>Group name:  {{controller.group.name}}</div>
-<div>Creator: {{controller.group.creator}}</div>
-<div> Location: {{controller.group.location}}</div>
-<div> About us: {{controller.group.description}}</div>
+﻿<div class="content">
+    <div class="groupdiv">
+        <div layout="column" layout-align="center center">
+            <h1>Group Details</h1>
+            <div>
 
-<h6>Edit Group</h6>
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="center center">
+                        <md-card-header>
+                            <md-card-header-text>
 
-<!--<form ng-submit="controller.updateGroup(group)">
-  <label>Name:</label>  <input type="text" ng-model="group.name"/>
-  <label>Location:</label>  <input type="text" ng-model="group.location"/>
-  <label>Description:</label>  <input type="text" ng-model="group.description" />
-    <input type="submit" value="Edit Group Details" />
-</form>-->
-
-<form ng-submit="controller.updateGroup(group)">
-    <md-input-container class="md-block" md-no-float>
-        <div layout="row" flex>
-            <input ng-required="true" name="Name" ng-model="group.name" placeholder="Group Name" />
+                                <div class="editable, md-title" contenteditable="true" ng-model="group.name">{{controller.group.name}}<input name="Name" ng-model="group.name" ng-show="" /></div>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </div>
+                    <md-card-content>
+                        <div layout="column">
+                            <div layout="column" layout-align="start">
+                                <div>Creator: {{controller.group.creator}}</div>
+                                <br />
+                                <div>Location: <span class="editable" contenteditable="true" ng-model="group.location">{{controller.group.location}}<input ng-model="group.location" ng-show=""></span></div>
+                            </div>
+                            <div layout="column" layout-align="start">
+                                <br />
+                                <div>About Us:<span class="editable" contenteditable="true"> {{controller.group.description}}</span><input name="Description" ng-model="group.description" ng-show=""/></div>
+                            </div>
+                            <br />
+                            <div layout="column" layout-align="start">
+                                <div>Members:</div>
+                                <div ng-repeat="member in controller.group.members">
+                                    {{member.userName}}
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="center">
+                    </md-card-actions>
+                </md-card>
+            </div>
+            <form ng-submit="controller.updateGroup(group)">
+                <input type="submit" value="Edit Group Details" />
+            </form>
+            <form ng-submit="controller.deleteGroup(group)">
+                <input type="submit" value="Delete this Group" />
+            </form>
         </div>
-    </md-input-container>
-    <br />
-    <md-input-container class="md-block" md-no-float>
-        <div layout="row" flex>
-            <input ng-required="true" name="Location" ng-model="group.location" placeholder="Edit location" />
+    </div>
+
+    <form ng-submit="controller.updateGroup(group)" ng-show="">
+        <h6>Edit Group</h6>
+        <md-input-container class="md-block" md-no-float>
+            <div layout="row" flex>
+                <input ng-required="true" name="Name" ng-model="group.name" placeholder="Group Name" />
+            </div>
+        </md-input-container>
+        <br />
+        <md-input-container class="md-block" md-no-float>
+            <div layout="row" flex>
+                <input ng-required="true" name="Location" ng-model="group.location" placeholder="Edit location" />
+            </div>
+        </md-input-container>
+        <br />
+        <md-input-container class="md-block" md-no-float>
+            <div layout="row" flex>
+                <input ng-required="true" name="Description" ng-model="group.description" placeholder="Change your group's description" />
+            </div>
+        </md-input-container>
+        <input type="submit" value="Edit Group Details" />
+    </form>
+
+
+    <div class="groupdiv">
+        <div layout="column" layout-align="center center">
+            <h1> Events this Group is Attending: </h1>
+            <div>
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="center center">
+                        <md-card-header>
+                            <md-card-header-text>
+                                <div class="md-title"></div>
+                            </md-card-header-text>
+                        </md-card-header>
+                    </div>
+                    <md-card-content>
+                        <div layout="column">
+                            <div layout="column" layout-align="center center">
+                                <div ng-repeat="e in controller.eventGroups" layout="column" layout-align="center center">
+                                    <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
+                                    <div layout="column" layout-align="center center"> <a ng-click="controller.deleteEvent(e.eventId)">(Remove this event)</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div layout="column">
+                            <h3>Add Events for Your Groups</h3>
+                        </div>
+                        <div layout="column">
+                            <form ng-submit="controller.groupAttend(event.id)">
+                                <md-input-container class="md-block" md-no-
+                                                    float>
+                                    <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
+                                </md-input-container>
+
+                                <input type="submit" value="Add Event" />
+
+                            </form>
+                        </div>
+                    </md-card-content>
+                    <!--<md-card-actions layout="row" layout-align="center">
+                    </md-card-actions>-->
+                </md-card>
+            </div>
         </div>
-    </md-input-container>
-    <br />
-    <md-input-container class="md-block" md-no-float>
-        <div layout="row" flex>
-            <input ng-required="true" name="Description" ng-model="group.description" placeholder="Change your group's description" />
-        </div>
-    </md-input-container>
-    <input type="submit" value="Edit Group Details" />
-</form>
+    </div>
 
 
-<form ng-submit="controller.deleteGroup(group)">
-    <input type="submit" value="Delete this Group" />
-</form>
-
-<h3>Members:</h3>
-<div ng-repeat="member in controller.group.members">{{member.userName}}</div>
 
 
-<h3> Events this Group is Attending: </h3>
-<div ng-repeat="e in controller.eventGroups">
-    <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
-    <div> <a ng-click="controller.deleteEvent(e.eventId)">Remove this event</a></div>
+
+
+
+    <!--<div ng-repeat="e in controller.eventGroups">
+        <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
+        <div> <a ng-click="controller.deleteEvent(e.eventId)">(Remove this event)</a></div>
+    </div>-->
+    <!--div>Group name:  {{controller.group.name}}</div>
+    <div>Creator: {{controller.group.creator}}</div>
+    <div> Location: {{controller.group.location}}</div>
+    <div> About us: {{controller.group.description}}</div>-->
+    <!--<form ng-submit="controller.updat
+    eGroup(group)">
+          <label>Name:</label>  <input type="text" ng-model="group.name"/>
+          <label>Location:</label>  <input type="text" ng-model="group.location"/>
+          <label>Description:</label>  <input type="text" ng-model="group.description" />
+            <input type="submit" value="Edit Group Details" />
+        </form>-->
+    <!--<h3>Members:</h3>
+    <div ng-repeat="member in controller.group.members">{{member.userName}}</div>-->
 </div>
-
-<h3>Add Events for Your Groups</h3>
-<form ng-submit="controller.groupAttend(event.id)">
-
-    <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
-
-    <input type="submit" value="Add Event" />
-
-</form>
-
-
