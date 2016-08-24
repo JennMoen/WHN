@@ -571,7 +571,12 @@ body {
 #eventAddContainer {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content:flex-start;
+    padding-left: 30px;
+}
+
+#eventUpdateContainer {
+    padding-left: 30px;
 }
 
 .ease {
@@ -977,6 +982,10 @@ span[contenteditable='true']:hover {
 
     .font16{
         font-size:16px;
+    }
+
+    .height100 {
+        height: 100%;
     }
 md-input-container label{
     color: #000000;

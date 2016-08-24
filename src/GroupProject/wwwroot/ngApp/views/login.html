@@ -1,4 +1,4 @@
-<fieldset>
+<!--<fieldset>
     <legend>Login with a Social Provider</legend>
 
     <ul>
@@ -7,9 +7,9 @@
         </li>
     </ul>
 
-</fieldset>
+</fieldset>-->
 
-<fieldset>
+<!--<fieldset>
     <legend>Login Locally</legend>
     <ul>
         <li ng-repeat="error in controller.validationMessages">
@@ -19,8 +19,8 @@
 
     <form ng-submit="controller.login()">
         <div>
-            <label>Email:</label>
-            <input type="email" ng-model="controller.loginUser.email" />
+            <label>User Name:</label>
+            <input type="text" ng-model="controller.loginUser.userName" />
         </div>
         <div>
             <label>Password:</label>
@@ -29,4 +29,33 @@
         <input type="submit" value="Login" />
         <a href="/register">Register</a>
     </form>
-</fieldset>
+</fieldset>-->
+
+
+<div class="container">
+    <h1>Log into WHN</h1>
+    <form ng-submit="controller.login()">
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="account_box" style="fill:#000000"></ng-md-icon>
+                <input ng-required="true" name="userName" ng-model="controller.loginUser.userName" placeholder="Login User Name" />
+            </div>
+        </md-input-container>
+        <br />
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="enhanced_encryption" style="fill:#000000"></ng-md-icon>
+                <input type="password" ng-required="true" name="password" ng-model="controller.loginUser.password" placeholder="Login password" />
+            </div>
+        </md-input-container>
+        <br />
+
+        <md-button class="btn1 md-raised md-cornered" ng-disabled="simple.$invalid" type="submit">Log in to WHN</md-button>
+
+        <br />
+        <br />
+        <br />
+        <p>Don't have an account? <md-button class="btn1 md-raised md-cornered" ng-disabled="simple.$invalid" type="submit"><a href="/register">Register</a></md-button> for a WHN account!</p>
+    </form>
+</div>

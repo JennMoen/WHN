@@ -50,14 +50,14 @@
             <li><button ui-sref="createGroup">Create a Group</button></li>-->
 
 
-        </ul>
+        <!--</ul>-->
 
     </div>
     
 
 
 
-    <div class="containerMainCol mainCol light-white" layout="row"  layout-wrap >
+    <div class="containerMainCol mainCol light-white flex-row f-jc-c" layout="row"  layout-wrap >
         <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
             <div flex-xs layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name"><!--can get rid of flex-gt-xs=50-->
                 <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >

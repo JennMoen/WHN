@@ -54,6 +54,7 @@ namespace GroupProject.Controllers
 
         //
         // POST: /Account/Login
+        //changed all emails to userName for login
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody]LoginViewModel model, string returnUrl = null)
@@ -63,11 +64,11 @@ namespace GroupProject.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    var user = await GetUser(model.Email);
+                    var user = await GetUser(model.UserName);
                     return Ok(user);
                 }
                 if (result.RequiresTwoFactor)

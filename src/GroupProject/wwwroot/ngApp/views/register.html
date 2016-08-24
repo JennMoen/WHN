@@ -1,6 +1,6 @@
-<h1>Register</h1>
+<!--<h1>Register</h1>-->
 
-<fieldset>
+<!--<fieldset>
     <legend>Register with a Social Provider</legend>
     <ul>
         <li ng-repeat="externalLogin in account.externalLogins">
@@ -8,9 +8,9 @@
         </li>
     </ul>
 
-</fieldset>
+</fieldset>-->
 
-<fieldset>
+<!--<fieldset>
     <legend>Local Registration</legend>
     <ul>
         <li ng-repeat="message in controller.validationMessages">
@@ -50,4 +50,71 @@
         <input type="submit" value="Register" />
     </form>
 
-</fieldset>
+</fieldset>-->
+
+
+<br />
+<div class="container">
+    <h1>Register for a WHN Account</h1>
+    <form ng-submit="controller.register()">
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="account_box" style="fill:#000000"></ng-md-icon>
+                <input ng-required="true" name="userName" ng-model="controller.registerUser.userName" placeholder="Login User Name" />
+            </div>
+        </md-input-container>
+        
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="email" style="fill:#000000"></ng-md-icon>
+                <input ng-required="true" name="userEmail" type="email" ng-model="controller.registerUser.email" placeholder="Email" />
+            </div>
+        </md-input-container>
+        
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="cake" style="fill:#000000"></ng-md-icon>
+                <input ng-required="true" name="userEmail" type="number" ng-model="controller.registerUser.age" placeholder="Age" />
+            </div>
+        </md-input-container>
+       
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="add_location" style="fill:#000000"></ng-md-icon>
+                <input ng-required="true" name="userAddress" ng-model="controller.registerUser.address" placeholder="Address" />
+            </div>
+        </md-input-container>
+        
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="my_location" style="fill:#000000"></ng-md-icon>
+                <input ng-required="true" name="metropolitanArea" ng-model="controller.registerUser.metropolitanArea" placeholder="Metropolitan Area" />
+            </div>
+        </md-input-container>
+        
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="enhanced_encryption" style="fill:#000000"></ng-md-icon>
+                <input type="password" ng-required="true" name="password" ng-model="controller.registerUser.password" placeholder="Login password" />
+            </div>
+        </md-input-container>
+        
+
+        <md-input-container class="md-block" md-no-float flex="30">
+            <div layout="row" flex>
+                <ng-md-icon icon="enhanced_encryption" style="fill:#000000"></ng-md-icon>
+                <input type="password" ng-required="true" name="confirmPassword" ng-model="controller.registerUser.confirmPassword" placeholder="Confirm password" />
+            </div>
+        </md-input-container>
+        
+
+
+        <md-button class="btn1 md-raised md-cornered" ng-disabled="simple.$invalid" type="submit">Register</md-button>
+
+    </form>
+</div>
