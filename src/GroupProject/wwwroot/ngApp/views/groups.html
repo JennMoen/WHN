@@ -1,42 +1,39 @@
-﻿<div class="light-white height100  flex-row width100">
+﻿<div class="height100 flex-row width100">
 
-    <!--<div class="flex-row width100">-->
-
-
-        <div class="flex-col sideBarDiv bgnd-grey">
-
-            <div class="flex-row">
-                <ng-md-icon icon="event" style="fill:#000000" size="36"></ng-md-icon>
-                <a class="width100 ai-fe" ui-sref="MyEvents">My Events</a>
-            </div>
-            <div class="flex-row">
-                <ng-md-icon icon="date_range" style="fill:#000000" size="36"></ng-md-icon>
-                <a class="width100 ai-fe" ui-sref="eventAdd">Create an Event</a>
-            </div>
-            <div class="flex-row">
-                <ng-md-icon icon="group" style="fill:#000000" size="36"></ng-md-icon>
-                <a class="width100 ai-fe" ui-sref="myGroups">My Groups</a>
-            </div>
-            <div class="flex-row">
-                <ng-md-icon icon="group_add" style="fill:#000000" size="36"></ng-md-icon>
-                <a class="width100 ai-fe" ui-sref="createGroup">Create a Group</a>
-            </div>
+    <div class="flex-col sideBarDiv">
+        <div class="flex-row">
+            <ng-md-icon icon="event" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="MyEvents">My Events</a>
         </div>
+        <div class="flex-row">
+            <ng-md-icon icon="date_range" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="eventAdd">Create an Event</a>
+        </div>
+        <div class="flex-row">
+            <ng-md-icon icon="group" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="myGroups">My Groups</a>
+        </div>
+        <div class="flex-row">
+            <ng-md-icon icon="group_add" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="createGroup">Create a Group</a>
+        </div>
+    
+    </div>
 
+    
 
-
-        <div class="flex-col width100">
-            <h1 class="f-jc-c">Find Groups in your Area</h1>
-            <div class="flex-row width100">
+    <div class="flex-col width70">
+        <h1 class="f-jc-c">Find Groups in your Area</h1>
+        <div class="flex-row width100">
                 <div class="width30"></div>
                 <div class="width40"></div>
                 <div class="width30">
                     <ng-md-icon icon="search" style="fill:#000000"></ng-md-icon> <!--<h6>Search for a Group:</h6>-->
-                    <input type="text" ng-model="search" />
+                <input type="text" ng-model="search" />
                 </div>
             </div>
 
-            <div class="f-jc-c"><a ui-sref="myGroups">Go to my groups</a></div>
+        <div class="f-jc-c"><a ui-sref="myGroups">Go to my groups</a></div>
 
 
 
@@ -67,6 +64,7 @@
             </div>
 
         </div>
+    <div class="width15"></div>
     </div>
 
 

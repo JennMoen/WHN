@@ -1,7 +1,7 @@
-﻿<div class="flex-row width100">
+﻿<div class="flex-row width100 light-white">
     
 
-    <div class="flex-col sideBarDiv bgnd-grey" >
+    <div class="flex-col sideBarDiv" >
         
             <div class="flex-row">
                 <ng-md-icon icon="event" style="fill:#000000" size="36"></ng-md-icon>
@@ -24,7 +24,7 @@
         <!--<ul class="flex-col sideBarUList p-fixed">-->
             
             <!--<li>-->
-                <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
+                <!--<form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
                     <md-input-container class="md-select-value searchByCategory">
                         <label>Find Events By Category</label>
                         <md-select ng-model="searchByCategory.category"
@@ -35,7 +35,7 @@
                             </md-option>
                         </md-select>
                     </md-input-container>
-                </form>
+                </form>-->
                 
 
             <!--</li>-->
@@ -52,13 +52,28 @@
     </div>
     
 
+    <div class="flex-col width70">
+        <div class="flex-row f-jc-c">
+            <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
+                <md-input-container class="md-select-value searchByCategory">
+                    <label >Find Events By Category</label>
+                    <md-select ng-model="searchByCategory.category"
+                               class="md-select-value">
+                        <md-option ng-value="category"
+                                   ng-repeat="category in controller.categories">
+                            {{category.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </form>
 
-
-    <div class="containerMainCol mainCol light-white flex-row f-jc-c" layout="row"  layout-wrap >
-        <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
-            <div flex-xs layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name"><!--can get rid of flex-gt-xs=50-->
-                <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch >
-                    <div layout="row" layout-align="center center" >
+        </div>
+        <div class="containerMainCol mainCol light-white flex-row f-jc-c" layout="row" layout-wrap>
+            <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
+            <div flex-xs layout="column" layout-align="center center" ng-repeat="searchData in controller.eventSearchData | filter : searchByCategory.category.name">
+                <!--can get rid of flex-gt-xs=50-->
+                <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <div layout="row" layout-align="center center">
                         <md-card-header>
                             <md-card-header-text>
                                 <div class="md-title" ui-sref="EventDetails({id:searchData.id})">{{searchData.name}}</div>
@@ -86,7 +101,9 @@
                     </md-card-actions>
                 </md-card>
             </div>
-        <!--</md-content>-->
+            <!--</md-content>-->
+        </div>
+        
     </div>
-    
+    <div class="width15"></div>
 </div>

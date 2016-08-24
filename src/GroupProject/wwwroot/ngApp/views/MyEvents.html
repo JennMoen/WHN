@@ -1,6 +1,6 @@
-﻿<div class="flex-row width100">
+﻿<div class="flex-row width100 light-white">
 
-    <div class="flex-col sideBarDiv bgnd-grey">
+    <div class="flex-col sideBarDiv ">
 
         <div class="flex-row">
             <ng-md-icon icon="date_range" style="fill:#000000" size="36"></ng-md-icon>
@@ -14,6 +14,7 @@
             <ng-md-icon icon="group_add" style="fill:#000000" size="36"></ng-md-icon>
             <a class="width100 ai-fe" ui-sref="createGroup">Create a Group</a>
         </div>
+        
         <!--<ul class="flex-col sideBarUList p-fixed">
 
             <li><a ui-sref="eventAdd">Create an Event</a></li>
@@ -24,79 +25,82 @@
 
     </div>
 
-    <div layout="column">
-        <h1 class="heading">My Events</h1>
-        <div class="containerMainCol mainCol" layout="row" layout-wrap>
-            <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
-            <div flex-xs layout="column" layout-align="center center" ng-repeat="event in controller.events | filter : searchByCategory.category.name">
-                <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <div layout="row" layout-align="center center">
-                        <md-card-header>
-                            <md-card-header-text>
+    <!--<div layout="column">-->
+    <div class="flex-col width70">
+        <div class="containerMainCol mainCol" layout="column">
+
+            <h1 class="heading">My Events</h1>
+            <div class="f-jc-c" layout="row" layout-wrap>
+                <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
+                <div flex-xs layout="column" layout-align="center center" ng-repeat="event in controller.events | filter : searchByCategory.category.name">
+                    <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                        <div layout="row" layout-align="center center">
+                            <md-card-header>
+                                <md-card-header-text>
                                 <div class="md-title" ui-sref="EventDetails({id:event.events.id})">{{event.events.name}}</div>
-                            </md-card-header-text>
-                        </md-card-header>
-                    </div>
-                    <div layout="row" layout-align="center center">
-                        <img ng-src="{{event.events.imageUrl}}" class="img-fixed" />
-                    </div>
-                    <md-card-content>
-                        <div layout="row">
-                            <div layout="column" layout-align="center center" class="paddingRight dateFont">
-                                <div>{{event.events.dateOfEvent | date:'d'}}</div>
-                                <div>{{event.events.dateOfEvent | date:'MMM'}}</div>
-                            </div>
-                            <div layout="column">
-                                <div>{{event.events.dateOfEvent | date:'h:mm a'}} - {{event.events.endTime | date: 'h:mm a'}}</div>
-                                <div>{{event.events.location}}</div>
+                                </md-card-header-text>
+                            </md-card-header>
+                        </div>
+                        <div layout="row" layout-align="center center">
+                            <img ng-src="{{event.events.imageUrl}}" class="img-fixed" />
+                        </div>
+                        <md-card-content>
+                            <div layout="row">
+                                <div layout="column" layout-align="center center" class="paddingRight dateFont">
+                                    <div>{{event.events.dateOfEvent | date:'d'}}</div>
+                                    <div>{{event.events.dateOfEvent | date:'MMM'}}</div>
+                                </div>
+                                <div layout="column">
+                                    <div>{{event.events.dateOfEvent | date:'h:mm a'}} - {{event.events.endTime | date: 'h:mm a'}}</div>
+                                    <div>{{event.events.location}}</div>
                                 <div layout="row" layout-align="none center">
                                     <ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon>
                                     {{event.events.numGoing}}
                                 </div>
+                                </div>
                             </div>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="center center">
+                            <md-button ng-click="controller.deleteEvent(event.eventId)">I'm Not going anymore</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+                <!--</md-content>-->
+                <!--</div>
+                <div class="containerMainCol mainCol" layout="row" layout-wrap>-->
+                <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
+                <div flex-xs layout="column" layout-align="center center" ng-repeat="e in controller.myevents | filter : searchByCategory.category.name">
+                    <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                        <div layout="row" layout-align="center center">
+                            <md-card-header>
+                                <md-card-header-text>
+                                    <div class="md-title" ui-sref="EventDetails({id:e.id})">{{e.name}}</div>
+                                </md-card-header-text>
+                            </md-card-header>
                         </div>
-                    </md-card-content>
-                    <md-card-actions layout="row" layout-align="center center">
-                        <md-button ng-click="controller.deleteEvent(event.eventId)">I'm Not going anymore</md-button>
-                    </md-card-actions>
-                </md-card>
-            </div>
-            <!--</md-content>-->
-            <!--</div>
-            <div class="containerMainCol mainCol" layout="row" layout-wrap>-->
-            <!--<md-content class="md-padding" layout-xs="column" layout="row" >-->
-            <div flex-xs flex-gt-xs="50" layout="column" layout-align="center center" ng-repeat="e in controller.myevents | filter : searchByCategory.category.name">
-                <md-card class="card" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <div layout="row" layout-align="center center">
-                        <md-card-header>
-                            <md-card-header-text>
-                                <div class="md-title" ui-sref="EventDetails({id:e.id})">{{e.name}}</div>
-                            </md-card-header-text>
-                        </md-card-header>
-                    </div>
-                    <div layout="row" layout-align="center center">
-                        <img ng-src="{{e.imageUrl}}" class="img-fixed" />
-                    </div>
-                    <md-card-content>
-                        <div layout="row">
-                            <div layout="column" layout-align="center center" class="paddingRight dateFont">
-                                <div>{{e.dateOfEvent | date:'d'}}</div>
-                                <div>{{e.dateOfEvent | date:'MMM'}}</div>
-                            </div>
-                            <div layout="column">
-                                <div>{{e.dateOfEvent | date:'h:mm a'}} - {{e.endTime | date: 'h:mm a'}}</div>
-                                <div>{{e.location}}</div>
-                                <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{e.numGoing}}</div>
-                            </div>
+                        <div layout="row" layout-align="center center">
+                            <img ng-src="{{e.imageUrl}}" class="img-fixed" />
                         </div>
-                    </md-card-content>
-                    <md-card-actions layout="row" layout-align="center center">
-                        <md-button ui-sref="editEvent({id:e.id})">Edit Event</md-button>
-                    </md-card-actions>
-                </md-card>
-            </div>
-            <!--</md-content>-->
-        </div>
+                        <md-card-content>
+                            <div layout="row">
+                                <div layout="column" layout-align="center center" class="paddingRight dateFont">
+                                    <div>{{e.dateOfEvent | date:'d'}}</div>
+                                    <div>{{e.dateOfEvent | date:'MMM'}}</div>
+                                </div>
+                                <div layout="column">
+                                    <div>{{e.dateOfEvent | date:'h:mm a'}} - {{e.endTime | date: 'h:mm a'}}</div>
+                                    <div>{{e.location}}</div>
+                                    <div layout="row" layout-align="none center"><ng-md-icon icon="person" style="fill:#4527A0"></ng-md-icon> {{e.numGoing}}</div>
+                                </div>
+                            </div>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="center center">
+                            <md-button ui-sref="editEvent({id:e.id})">Edit Event</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+                <!--</md-content>-->
+                </>
     </div>
     <!--<div class="flex-col mainCol containerMainCol">
         <div class="flex-col mainCol containerBottom" ng-repeat="event in controller.events">
@@ -121,4 +125,7 @@
             <div class="flex-row f-jc-fe mainCol"><a ui-sref="editEvent({id:e.id})">Edit Event</a></div>
         </div>
     </div>-->
+        </div>
+    </div>
+    <div class="width15"></div>
 </div>

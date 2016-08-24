@@ -1,31 +1,27 @@
 ﻿<div class="light-white height100 flex-row width100">
 
-    <div class="flex-col sideBarDiv bgnd-grey">
-        <md-card>
-            <md-card-actions>
-                <md-button class="width100" ui-sref="MyEvents">My Events</md-button>
-            </md-card-actions>
-        </md-card>
-        <md-card>
-            <md-card-actions>
-                <md-button class="width100" ui-sref="eventAdd">Create an Event</md-button>
-            </md-card-actions>
-        </md-card>
-        <md-card>
-            <md-card-actions>
-                <md-button class="width100" ui-sref="myGroups">My Groups</md-button>
-            </md-card-actions>
-        </md-card>
-        <md-card>
-            <md-card-actions>
-                <md-button class="width100" ui-sref="createGroup">Create a Group</md-button>
-            </md-card-actions>
-        </md-card>
+    <div class="flex-col sideBarDiv">
+        <div class="flex-row">
+            <ng-md-icon icon="event" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="MyEvents">My Events</a>
+        </div>
+        <div class="flex-row">
+            <ng-md-icon icon="date_range" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="eventAdd">Create an Event</a>
+        </div>
+        <div class="flex-row">
+            <ng-md-icon icon="group" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="myGroups">My Groups</a>
+        </div>
+        <div class="flex-row">
+            <ng-md-icon icon="group_add" style="fill:#000000" size="36"></ng-md-icon>
+            <a class="width100 ai-fe" ui-sref="createGroup">Create a Group</a>
+        </div>
     </div>
 
 
 
-    <div class="flex-col ai-c">
+    <div class="flex-col ai-c width70">
         <div class="flex-col ai-c">
             <!--<h1>My Groups</h1>-->
 
@@ -99,6 +95,7 @@
             </div>
         </div>
     </div>
+    <div class="width15"></div>
 </div>
 
 
