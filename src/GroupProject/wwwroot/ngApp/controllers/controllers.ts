@@ -55,7 +55,7 @@ namespace GroupProject.Controllers {
         public eventStatus;
         public myGroups;
         public toastMsg;
-        public addEvent;
+        //public addEvent;
         public displayToast($mdToast) {
             var toast = $mdToast.simple()
                 .textContent(this.toastMsg)
@@ -127,7 +127,7 @@ namespace GroupProject.Controllers {
                 "public"
                 ];
 
-            this.addEvent = {};
+            //this.addEvent = {};
 
 
         }

@@ -78,7 +78,7 @@ namespace GroupProject.Services
                         AdmissionPrice = e.AdmissionPrice,
                         ImageUrl = e.ImageUrl,
                         Category = e.Category,
-                        CreatorName = e.Creator.Id,
+                        CreatorName = e.Creator.UserName,
                         DateCreated = e.DateCreated,
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,

@@ -24,7 +24,7 @@
             <a ui-sref="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
         </div>
         <div class="width30 bgnd-darkpurple font16 topBar place f-jc-fe whiteBorderLogin">
-            <a ui-sref="myaccount" class="ai-c">{{account.getUserName()}}</a>
+            <div class="ai-c">{{account.getUserName()}}</div>
             <ng-md-icon icon="account_box" style="fill:gray" size="40" class="ai-c"></ng-md-icon>
         </div>
     </div>
