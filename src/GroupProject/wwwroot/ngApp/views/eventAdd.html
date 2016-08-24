@@ -55,26 +55,27 @@
             </md-input-container>
             <br />
 
-            <!--<md-input-container class="md-block" md-no-float>
+
+            <md-input-container class="md-block" md-no-float>
                 <label class="md-checkbox-label" id="eventAddCheckbox"><ng-md-icon icon="group" style="fill:#000000"></ng-md-icon> Select your groups to include in this event (group members will be notified via email)</label>
                 <br />
                 <div ng-repeat="group in controller.myGroups">
                     <md-switch ng-model="selected.controller.addEvent[group.name]"
                          class="md-primary"
                                aria-label="{{group.name}}"
-                         ng-value="group.name">
+                         value="group.name">
                         {{group.name}}
                     </md-switch>
 
                 </div>
-            </md-input-container>-->
+            </md-input-container>
 
-            <!--name="selectedGroups">-->
+            
             
             
             <md-input-container class="md-block" md-no-float>
                 <div layout="row" flex="30">
-                    <ng-md-icon icon="payment" style="fill:#000000"></ng-md-icon>
+                    <ng-md-icon icon="monetization_on" style="fill:#000000"></ng-md-icon>
                     <input required name="admissionPrice" ng-model="addEvent.admissionPrice" placeholder="Enter the admission price for your event" />
                 </div>
             </md-input-container>

@@ -21,150 +21,172 @@
                 <md-button class="width100" ui-sref="createGroup">Create a Group</md-button>
             </md-card-actions>
         </md-card>
-        <br />
-        <br />
-        <ul class="flex-col sideBarUList p-fixed">
-            <!--<li><a ui-sref="">Find Events</a></li>-->
-
-            <li>
-                <form name="searchByCategory" ng-submit="controller.searchByCategory(category)">
-                    <!--<form name="searchByCategory">-->
-                    <md-input-container class="md-select-value">
-                        <label>Find Events By Category</label>
-                        <md-select ng-model="searchByCategory.category"
-                                   class="md-select-value">
-                            <md-option ng-value="category"
-                                       ng-repeat="category in controller.categories">
-                                {{category.name}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </form>
-
-
-            </li>
-
-
-            <!--<li><input type="button" class="submit" ui-sref="MyEvents" value="My Events"/></li>
-            <li><button ui-sref="eventAdd">Create an Event</button></li>
-            <li><button ui-sref="myGroups">My Groups</button></li>
-            <li><button ui-sref="createGroup">Create a Group</button></li>-->
-
-
-        </ul>
-
     </div>
 
+    <div layout="column">
+        <h1 class="heading">Group Details</h1>
+        <div class="flex-row ai-c">
+            <div class="groupdiv">
+                <div layout="column" layout-align="center center">
 
+                    <div>
 
-
-
-
-
-
-
-
-    <div class="flex-col ai-c">
-        <div class="groupdiv">
-            <div layout="column" layout-align="center center">
-                <h1>Group Details</h1>
-                <div>
-
-                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                        <div layout="row" layout-align="center center">
-                            <md-card-header>
-                                <md-card-header-text>
-                                    <div class="md-title">
-                                        <span ng-hide="editgroup">{{controller.group.name}}</span><input name="Name" ng-model="group.name" ng-show="editgroup" placeholder="{{controller.group.name}}" />
-                                    </div>
-                                </md-card-header-text>
-                            </md-card-header>
-                        </div>
-                        <md-card-content>
-                            <div layout="column">
-                                <div layout="column" layout-align="start">
-                                    <div>Creator:{{controller.group.creator}} </div>
-                                    <br />
-                                    <div>Location:<span ng-hide="editgroup">{{controller.group.location}}</span><input ng-model="group.location" ng-show="editgroup" placeholder="{{controller.group.location}}"></div>
-                                </div>
-                                <div layout="column" layout-align="start">
-                                    <br />
-                                    <div>About Us:<span ng-hide="editgroup">{{controller.group.description}}</span><input name="Description" ng-model="group.description" ng-show="editgroup" placeholder="{{controller.group.description}}" /></div>
-                                </div>
-                                <br />
-                                <div layout="column" layout-align="start">
-                                    <div>Members:</div>
-                                    <div ng-repeat="member in controller.group.members">
-                                        {{member.userName}}
-                                    </div>
-                                </div>
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="biggroupcard">
+                            <div layout="row" layout-align="center center">
+                                <md-card-header>
+                                    <md-card-header-text>
+                                        
+                                        <div class="md-title" layout-align="center start">
+                                            <h2 ng-hide="editgroup">{{controller.group.name}}</h2><input name="Name" ng-model="group.name" ng-show="editgroup" placeholder="{{controller.group.name}}" />
+                                        </div>
+                                    </md-card-header-text>
+                                </md-card-header>
                             </div>
-                            <form ng-submit="controller.updateGroup(group)">
-                                <input type="submit" value="Edit Group Details" ng-show="editgroup" />
-                            </form>
-                            <button ng-click="editgroup=false" ng-show="editgroup">Cancel</button>
-                        </md-card-content>
-                        <md-card-actions layout="row" layout-align="center">
-                        </md-card-actions>
-                    </md-card>
-                </div>
-                <button ng-click="editgroup=true" ng-hide="editgroup">Change Group Details</button>
+                            <md-card-content>
+                                <div layout="column">
+                                    <div layout="column" layout-align="start">
+                                        <div>Creator:{{controller.group.creator}} </div>
+                                        <br />
+                                        <div>Location:<span ng-hide="editgroup">{{controller.group.location}}</span><input ng-model="group.location" ng-show="editgroup" placeholder="{{controller.group.location}}"></div>
+                                    </div>
+                                    <div layout="column" layout-align="start">
+                                        <br />
+                                        <div>About Us:<span ng-hide="editgroup">{{controller.group.description}}</span><input name="Description" ng-model="group.description" ng-show="editgroup" placeholder="{{controller.group.description}}" /></div>
+                                    </div>
+                                    <br />
+                                    <div layout="column" layout-align="start">
+                                        <ng-md-icon icon="group" style="fill:#000000">
+                                            <
+                                        </ng-md-icon><div>Members:</div>
+                                        <div ng-repeat="member in controller.group.members">
+                                            {{member.userName}}
+                                        </div>
+                                    </div>
+                                </div>
 
-                <form ng-submit="controller.deleteGroup(group)">
-                    <input type="submit" value="Delete this Group" />
-                </form>
-            </div>
-        </div>
+                            </md-card-content>
+                            <md-card-actions layout="row" layout-align="center">
+                                <!--<div layout="column">
+                                    <div ng-click="editgroup=true" ng-hide="editgroup">
+                                        <ng-md-icon icon="edit" style="fill: #3f3250"></ng-md-icon>
+                                        Edit Group Details
+                                    </div>
+                                    <br />
+                                    <div ng-click="controller.deleteGroup(group)">
+                                        <ng-md-icon icon="delete" style="fill: #3f3250"></ng-md-icon>
+                                        Delete Group
+                                    </div>
+                                    <div>
+                                        <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Cancel</md-button>
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <form ng-submit="controller.updateGroup(group)">
+                                            <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Save Changes</md-button>
+                                        </form>
+                                    </div>
+                                </div>-->
 
-
-
-
-        <div class="groupdiv">
-            <div layout="column" layout-align="center center">
-                <h1> Events this Group is Attending: </h1>
-                <div>
-                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                        <div layout="row" layout-align="center center">
-                            <md-card-header>
-                                <md-card-header-text>
-                                    <div class="md-title"></div>
-                                </md-card-header-text>
-                            </md-card-header>
-                        </div>
-                        <md-card-content>
-                            <div layout="column">
+                            </md-card-actions>
+                            <md-card-footer>
                                 <div layout="column" layout-align="center center">
-                                    <div ng-repeat="e in controller.eventGroups" layout="column" layout-align="center center">
-                                        <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
-                                        <div layout="column" layout-align="center center"> <a ng-click="controller.deleteEvent(e.eventId)">(Remove this event)</a></div>
+                                    <div ng-click="editgroup=true" ng-hide="editgroup">
+                                        <ng-md-icon icon="edit" style="fill: #3f3250"></ng-md-icon>
+                                        Edit Group Details
+                                    </div>
+                                    <br />
+                                    <div ng-click="controller.deleteGroup(group)">
+                                        <ng-md-icon icon="delete" style="fill: #3f3250"></ng-md-icon>
+                                        Delete Group
+                                    </div>
+                                    <div>
+                                        <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Cancel</md-button>
+                                    </div>
+                                   
+                                    <div>
+                                        <form ng-submit="controller.updateGroup(group)">
+                                            <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Save Changes</md-button>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div layout="column">
-                                <h3>Add Events for Your Groups</h3>
-                            </div>
-                            <div layout="column">
-                                <form ng-submit="controller.groupAttend(event.id)">
-                                    <md-input-container class="md-block" md-no-
-                                                        float>
-                                        <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
-                                    </md-input-container>
 
-                                    <input type="submit" value="Add Event" />
-
-                                </form>
-                            </div>
-                        </md-card-content>
-                        <!--<md-card-actions layout="row" layout-align="center">
-                        </md-card-actions>-->
-                    </md-card>
+                            </md-card-footer>
+                        </md-card>
+                    </div>
                 </div>
             </div>
+
+
+
+
+            <div class="groupdiv">
+                <div layout="column" layout-align="center center">
+
+                    <div>
+                        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="biggroupcard">
+                            <div layout="row" layout-align="center center">
+                                <md-card-header>
+                                    <md-card-header-text>
+                                        <div class="md-title">
+                                            <h2> Events this Group is Attending </h2>
+                                        </div>
+                                    </md-card-header-text>
+                                </md-card-header>
+                            </div>
+                            <md-card-content>
+                                <div layout="column">
+                                    <div layout="column" layout-align="center center">
+                                        <div ng-repeat="e in controller.eventGroups" layout="row" layout-align="center center">
+                                            <div ui-sref="EventDetails({id:e.eventId})">{{e.eventName}}</div>
+                                            <div layout="column" layout-align="center center" ng-click="controller.deleteEvent(e.eventId)">
+                                                <!--<a ng-click="controller.deleteEvent(e.eventId)">(Remove this event)</a>-->
+                                                <ng-md-icon icon="delete" style="fill: #3f3250"></ng-md-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div layout="column" layout-align="center center">
+                                    <div ng-click="addEvent=true">
+                                        <ng-md-icon icon="add_box" style="fill:#000000">
+                                        </ng-md-icon>
+                                        Add an Event
+                                    </div>-->
+                                    <!--<h3>Add Events for Your Groups</h3>-->
+                                <!--</div>-->
+                                <div layout="column">
+                                    <form ng-show="addEvent" ng-submit="controller.groupAttend(event.id)">
+                                        <md-input-container class="md-block" md-no-
+                                                            float>
+                                            <select ng-options="event.id as event.name for event in controller.events" ng-model="event.id"></select>
+                                        </md-input-container>
+
+                                        <!--<input type="submit" value="Add Event" />-->
+                                        <md-button class="btn1 md-raised md-cornered" ng- type="submit">Add</md-button>
+                                    </form>
+                                </div>
+                            </md-card-content>
+                            <!--<md-card-actions layout="row" layout-align="center">
+                            </md-card-actions>-->
+                            <md-card-footer>
+                                <div layout="column" layout-align="center center">
+                                    <div ng-click="addEvent=true">
+                                        <ng-md-icon icon="add_box" style="fill:#000000">
+                                        </ng-md-icon>
+                                        Add an Event
+                                    </div>
+                                    <!--<h3>Add Events for Your Groups</h3>-->
+                                </div>
+                            </md-card-footer>
+                        </md-card>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
-
-
     </div>
 </div>
+
 
 
 <!--<div ng-repeat="e in controller.eventGroups">

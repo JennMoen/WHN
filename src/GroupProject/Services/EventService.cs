@@ -17,21 +17,21 @@ namespace GroupProject.Services
         private EventRepository _eventRepo;
         private UserRepository _uRepo;
         private EmailService _emailService;
-        private CategoryRepository _catRepo;       
+        private CategoryRepository _catRepo;
         private EventUserRepository _euRepo;
         private GroupRepository _groupRepo;
 
-        public EventService(EventRepository er, UserRepository ur, EmailService es, CategoryRepository cr, EventUserRepository eur, GroupRepository gr)  
+        public EventService(EventRepository er, UserRepository ur, EmailService es, CategoryRepository cr, EventUserRepository eur, GroupRepository gr)
         {
             _eventRepo = er;
             _uRepo = ur;
             _emailService = es;
             _catRepo = cr;
             _euRepo = eur;
-            _groupRepo = gr;       
+            _groupRepo = gr;
 
         }
-        
+
 
 
         // get a list of all events
@@ -57,9 +57,8 @@ namespace GroupProject.Services
                         Attendees = (from a in e.Attendees
                                      select new EventUserDTO()
                                      {
-                                     UserName = a.User.UserName
+                                         UserName = a.User.UserName
                                      }).ToList(),
-                        // Feedback = e.Feedback    // Same here
                         NumGoing = e.Attendees.Count()
                     }).ToList();
         }
@@ -84,7 +83,13 @@ namespace GroupProject.Services
                         EndTime = e.EndTime,
                         // Attendees = e.Attendees,
                         //Feedback = e.Feedback,
-
+                        Attendees = (from a in e.Attendees
+                                     select new EventUserDTO()
+                                     {
+                                         UserName = a.User.UserName
+                                     }).ToList(),
+                        // Feedback = e.Feedback    // Same here
+                        NumGoing = e.Attendees.Count()
                     }).ToList();
         }
 
@@ -106,6 +111,13 @@ namespace GroupProject.Services
                         DateOfEvent = e.DateOfEvent,
                         EndTime = e.EndTime,
                         //Attendees = e.Attendees,
+                        Attendees = (from a in e.Attendees
+                                     select new EventUserDTO()
+                                     {
+                                         UserName = a.User.UserName
+                                     }).ToList(),
+                        // Feedback = e.Feedback    // Same here
+                        NumGoing = e.Attendees.Count()
                     }).FirstOrDefault();
         }
 
@@ -148,7 +160,7 @@ namespace GroupProject.Services
                     "Your event, " + Event.Name + ", has been successfully created.\n\nBest regards,\nWHN Team");
                 //var myMessage = new SendGrid();
 
-                
+
 
 
                 //var credentials = new NetworkCredential(sgUsername, sgPassword);
@@ -196,9 +208,11 @@ namespace GroupProject.Services
         }
 
 
-        public IList<GroupDTO> GetGroupsByCreatorId(string Id) {
+        public IList<GroupDTO> GetGroupsByCreatorId(string Id)
+        {
             return (from g in _groupRepo.GetGroupsByCreatorId(Id)
-                    select new GroupDTO() {
+                    select new GroupDTO()
+                    {
                         Id = g.Id,
                         Name = g.Name
 

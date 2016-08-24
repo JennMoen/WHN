@@ -7,10 +7,19 @@ namespace GroupProject.Controllers {
     export class EventSearchController {
         public eventSearchData;
         public categories;
-        
+        public toastMsg;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private $scope) {
-            
+            $mdToast.show(toast);
+        };
+
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private $scope, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+
             $http.get('/api/events')
                 .then((response) => {
                     this.eventSearchData = response.data;
@@ -25,14 +34,17 @@ namespace GroupProject.Controllers {
                 });
         }
 
-
-
         public readMore(searchData) {
 
         }
 
 
         public Attend(eventId) {
+            if (!this.accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before adding an event";
+                this.displayToast(this.$mdToast);
+            }
             this.$http.post(`/api/events/attend`, eventId)
                 .then((response) => {
                     this.$state.reload();
@@ -45,8 +57,8 @@ namespace GroupProject.Controllers {
 
         public showWords(s) {
             s.numLimit = 10000;
-            
-            
+
+
         }
     }
 
@@ -55,7 +67,6 @@ namespace GroupProject.Controllers {
         public eventStatus;
         public myGroups;
         public toastMsg;
-        //public addEvent;
         public displayToast($mdToast) {
             var toast = $mdToast.simple()
                 .textContent(this.toastMsg)
@@ -65,7 +76,7 @@ namespace GroupProject.Controllers {
             $mdToast.show(toast);
         };
 
-        
+
         // Post the new event to the database
         public addEvent(addEvent) {
 
@@ -87,8 +98,9 @@ namespace GroupProject.Controllers {
             console.log(`date of event: ${addEvent.dateOfEvent} location: ${addEvent.location}`);
             console.log(`name: ${addEvent.name}`);
             console.log(`status: ${addEvent.status}`);
-            console.log(`group name: ${addEvent.group.name}`);
-            
+            console.log(`group name: ${addEvent.group}`);
+
+
 
             this.$http.post('/api/events', addEvent)
 
@@ -119,16 +131,13 @@ namespace GroupProject.Controllers {
                 }),
 
                 $http.get('/api/groups/createdgroups').then((results) => {
-                this.myGroups = results.data;
+                    this.myGroups = results.data;
                 }),
 
-            this.eventStatus = [
-                "private",
-                "public"
+                this.eventStatus = [
+                    "private",
+                    "public"
                 ];
-
-            //this.addEvent = {};
-
 
         }
     };
@@ -188,19 +197,215 @@ namespace GroupProject.Controllers {
 
     }
 
+
+
+    export class MyEventsController {
+
+        //public eventSearchData;
+        //constructor(private $http: ng.IHttpService) {
+        //    $http.get('/api/events')
+        //        .then((response) => {
+        //            this.eventSearchData = response.data;
+        //        })
+        //};
+
+        public events;
+        public myevents;
+        public toastMsg;
+        //public addEvent;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
+
+
+        constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+            if (!accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before viewing your events";
+                this.displayToast(this.$mdToast);
+            }
+            $http.get(`/api/events/myevents`)
+                .then((response) => {
+                    this.events = response.data;
+                });
+            $http.get('/api/events/mycreatedevents')
+                .then((response) => {
+                    this.myevents = response.data;
+                });
+        }
+
+        public deleteEvent(eventId) {
+            console.log(eventId);
+            var p = { eventId: eventId };
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/events/myevents`, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+
+                });
+        }
+
+    }
+
+    export class EditEventController {
+
+        //public editing
+        //constructor(private $http: ng.IHttpService) {
+        //    $http.get('/api/events')
+        //        .then((response) => {
+        //            this.editing = response.data;
+        //        })
+
+
+        public event;
+        public categories;
+        public eventStatus;
+        public toastMsg;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService) {
+            var p = { eventId: $stateParams.id };
+
+            $http.get(`/api/events/${$stateParams.id}`, { params: p })
+                .then((response) => {
+                    this.event = response.data;
+                    if (this.event.status == "public") {
+                        this.event.status.checked = "public"
+                    } else {
+                        this.event.status.checked = "private"
+                    }
+                    this.eventStatus = [
+                        "private", "public"]
+
+
+                }),
+
+                $http.get('/api/category')
+                    .then((response) => {
+                        this.categories = response.data;
+                    });
+
+        }
+
+
+
+        public updateEvent(event) {
+            var p = { eventId: this.$stateParams.id };
+            this.$http.put(`/api/events/${this.$stateParams.id}`, event, { params: p })
+                .then((response) => {
+                    this.$state.go('eventSearch');
+                    this.toastMsg = "Your event was updated successfully";
+                    this.displayToast(this.$mdToast);
+                }).catch((reason) => {
+                    console.log(reason);
+                });
+        }
+
+        public deleteEvent(event) {
+            this.$http.delete(`/api/events/${this.$stateParams.id}`, event)
+                .then((response) => {
+                    this.$state.go('eventSearch');
+                    this.toastMsg = "Your event was successfully deleted";
+                    this.displayToast(this.$mdToast);
+                }).catch((reason) => {
+                    console.log(reason);
+                });
+
+        }
+
+
+    }
+
+
+    //public editing
+    //constructor(private $http: ng.IHttpService) {
+    //    $http.get('/api/events')
+    //        .then((response) => {
+    //            this.editing = response.data;
+    //        })
+    //}
+    //$http.get(`/api/events/${this.eInfo.id}`)
+    //    .then((response) =>
+    //    {
+    //        this.eInfo = response.data;
+    //    })
+
+
+    export class EventDetailsController {
+        public eventSearchData;
+        public groups;
+        public toastMsg;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+            var p = { eventId: $stateParams.id };
+
+            $http.get(`/api/events/${$stateParams.id}`, { params: p })
+                .then((response) => {
+                    this.eventSearchData = response.data;
+                });
+            $http.get(`/api/eventgroups/${$stateParams.id}/groupsattending`, { params: p })
+                .then((response) => {
+                    this.groups = response.data;
+                });
+        }
+        public Attend(eventId) {
+            if (!this.accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before adding an event";
+                this.displayToast(this.$mdToast);
+
+                this.$http.post(`/api/events/attend`, eventId)
+                    .then((response) => {
+                        this.$state.go('MyEvents');
+                    })
+                    .catch((reason) => {
+                        console.log(reason);
+
+                    });
+            }
+
+        }
+    }
+
     export class MyGroupsController {
 
         public myGroups;
         public events;
         public groups;
+        public toastMsg;
 
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
             $http.get('/api/groups/createdgroups').then((results) => {
                 this.myGroups = results.data;
             });
             $http.get('/api/groups/mygroups').then((results) => {
                 this.groups = results.data;
             });
+            if (!accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before viewing your groups";
+                this.displayToast(this.$mdToast);
+            }
         }
 
         public addGroup(group) {
@@ -212,6 +417,15 @@ namespace GroupProject.Controllers {
                     console.log(reason);
                 });
         }
+
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
 
         public leaveGroup(groupId) {
             console.log(groupId);
@@ -243,7 +457,7 @@ namespace GroupProject.Controllers {
         public users;
         public eventGroups;
 
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
             $http.get(`/api/groups/${$stateParams['id']}`)
                 .then((response) => {
                     this.group = response.data;
@@ -262,6 +476,7 @@ namespace GroupProject.Controllers {
         }
 
         public editgroup = false;
+        public addEvent = false;
 
         public updateGroup(group) {
             var p = { groupId: this.$stateParams.id };
@@ -324,7 +539,7 @@ namespace GroupProject.Controllers {
     export class GroupController {
 
         public groups;
-        
+
 
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             $http.get('/api/groups').then((results) => {
@@ -371,157 +586,6 @@ namespace GroupProject.Controllers {
 
 
     }
-
-    export class MyEventsController {
-
-        //public eventSearchData;
-        //constructor(private $http: ng.IHttpService) {
-        //    $http.get('/api/events')
-        //        .then((response) => {
-        //            this.eventSearchData = response.data;
-        //        })
-        //};
-
-        public events;
-        public myevents;
-
-
-        constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService, private $state: ng.ui.IStateService) {
-
-            $http.get(`/api/events/myevents`)
-                .then((response) => {
-                    this.events = response.data;
-                });
-            $http.get('/api/events/mycreatedevents')
-                .then((response) => {
-                    this.myevents = response.data;
-                });
-        }
-
-        public deleteEvent(eventId) {
-            console.log(eventId);
-            var p = { eventId: eventId };
-            //this.$http.delete(`/api/events/${event.id}`, event)
-            this.$http.delete(`/api/events/myevents`, { params: p })
-                .then((response) => {
-                    this.$state.reload();
-
-                });
-        }
-
-    }
-
-    export class EditEventController {
-
-        //public editing
-        //constructor(private $http: ng.IHttpService) {
-        //    $http.get('/api/events')
-        //        .then((response) => {
-        //            this.editing = response.data;
-        //        })
-
-
-        public event;
-        public categories;
-        public eventStatus;
-        public toastMsg;
-        public displayToast($mdToast) {
-            var toast = $mdToast.simple()
-                .textContent(this.toastMsg)
-                .position('bottom left')
-                .hideDelay(5000);
-
-            $mdToast.show(toast);
-        };
-
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService) {
-            var p = { eventId: $stateParams.id };
-
-            $http.get(`/api/events/${$stateParams.id}`, { params: p })
-                .then((response) => {
-                    this.event = response.data;
-                    if (this.event.status == "public") {
-                        this.event.status.checked = "public"
-                    } else {
-                        this.event.status.checked = "private"
-                    }
-                    this.eventStatus = [
-                        "private", "public"]
-                   
-                        
-                }),
-
-            $http.get('/api/category')
-                .then((response) => {
-                    this.categories = response.data;
-                });
-
-        }
-
-
-
-        public updateEvent(event) {
-            var p = { eventId: this.$stateParams.id };
-            this.$http.put(`/api/events/${this.$stateParams.id}`, event, { params: p })
-                .then((response) => {
-                    this.$state.go('eventSearch');
-                    this.toastMsg = "Your event was updated successfully";
-                    this.displayToast(this.$mdToast);
-                }).catch((reason) => {
-                    console.log(reason);
-                });
-        }
-
-        public deleteEvent(event) {
-            this.$http.delete(`/api/events/${this.$stateParams.id}`, event)
-                .then((response) => {
-                    this.$state.go('eventSearch');
-                    this.toastMsg = "Your event was successfully deleted";
-                    this.displayToast(this.$mdToast);
-                }).catch((reason) => {
-                    console.log(reason);
-                });
-
-        }
-
-
-    }
-
-
-    //public editing
-    //constructor(private $http: ng.IHttpService) {
-    //    $http.get('/api/events')
-    //        .then((response) => {
-    //            this.editing = response.data;
-    //        })
-    //}
-    //$http.get(`/api/events/${this.eInfo.id}`)
-    //    .then((response) =>
-    //    {
-    //        this.eInfo = response.data;
-    //    })
-
-
-    export class EventDetailsController {
-        public eventSearchData;
-        public groups;
-
-        constructor(private $http: ng.IHttpService, private $stateParams) {
-            var p = { eventId: $stateParams.id };
-
-            $http.get(`/api/events/${$stateParams.id}`, { params: p })
-                .then((response) => {
-                    this.eventSearchData = response.data;
-                });
-            $http.get(`/api/eventgroups/${$stateParams.id}/groupsattending`, { params: p })
-                .then((response) => {
-                    this.groups = response.data;
-                });
-        }
-
-    }
-
-
 
     export class TestController {
         public testData;

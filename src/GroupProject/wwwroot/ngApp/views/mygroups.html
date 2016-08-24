@@ -24,76 +24,83 @@
     </div>
 
 
+
     <div class="flex-col ai-c">
-        <h1>My Groups</h1>
+        <div class="flex-col ai-c">
+            <!--<h1>My Groups</h1>-->
 
-        <h2>My created Groups</h2>
+            <h2>My created Groups</h2>
+            <div layout="row" layout-wrap layout-align="center none">
 
-        <div layout="row" layout-wrap>
+                <div ng-repeat="group in controller.myGroups">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="groupcard">
+                        <div layout="row" layout-align="center center">
+                            <md-card-header>
+                                <ng-md-icon icon="group" style="fill:#3f3250"></ng-md-icon>
+                                <md-card-header-text>
+                                    <div class="md-title" ui-sref="myGroupDetails({id:group.id})">{{group.name}}</div>
+                                </md-card-header-text>
+                                
+                            </md-card-header>
+                        </div>
 
-            <div ng-repeat="group in controller.myGroups">
-                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <div layout="row" layout-align="center center" class="groupcard">
+                        <md-card-content>
+
+                            <md-card-actions layout="row" layout-align="center center">
+
+                            </md-card-actions>
+                    </md-card>
+                </div>
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="groupcard">
+                    <div layout="row" layout-align="center center">
                         <md-card-header>
+                            <ng-md-icon icon="add_box" style="fill: #3f3250"></ng-md-icon>
                             <md-card-header-text>
-                                <div class="md-title" ui-sref="myGroupDetails({id:group.id})">{{group.name}}</div>
+                                <div class="md-title" ui-sref="createGroup" id="addgrouptext">Add a New Group</div>
                             </md-card-header-text>
-                            <ng-md-icon icon="group" style="fill:#C0B3A0"></ng-md-icon>
                         </md-card-header>
                     </div>
 
-                    <md-card-content class="groupcard">
+                    <md-card-content>
 
                         <md-card-actions layout="row" layout-align="center center">
 
                         </md-card-actions>
                 </md-card>
+
             </div>
-            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                <div layout="row" layout-align="center center" id="addgroup">
-                    <md-card-header>
-                        <ng-md-icon icon="add" style="fill: #3f3250"></ng-md-icon>
-                        <md-card-header-text>
-                            <p class="md-title" ui-sref="createGroup" id="addgrouptext">Add a New Group</p>
-                        </md-card-header-text>
-                    </md-card-header>
-                </div>
-
-                <md-card-content id="addgroup">
-
-                    <md-card-actions layout="row" layout-align="center center">
-
-                    </md-card-actions>
-            </md-card>
-
         </div>
 
-        <h2>Groups I Belong To</h2>
+        <div class="flex-col ai-c">
+            <h2>Groups I Belong To</h2>
 
-        <div layout="row" layout-wrap>
+            <div layout="row" layout-wrap layout-align="center none">
 
-            <div ng-repeat="group in controller.groups">
-                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <div layout="row" layout-align="center center" class="groupcard">
-                        <md-card-header>
-                            <md-card-header-text>
-                                <div class="md-title" ui-sref="groupDetails({id:group.groupId})">{{group.groupName}}</div>
-                            </md-card-header-text>
-                            <ng-md-icon icon="group" style="fill:#C0B3A0"></ng-md-icon>
-                        </md-card-header>
-                    </div>
+                <div ng-repeat="group in controller.groups">
+                    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="groupcard">
+                        <div layout="row" layout-align="center center">
+                            <md-card-header>
+                                <ng-md-icon icon="group" style="fill:#3f3250"></ng-md-icon>
+                                <md-card-header-text>
+                                    <div class="md-title" ui-sref="groupDetails({id:group.groupId})">{{group.groupName}}</div>
+                                </md-card-header-text>
+                                
+                            </md-card-header>
+                        </div>
 
-                    <md-card-content class="groupcard">
+                        <md-card-content>
 
-                        <md-card-actions layout="row" layout-align="center center">
-                            <a ng-click="controller.leaveGroup(group.groupId)">Leave group</a>
-                        </md-card-actions>
-                </md-card>
+                            <md-card-actions layout="row" layout-align="center center">
+                                <a ng-click="controller.leaveGroup(group.groupId)">Leave group</a>
+                            </md-card-actions>
+                    </md-card>
+                </div>
+
             </div>
-
         </div>
     </div>
 </div>
+
 
 
 
