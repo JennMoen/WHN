@@ -142,6 +142,12 @@ namespace GroupProject.Controllers
 
         }
 
+        [HttpGet("attendees")]
+        public IList<EventDTO> GetAttendees(int eventId)
+        {
+            return _euService.GetEventAttendees();
+        }
+
     }
 }
 

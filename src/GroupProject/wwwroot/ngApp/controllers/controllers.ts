@@ -211,6 +211,7 @@ namespace GroupProject.Controllers {
 
         public events;
         public myevents;
+        public attendees;
         public toastMsg;
         //public addEvent;
         public displayToast($mdToast) {
@@ -236,6 +237,10 @@ namespace GroupProject.Controllers {
             $http.get('/api/events/mycreatedevents')
                 .then((response) => {
                     this.myevents = response.data;
+                });
+            $http.get('/api/events/attendees')
+                .then((response) => {
+                    this.attendees = response.data;
                 });
         }
 
