@@ -66,7 +66,7 @@
 
                             </md-card-content>
                             <md-card-actions layout="row" layout-align="center">
-                                <div layout="column">
+                                <!--<div layout="column">
                                     <div ng-click="editgroup=true" ng-hide="editgroup">
                                         <ng-md-icon icon="edit" style="fill: #3f3250"></ng-md-icon>
                                         Edit Group Details
@@ -85,9 +85,32 @@
                                             <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Save Changes</md-button>
                                         </form>
                                     </div>
-                                </div>
+                                </div>-->
 
                             </md-card-actions>
+                            <md-card-footer>
+                                <div layout="column" layout-align="center center">
+                                    <div ng-click="editgroup=true" ng-hide="editgroup">
+                                        <ng-md-icon icon="edit" style="fill: #3f3250"></ng-md-icon>
+                                        Edit Group Details
+                                    </div>
+                                    <br />
+                                    <div ng-click="controller.deleteGroup(group)">
+                                        <ng-md-icon icon="delete" style="fill: #3f3250"></ng-md-icon>
+                                        Delete Group
+                                    </div>
+                                    <div>
+                                        <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Cancel</md-button>
+                                    </div>
+                                   
+                                    <div>
+                                        <form ng-submit="controller.updateGroup(group)">
+                                            <md-button class="btn1 md-raised md-cornered" ng- type="submit" ng-click="editgroup=false" ng-show="editgroup">Save Changes</md-button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </md-card-footer>
                         </md-card>
                     </div>
                 </div>
@@ -122,14 +145,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div layout="column" layout-align="center center">
+                                <!--<div layout="column" layout-align="center center">
                                     <div ng-click="addEvent=true">
                                         <ng-md-icon icon="add_box" style="fill:#000000">
                                         </ng-md-icon>
                                         Add an Event
-                                    </div>
+                                    </div>-->
                                     <!--<h3>Add Events for Your Groups</h3>-->
-                                </div>
+                                <!--</div>-->
                                 <div layout="column">
                                     <form ng-show="addEvent" ng-submit="controller.groupAttend(event.id)">
                                         <md-input-container class="md-block" md-no-
@@ -144,6 +167,16 @@
                             </md-card-content>
                             <!--<md-card-actions layout="row" layout-align="center">
                             </md-card-actions>-->
+                            <md-card-footer>
+                                <div layout="column" layout-align="center center">
+                                    <div ng-click="addEvent=true">
+                                        <ng-md-icon icon="add_box" style="fill:#000000">
+                                        </ng-md-icon>
+                                        Add an Event
+                                    </div>
+                                    <!--<h3>Add Events for Your Groups</h3>-->
+                                </div>
+                            </md-card-footer>
                         </md-card>
                     </div>
                 </div>
