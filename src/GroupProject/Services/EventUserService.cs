@@ -18,7 +18,7 @@ namespace GroupProject.Services
         {
             _eventRepo = er;
             _uRepo = ur;
-            _euRepo = eur; 
+            _euRepo = eur;
         }
 
         public void AddEventUser(string currentUser, int eventId)
@@ -47,7 +47,7 @@ namespace GroupProject.Services
                         EventId = eu.Event.Id,
                         UserName = eu.User.UserName,
                         EventName = eu.Event.Name,
-
+                        //NumGoing = eu.User.UserName.Count(),
                         Events = new EventDTO()
                         {
                             Id = eu.Event.Id,
@@ -61,10 +61,14 @@ namespace GroupProject.Services
                             DateCreated = eu.Event.DateCreated,
                             DateOfEvent = eu.Event.DateOfEvent,
                             EndTime = eu.Event.EndTime,
-                            CreatorName = eu.Event.Creator.UserName
-
+                            CreatorName = eu.Event.Creator.UserName,
+                            //Attendees = (from a in eu.Event.Attendees
+                            //             select new EventUserDTO()
+                            //             {
+                            //                 UserName = a.User.UserName
+                            //             }).ToList(),
+                            //NumGoing = eu.Event.Attendees.Count()
                         }
-
                     }).ToList();
 
         }

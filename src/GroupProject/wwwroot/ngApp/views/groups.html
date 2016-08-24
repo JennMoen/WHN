@@ -23,22 +23,27 @@
         </md-card>
     </div>
 
+    
 
     <div class="flex-col ai-c">
         <h1>Find Groups in your Area</h1>
+        <div class="flex-row f-jc-sb width100">
+            <div class="width30"></div>
+            <div class="width40"></div>
+            <div class="width30">
+                <ng-md-icon icon="search" style="fill:#000000"></ng-md-icon> <!--<h6>Search for a Group:</h6>-->
+                <input type="text" ng-model="search"/>
+            </div>
+        </div>
 
         <div><a ui-sref="myGroups">Go to my groups</a></div>
 
-        <div class="searchbox">
-            <h6>Search for a Group:</h6>
-            <input type="text" ng-model="search"
-                   uib-tooltip="search" tooltip-placement="bottom" />
-        </div>
+       
 
-        <div layout="row" layout-wrap>
+        <div layout="row" layout-wrap layout-align="center none">
             <div ng-repeat="group in controller.groups | filter: search:strict">
-                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
-                    <div layout="row" layout-align="center center" class="groupcard">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="groupcard">
+                    <div layout="row" layout-align="center center" >
                         <md-card-header>
                             <ng-md-icon icon="group" style="fill:#000000"></ng-md-icon>
                             <md-card-header-text>
@@ -51,7 +56,7 @@
 
                     </div>
 
-                    <md-card-content class="groupcard">
+                    <md-card-content>
 
                         <md-card-actions layout="row" layout-align="center center">
 

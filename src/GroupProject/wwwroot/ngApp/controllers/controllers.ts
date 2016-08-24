@@ -7,10 +7,19 @@ namespace GroupProject.Controllers {
     export class EventSearchController {
         public eventSearchData;
         public categories;
-        
+        public toastMsg;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
 
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private $scope) {
-            
+            $mdToast.show(toast);
+        };
+
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private $stateParams: ng.ui.IStateParamsService, private $scope, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+
             $http.get('/api/events')
                 .then((response) => {
                     this.eventSearchData = response.data;
@@ -25,14 +34,17 @@ namespace GroupProject.Controllers {
                 });
         }
 
-
-
         public readMore(searchData) {
 
         }
 
 
         public Attend(eventId) {
+            if (!this.accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before adding an event";
+                this.displayToast(this.$mdToast);
+            }
             this.$http.post(`/api/events/attend`, eventId)
                 .then((response) => {
                     this.$state.reload();
@@ -45,8 +57,8 @@ namespace GroupProject.Controllers {
 
         public showWords(s) {
             s.numLimit = 10000;
-            
-            
+
+
         }
     }
 
@@ -64,7 +76,7 @@ namespace GroupProject.Controllers {
             $mdToast.show(toast);
         };
 
-        
+
         // Post the new event to the database
         public addEvent(addEvent) {
 
@@ -88,7 +100,7 @@ namespace GroupProject.Controllers {
             console.log(`status: ${addEvent.status}`);
             console.log(`group name: ${addEvent.group}`);
            
-            
+
 
             this.$http.post('/api/events', addEvent)
 
@@ -119,12 +131,12 @@ namespace GroupProject.Controllers {
                 }),
 
                 $http.get('/api/groups/createdgroups').then((results) => {
-                this.myGroups = results.data;
+                    this.myGroups = results.data;
                 }),
 
-            this.eventStatus = [
-                "private",
-                "public"
+                this.eventStatus = [
+                    "private",
+                    "public"
                 ];
 
         }
@@ -185,189 +197,7 @@ namespace GroupProject.Controllers {
 
     }
 
-    export class MyGroupsController {
 
-        public myGroups;
-        public events;
-        public groups;
-
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
-            $http.get('/api/groups/createdgroups').then((results) => {
-                this.myGroups = results.data;
-            });
-            $http.get('/api/groups/mygroups').then((results) => {
-                this.groups = results.data;
-            });
-        }
-
-        public addGroup(group) {
-            this.$http.post('/api/groups', group)
-                .then((response) => {
-                    this.$state.go('myGroups');
-                })
-                .catch((reason) => {
-                    console.log(reason);
-                });
-        }
-
-        public leaveGroup(groupId) {
-            console.log(groupId);
-            var p = { groupId: groupId };
-            //this.$http.delete(`/api/events/${event.id}`, event)
-            this.$http.delete(`/api/groups/mygroups`, { params: p })
-                .then((response) => {
-                    this.$state.reload();
-
-                });
-        }
-        //public updateGroup(group) {
-        //    var p = { groupId: this.$stateParams.id };
-        //    this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
-        //        .then((response) => {
-        //            this.$state.reload();
-        //        }).catch((reason) => {
-        //            console.log(reason);
-        //        });
-        //}
-    }
-
-
-
-
-    export class MyGroupDetailsController {
-        public group;
-        public events;
-        public users;
-        public eventGroups;
-
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
-            $http.get(`/api/groups/${$stateParams['id']}`)
-                .then((response) => {
-                    this.group = response.data;
-                });
-            $http.get('/api/user').then((results) => {
-                this.users = results.data;
-            });
-            $http.get('/api/events')
-                .then((response) => {
-                    this.events = response.data;
-                    console.log(this.events);
-                });
-            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
-                this.eventGroups = results.data;
-            });
-        }
-
-        public editgroup = false;
-
-        public updateGroup(group) {
-            var p = { groupId: this.$stateParams.id };
-            this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
-                .then((response) => {
-                    this.$state.reload();
-                }).catch((reason) => {
-                    console.log(reason);
-                });
-        }
-
-        public deleteGroup(group) {
-            this.$http.delete(`/api/groups/${this.$stateParams.id}`, group)
-                .then((response) => {
-                    this.$state.go('myGroups');
-
-                });
-        }
-
-        public groupAttend(eventId) {
-
-            this.$http.post(`/api/eventgroups/${this.$stateParams.id}/attend`, eventId)
-                .then((response) => {
-                    this.$state.reload();
-                })
-                .catch((reason) => {
-                    console.log(reason);
-                    console.log("You screwed up all sorts of bad");
-                    console.log(eventId);
-                });
-
-        }
-
-        public deleteEvent(eventId) {
-            var p = { eventId: eventId };
-            console.log(eventId);
-            //this.$http.delete(`/api/events/${event.id}`, event)
-            this.$http.delete(`/api/eventgroups/${this.$stateParams.id}/groupevents`, { params: p })
-                .then((response) => {
-                    this.$state.reload();
-
-                });
-        }
-
-    }
-
-    //not in use for now--lets you add a person to your group
-    //public addMember(m) {
-    //    var member = JSON.stringify(m);
-    //    this.$http.post(`/api/groups/${this.$stateParams.id}/members`, member)
-    //        .then((response) => {
-    //            this.$state.reload();
-    //        })
-    //        .catch((reason) => {
-    //            console.log(member);
-    //            console.log(reason);
-    //        });
-    //}
-
-    export class GroupController {
-
-        public groups;
-        
-
-        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
-            $http.get('/api/groups').then((results) => {
-                this.groups = results.data;
-            });
-
-        }
-
-
-
-    }
-
-    export class GroupDetailsController {
-        public group;
-        public users;
-        public eventGroups;
-
-        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
-            $http.get(`/api/groups/${$stateParams['id']}`)
-                .then((response) => {
-                    this.group = response.data;
-                });
-            $http.get('/api/user').then((results) => {
-                this.users = results.data;
-            });
-            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
-                this.eventGroups = results.data;
-            });
-        }
-
-
-
-        public Join(groupId) {
-            this.$http.post(`/api/groups/join`, groupId
-            )
-                .then((response) => {
-                    this.$state.reload();
-                })
-                .catch((reason) => {
-                    console.log(reason);
-
-                });
-        }
-
-
-    }
 
     export class MyEventsController {
 
@@ -381,10 +211,24 @@ namespace GroupProject.Controllers {
 
         public events;
         public myevents;
+        public toastMsg;
+        //public addEvent;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
 
 
-        constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService, private $state: ng.ui.IStateService) {
-
+        constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+            if (!accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before viewing your events";
+                this.displayToast(this.$mdToast);
+            }
             $http.get(`/api/events/myevents`)
                 .then((response) => {
                     this.events = response.data;
@@ -444,14 +288,14 @@ namespace GroupProject.Controllers {
                     }
                     this.eventStatus = [
                         "private", "public"]
-                   
-                        
+
+
                 }),
 
-            $http.get('/api/category')
-                .then((response) => {
-                    this.categories = response.data;
-                });
+                $http.get('/api/category')
+                    .then((response) => {
+                        this.categories = response.data;
+                    });
 
         }
 
@@ -518,7 +362,205 @@ namespace GroupProject.Controllers {
 
     }
 
+    export class MyGroupsController {
 
+        public myGroups;
+        public events;
+        public groups;
+        public toastMsg;
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+            $http.get('/api/groups/createdgroups').then((results) => {
+                this.myGroups = results.data;
+            });
+            $http.get('/api/groups/mygroups').then((results) => {
+                this.groups = results.data;
+            });
+            if (!accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before viewing your groups";
+                this.displayToast(this.$mdToast);
+            }
+        }
+
+        public addGroup(group) {
+            this.$http.post('/api/groups', group)
+                .then((response) => {
+                    this.$state.go('myGroups');
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                });
+        }
+
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
+
+            $mdToast.show(toast);
+        };
+
+        public leaveGroup(groupId) {
+            console.log(groupId);
+            var p = { groupId: groupId };
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/groups/mygroups`, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+
+                });
+        }
+        //public updateGroup(group) {
+        //    var p = { groupId: this.$stateParams.id };
+        //    this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
+        //        .then((response) => {
+        //            this.$state.reload();
+        //        }).catch((reason) => {
+        //            console.log(reason);
+        //        });
+        //}
+    }
+
+
+
+
+    export class MyGroupDetailsController {
+        public group;
+        public events;
+        public users;
+        public eventGroups;
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
+            $http.get(`/api/groups/${$stateParams['id']}`)
+                .then((response) => {
+                    this.group = response.data;
+                });
+            $http.get('/api/user').then((results) => {
+                this.users = results.data;
+            });
+            $http.get('/api/events')
+                .then((response) => {
+                    this.events = response.data;
+                    console.log(this.events);
+                });
+            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
+                this.eventGroups = results.data;
+            });
+        }
+
+        public editgroup = false;
+        public addEvent = false;
+
+        public updateGroup(group) {
+            var p = { groupId: this.$stateParams.id };
+            this.$http.put(`/api/groups/${this.$stateParams.id}`, group, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+                }).catch((reason) => {
+                    console.log(reason);
+                });
+        }
+
+        public deleteGroup(group) {
+            this.$http.delete(`/api/groups/${this.$stateParams.id}`, group)
+                .then((response) => {
+                    this.$state.go('myGroups');
+
+                });
+        }
+
+        public groupAttend(eventId) {
+
+            this.$http.post(`/api/eventgroups/${this.$stateParams.id}/attend`, eventId)
+                .then((response) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+                    console.log("You screwed up all sorts of bad");
+                    console.log(eventId);
+                });
+
+        }
+
+        public deleteEvent(eventId) {
+            var p = { eventId: eventId };
+            console.log(eventId);
+            //this.$http.delete(`/api/events/${event.id}`, event)
+            this.$http.delete(`/api/eventgroups/${this.$stateParams.id}/groupevents`, { params: p })
+                .then((response) => {
+                    this.$state.reload();
+
+                });
+        }
+
+    }
+
+    //not in use for now--lets you add a person to your group
+    //public addMember(m) {
+    //    var member = JSON.stringify(m);
+    //    this.$http.post(`/api/groups/${this.$stateParams.id}/members`, member)
+    //        .then((response) => {
+    //            this.$state.reload();
+    //        })
+    //        .catch((reason) => {
+    //            console.log(member);
+    //            console.log(reason);
+    //        });
+    //}
+
+    export class GroupController {
+
+        public groups;
+
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get('/api/groups').then((results) => {
+                this.groups = results.data;
+            });
+
+        }
+
+
+
+    }
+
+    export class GroupDetailsController {
+        public group;
+        public users;
+        public eventGroups;
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService) {
+            $http.get(`/api/groups/${$stateParams['id']}`)
+                .then((response) => {
+                    this.group = response.data;
+                });
+            $http.get('/api/user').then((results) => {
+                this.users = results.data;
+            });
+            $http.get(`/api/eventgroups/${this.$stateParams.id}/groupevents`).then((results) => {
+                this.eventGroups = results.data;
+            });
+        }
+
+
+
+        public Join(groupId) {
+            this.$http.post(`/api/groups/join`, groupId
+            )
+                .then((response) => {
+                    this.$state.reload();
+                })
+                .catch((reason) => {
+                    console.log(reason);
+
+                });
+        }
+
+
+    }
 
     export class TestController {
         public testData;
