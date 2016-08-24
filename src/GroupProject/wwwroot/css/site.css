@@ -132,7 +132,7 @@ Carousel .carousel-caption {
     top:75%;
     color: white;
     /*padding-left: 500px;*/
-    padding-left:45%;
+    padding-left:40%;
     font-size: 18px;
 }
 
@@ -164,6 +164,7 @@ a, [ui-sref] {
 
     a:hover, [ui-sref]:hover {
         color: #E14658;
+        text-decoration: none;
     }
 
     /*a:visited, [ui-sref]:visited{

@@ -99,7 +99,7 @@ namespace GroupProject.Controllers {
             console.log(`name: ${addEvent.name}`);
             console.log(`status: ${addEvent.status}`);
             console.log(`group name: ${addEvent.group}`);
-           
+
 
 
             this.$http.post('/api/events', addEvent)
@@ -346,8 +346,17 @@ namespace GroupProject.Controllers {
     export class EventDetailsController {
         public eventSearchData;
         public groups;
+        public toastMsg;
+        public displayToast($mdToast) {
+            var toast = $mdToast.simple()
+                .textContent(this.toastMsg)
+                .position('bottom left')
+                .hideDelay(5000);
 
-        constructor(private $http: ng.IHttpService, private $stateParams) {
+            $mdToast.show(toast);
+        };
+
+        constructor(private $http: ng.IHttpService, private $stateParams, private $state: ng.ui.IStateService, private $mdToast: ng.material.IToastService, private accountService: GroupProject.Services.AccountService) {
             var p = { eventId: $stateParams.id };
 
             $http.get(`/api/events/${$stateParams.id}`, { params: p })
@@ -359,7 +368,23 @@ namespace GroupProject.Controllers {
                     this.groups = response.data;
                 });
         }
+        public Attend(eventId) {
+            if (!this.accountService.isLoggedIn()) {
+                this.$state.go('home');
+                this.toastMsg = "Please log in before adding an event";
+                this.displayToast(this.$mdToast);
 
+                this.$http.post(`/api/events/attend`, eventId)
+                    .then((response) => {
+                        this.$state.go('MyEvents');
+                    })
+                    .catch((reason) => {
+                        console.log(reason);
+
+                    });
+            }
+
+        }
     }
 
     export class MyGroupsController {
